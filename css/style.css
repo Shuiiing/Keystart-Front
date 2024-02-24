@@ -26,3 +26,137 @@ img {
   margin-right: auto;
   width: 50%;
 }
+
+
+/* style.css */
+.footer {
+  height: 320px;
+  border-top: 1px solid #4B5563;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.footer-left {
+  margin-left: 22%;
+  flex: 1;
+  height: 100%;
+  padding: 40px 64px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.logo-img {
+  width: 160px;
+  height: 40.61px;
+}
+
+.links {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-link {
+  color: black;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.separator {
+  color: #C7C7C7;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.label {
+  color: #4B5563;
+}
+
+.value {
+  color: #4B5563;
+}
+
+.business-info-link {
+  color: #030712;
+}
+
+.fixed-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999; /* 버튼이 다른 콘텐츠 위에 표시되도록 설정 */
+  background-color: white;
+}
+
+.fixed-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+.Button {
+  margin-top: 0.5%;
+  width: 1000px;
+  height: 30px;
+  padding: 8px;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+  font-size: 24px;
+  font-family: Pretendard;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+#login-button {
+  background: #F9FAFB;
+  color: #030712;
+}
+
+#kakao-button {
+  background: #FEE502;
+  color: #341C1E;
+}
+
+.Inner {
+  display: flex;
+  align-items: center;
+}
+
+.logo-back {
+  margin-top: 20%;
+  color: transparent;
+}
+
+.icon {
+  width: 24px;
+  height: 22.22px;
+  /* background: #341C1E; */
+}
+
+/* 버튼을 호버할 때 색상 변경 */
+.Button:hover {
+  opacity: 0.9;
+  cursor: pointer; /* 마우스 커서 모양 변경 */
+}
+
+/* 버튼을 클릭할 때 변화를 줌 */
+.Button:active {
+  transform: translateY(2px); /* 버튼을 눌렀을 때 아래로 조금 이동 */
+  opacity: 0.8;
+}

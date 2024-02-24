@@ -1,15 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>keystart</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/mobilestyle.css" />
-  </head>
-  <body>
-    <div id="wrapper">
-      <img src="./img/keystart_pc.png" alt="키스타트 이미지" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>keystart</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/mobilestyle.css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <img src="./img/keystart_pc.png" alt="키스타트 이미지" />
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <div class="logo">
+        <img class="logo-img" src="./img/keystart_logo.png" alt="로고">
+      </div>
+      <div class="links">
+        <div class="footer-link">이용약관</div>
+        <div class="separator">ㅣ</div>
+        <div class="footer-link">개인정보 처리방침</div>
+      </div>
+      <div class="contact-info">
+        <div class="info-item">
+          <span class="label">상호명</span>
+          <span class="value">키스타트(KEY START)</span>
+        </div>
+        <div class="info-item">
+          <span class="label">주소</span>
+          <span class="value">(12345)부산광역시 연제구</span>
+        </div>
+        <div class="info-item">
+          <span class="label">사업자등록번호</span>
+          <span class="value">123-45-67890 <a href="#" class="business-info-link">[사업자 정보 확인]</a></span>
+        </div>
+        <div class="info-item">
+          <span class="label">E-MAIL</span>
+          <span class="value">keystart.official@keystart.co.kr</span>
+        </div>
+        <div class="info-item">
+          <span class="label">TEL</span>
+          <span class="value">070-1234-5678</span>
+        </div>
+      </div>
     </div>
-  </body>
+  </div>
+
+  <div class="fixed-button-container">
+    <div class="Button" id="login-button" onclick="login()">
+      <div>로그인하기</div>
+    </div>
+    <div class="Button" id="kakao-button" onclick="kakaoLogin()">
+      <div class="Inner">
+        <div class="icon">
+          <img src="./img/kakao_logo.png" class='logo-back' alt="kakao logo">
+        </div>
+        <div>카카오로 1초만에 가입</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function login() {
+      alert('로그인 버튼이 클릭되었습니다.');
+    }
+
+    function kakaoLogin() {
+      alert('카카오 로그인 버튼이 클릭되었습니다.');
+    }
+  </script>
+
+</body>
+
 </html>
