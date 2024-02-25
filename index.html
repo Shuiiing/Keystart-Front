@@ -123,6 +123,20 @@
 
 
     </footer>
+    <script>
+        window.addEventListener('scroll', function () {
+            var nav = document.querySelector('.main-nav');
+            if (window.scrollY > 165) { // 스크롤 위치가 52px보다 아래에 있으면
+                nav.classList.add('fixed-nav'); // 고정 클래스 추가
+                nav.style.position = 'fixed'; // 요소를 고정
+            } else {
+                nav.classList.remove('fixed-nav'); // 고정 클래스 제거
+                nav.style.position = 'static'; // 그렇지 않으면 요소를 기본 위치로 설정
+            }
+        });
+
+
+    </script>
 
 </body>
 
