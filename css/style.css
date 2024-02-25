@@ -335,4 +335,90 @@ img {
 .spacer {
   height: 30px;
 }
+.addSpacer {
+  height: 70px;
+}
 
+
+.info-section {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 192px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.section-title {
+  color: #030712;
+  font-size: 48px;
+  font-family: Pretendard;
+  font-weight: 700;
+  line-height: 52px;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.info-boxes {
+  display: flex;
+  justify-content: space-around; /* 박스 사이에 균일한 간격을 제공 */
+  flex-wrap: wrap; /* 화면 너비가 박스 3개를 수용할 수 없을 경우 줄바꿈 */
+}
+
+.info-box {
+  /* 기존 스타일 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+  background: #FDFEFF;
+  border-radius: 20px;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+
+  /* 수정된 너비 및 정렬 스타일 */
+  width: 300px; /* 박스의 너비를 고정값으로 설정 */
+  margin: 0; /* 필요한 경우, 외부 여백을 없애거나 조정 */
+  flex: none; /* flex-grow, flex-shrink, flex-basis를 무시하고 width 값만 적용 */
+}
+
+.box-icon {
+  width: 90px;
+  height: 94.06px;
+  background: linear-gradient(180deg, #676B70 0%, #737F8F 5%, #4B5563 28%, #143767 100%);
+}
+
+.box-text {
+  text-align: center;
+  color: #030712;
+  font-size: 24px;
+  font-family: Pretendard;
+  font-weight: 600;
+  line-height: 28px;
+  word-wrap: break-word;
+}
+
+
+/* 데스크탑 환경을 위한 미디어 쿼리 */
+@media (min-width: 1025px) {
+  .info-box {
+    width: calc(33.333% - 70px); /* 화면 너비의 1/3에서 박스 사이 간격을 뺀 값으로 설정 */
+  }
+}
+
+/* 모바일 화면을 위한 미디어 쿼리 */
+@media (max-width: 768px) {
+  .info-section {
+    padding: 0 24px;
+  }
+
+  .info-box {
+    flex: 0 1 100%; 
+    margin-top: 12px;
+  }
+
+  .info-boxes {
+    flex-direction: column;
+  }
+}
