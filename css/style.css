@@ -371,7 +371,7 @@ img {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
   background: #FDFEFF;
   border-radius: 20px;
-  padding: 48px 24px;
+  padding: 48px 45px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -384,18 +384,19 @@ img {
 }
 
 .box-icon {
-  width: 90px;
-  height: 94.06px;
-  background: linear-gradient(180deg, #676B70 0%, #737F8F 5%, #4B5563 28%, #143767 100%);
+  justify-content: center;
+  width: 80%;
+  height: 60%;
+  background: transparent;
 }
 
 .box-text {
   text-align: center;
   color: #030712;
-  font-size: 24px;
+  font-size: 22px;
   font-family: Pretendard;
   font-weight: 600;
-  line-height: 28px;
+  line-height: 26px;
   word-wrap: break-word;
 }
 
@@ -403,22 +404,34 @@ img {
 /* 데스크탑 환경을 위한 미디어 쿼리 */
 @media (min-width: 1025px) {
   .info-box {
-    width: calc(33.333% - 70px); /* 화면 너비의 1/3에서 박스 사이 간격을 뺀 값으로 설정 */
+   margin-right: 10px;
   }
 }
 
 /* 모바일 화면을 위한 미디어 쿼리 */
 @media (max-width: 768px) {
   .info-section {
-    padding: 0 24px;
+    padding: 0 16px; /* 좌우 패딩을 줄임 */
   }
 
   .info-box {
-    flex: 0 1 100%; 
-    margin-top: 12px;
+    margin-top: 12px; /* 상단 여백 조정 */
+    padding: 24px 12px; /* 패딩을 줄임 */
   }
 
-  .info-boxes {
-    flex-direction: column;
+  .box-icon {
+    width: 60px; /* 아이콘 크기 조정 */
+    height: 62.44px; /* 아이콘 비율에 맞춰 높이 조정 */
+  }
+
+  .box-text {
+    font-size: 18px; /* 텍스트 크기를 줄임 */
+    line-height: 22px; /* 줄 간격 조정 */
+  }
+
+  .section-title {
+    font-size: 36px; /* 섹션 타이틀 크기 조정 */
+    line-height: 44px; /* 줄 간격 조정 */
+    padding: 0 12px; /* 섹션 타이틀 패딩 조정 */
   }
 }
