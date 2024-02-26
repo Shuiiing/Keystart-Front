@@ -47,7 +47,23 @@
 
     </header>
 
-    <img src="./img/mainPlaceHolder1.png" alt="키스타트 이미지" />
+    <div id="slideShow">
+        <ul class="slides">
+            <li><img src="./img/grayHound.png" alt=""></li>
+            <li><img src="./img/duck.png" alt=""></li>
+            <li><img src="./img/" alt=""></li>
+        </ul>
+        <p class="controller">
+
+            <!-- &lang: 왼쪽 방향 화살표
+          &rang: 오른쪽 방향 화살표 -->
+            <span class="prev">&lang;</span>
+            <span class="next">&rang;</span>
+        </p>
+    </div>
+    <script src="JS/slideShow.js"></script>
+
+
     <div class="spacer"></div>
     <img src="./img/mainPlaceHolder2.png" alt="키스타트 이미지" />
     <div class="spacer"></div>
@@ -76,25 +92,25 @@
                 </div>
                 <div class="contact-info">
                     <div class="info-item">
-                        <span class="label">상호명</span>
+                        <span class="label title">상호명</span>
                         <span class="value">키스타트(KEY START)</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">주소</span>
-                        <span class="value">(12345)부산광역시 연제구</span>
+                        <span class="label title">주소</span>
+                        <span class="value">울산광역시 중구 운곡8길 82-2, 201호(다운동)</span>
                     </div>
                     <div class="info-item">
-                        <span class="label">사업자등록번호</span>
-                        <span class="value">123-45-67890 <a href="#" class="business-info-link">[사업자 정보 확인]</a></span>
+                        <span class="label title">사업자등록번호</span>
+                        <span class="value">607-79-00239 <a href="#" class="business-info-link">[사업자 정보 확인]</a></span>
                     </div>
                     <div class="info-item">
-                        <span class="label">E-MAIL</span>
+                        <span class="label title">E-MAIL</span>
                         <span class="value">keystart.official@keystart.co.kr</span>
                     </div>
-                    <div class="info-item">
-                        <span class="label">TEL</span>
+                    <!-- <div class="info-item">
+                        <span class="label title">TEL</span>
                         <span class="value">070-1234-5678</span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="footer-right">
@@ -134,6 +150,62 @@
                 nav.style.position = 'static'; // 그렇지 않으면 요소를 기본 위치로 설정
             }
         });
+
+
+        var ht = null;
+        (function (id, scriptSrc, callback) {
+            var d = document,
+                tagName = 'script',
+                $script = d.createElement(tagName),
+                $element = d.getElementsByTagName(tagName)[0];
+            $script.id = id;
+            $script.async = true;
+            $script.src = scriptSrc;
+            if (callback) { $script.addEventListener('load', function (e) { callback(null, e); }, false); }
+            $element.parentNode.insertBefore($script, $element);
+        })('happytalkSDK', 'https://chat-static.happytalkio.com/sdk/happytalk.chat.v2.min.js', function () {
+            ht = new Happytalk({
+                siteId: '4000003356',
+                siteName: '키스타트',
+                categoryId: '177791',
+                divisionId: '177792'
+            });
+        });
+
+        // ------------------ 슬라이더관련 스크립트코드 -------------------
+        const slides = document.querySelector('.slides'); //전체 슬라이드 컨테이너
+        const slideImg = document.querySelectorAll('.slides li'); //모든 슬라이드들
+        let currentIdx = 0; //현재 슬라이드 index
+        const slideCount = slideImg.length; // 슬라이드 개수
+        const prev = document.querySelector('.prev'); //이전 버튼
+        const next = document.querySelector('.next'); //다음 버튼
+        // const slideWidth = 300; //한개의 슬라이드 넓이
+        // const slideMargin = 100; //슬라이드간의 margin 값
+
+
+        //전체 슬라이드 컨테이너 넓이 설정
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.slides li').length;
+
+        function moveSlide(slideNum) {
+            const slideWidth = document.querySelector('#slideShow').clientWidth;
+            const newLeft = slideNum * slideWidth;
+            document.querySelector('.slides').style.transform = `translateX(-${newLeft}px)`;
+            currentSlide = slideNum;
+        }
+
+        prev.addEventListener('click', function () {
+            if (currentSlide > 0) {
+                moveSlide(currentSlide - 1);
+            }
+        });
+
+        next.addEventListener('click', function () {
+            if (currentSlide < totalSlides - 1) {
+                moveSlide(currentSlide + 1);
+            }
+        });
+        // ------------------ 슬라이더관련 스크립트코드 -------------------
 
 
     </script>
