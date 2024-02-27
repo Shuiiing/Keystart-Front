@@ -251,6 +251,8 @@
         const total = items.children.length - 1;
         const active = "active";
         let current = 0;
+        let interval; // 변수 추가: setInterval을 저장할 변수
+        let isAutoScrollEnabled = true; // 자동 슬라이딩 상태를 나타내는 변수
 
         const setActiveDot = () => {
             dots.forEach((button, i) => {
@@ -261,7 +263,7 @@
         };
 
         const scrollToCurrent = () => {
-            items.style.transform = `translateX(${current * -100}%`;
+            items.style.transform = `translateX(${current * -100}%)`;
             setActiveDot();
         };
 
@@ -269,16 +271,44 @@
             if (current === 0) return;
             current--;
             scrollToCurrent();
+            stopAutoScroll(); // 이전 버튼 클릭 시 자동 슬라이딩 중지
         };
 
         const scrollNext = () => {
             if (current === total) return;
             current++;
             scrollToCurrent();
+            stopAutoScroll(); // 다음 버튼 클릭 시 자동 슬라이딩 중지
         };
 
-        prev.addEventListener("click", scrollPrev);
-        next.addEventListener("click", scrollNext);
+        const startAutoScroll = () => {
+            if (isAutoScrollEnabled) {
+                interval = setInterval(() => {
+                    if (current === total) {
+                        current = 0;
+                    } else {
+                        current++;
+                    }
+                    scrollToCurrent();
+                }, 3000); // 3초마다 슬라이더 넘김
+            }
+        };
+
+        const stopAutoScroll = () => {
+            clearInterval(interval); // setInterval 중지
+            isAutoScrollEnabled = false; // 자동 슬라이딩 중지 상태로 설정
+        };
+
+        prev.addEventListener("click", () => {
+            scrollPrev();
+            startAutoScroll(); // 버튼 클릭 시 자동 슬라이딩 다시 시작
+        });
+        next.addEventListener("click", () => {
+            scrollNext();
+            startAutoScroll(); // 버튼 클릭 시 자동 슬라이딩 다시 시작
+        });
+
+        startAutoScroll(); // 페이지 로드 시 자동 슬라이딩 시작
 
         // ------------------ 슬라이더관련 스크립트코드 -------------------
 
