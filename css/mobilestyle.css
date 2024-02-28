@@ -1,6 +1,8 @@
 @media (max-width: 767px) {
+
   img {
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
   }
 
 
@@ -17,6 +19,7 @@
     height: 150px;
   }
 
+/* -------------------------- 자동배너 <모바일> --------------------- */
   .wrap { 
     display: flex; 
     overflow: hidden;
@@ -63,6 +66,93 @@
     0% { transition: translateX(0); }
     100% { transform: translateX(-200%); }
   }
-  
+  /* -------------------------- 자동배너 <모바일> --------------------- */
 
+
+  /* -------------------- 카카오 버튼에 대해서 <모바일> -------------------- */
+  .fixed-button-container {
+    height: auto;
+    margin-top: 5%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999; /* 버튼이 다른 콘텐츠 위에 표시되도록 설정 */
+    background-color: transparent;
+    display: grid;
+    justify-content: space-between;
+  }
+  
+  .Button {
+    margin: 0.5%;
+    width: 100vw;
+    height: 30px;
+    padding: 8px;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    display: inline-flex;
+    font-size: 24px;
+    font-family: Pretendard;
+    font-weight: 600;
+    line-height: 28px;
+  }
+    /* -------------------- 카카오 버튼에 대해서 <모바일> -------------------- */
+
+
+    /* ----------------------- 풋터 <모바일> ------------------------ */
+    .footer {
+      height: 300px;
+      border-top: 1px solid #4b5563;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color: black;
+      margin-bottom: 70px;
+    }
+
+
+    .footer-left {
+      flex: 1;
+      height: 100%;
+      padding: 10px 20px;
+      background-color: black;
+      display: grid;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .logo-img {
+      width: 100px; /* 원하는 너비로 조절 */
+      height: 100px; /* 원하는 높이로 조절 */
+    }
+
+    .footer-link {
+      color: white;
+      font-size: 16px;
+      font-family: Pretendard;
+      font-weight: 500;
+      line-height: 20px;
+    }
+
+    .label {
+  color: #AFAFAF;
+}
+
+.label.title {
+  font-weight: 700;
+}
+
+.value {
+  color: white;
+}
+
+.business-info-link {
+  color: #030712;
+}
+
+    /* ----------------------- 풋터 <모바일> ------------------------ */
 }
