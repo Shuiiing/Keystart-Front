@@ -35,7 +35,10 @@
                     console.log('로그아웃 성공');
                     deleteCookie('Authentication');
                     localStorage.removeItem('jwtToken');
-                    window.location.href = 'http://127.0.0.1:5500/keystart.html';
+                    // 배포
+                    //window.location.href = 'http://127.0.0.1:5500/keystart.html';
+                    // 개발
+                    window.location.href = 'https://www.keystart.co.kr/keystart.html';
                 } else {
                     // 로그아웃 실패 처리
                     console.error('로그아웃 실패');
