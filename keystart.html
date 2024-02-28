@@ -171,7 +171,10 @@
       async function login() {
         try {
           const response = await fetch(
-            "http://localhost:8282/api/v1/user/kakaologincode",
+            //개발
+            //"http://localhost:8282/api/v1/user/kakaologincode",
+            //배포
+            "https://www.keystart.co.kr/api/v1/user/kakaologincode",
             { method: "GET", credentials: "include" }
           );
           const data = await response.json();
@@ -184,8 +187,11 @@
       async function kakaoLogin() {
         try {
           const response = await fetch(
-            "http://localhost:8282/api/v1/user/kakao"
-          );
+            //개발
+            //"http://localhost:8282/api/v1/user/kakao",
+            //배포
+            "https://www.keystart.co.k/rapi/v1/user/kakao",            
+          ); // 서버 주소는 환경에 맞게 변경하세요.
           const data = await response.json();
           localStorage.setItem('accessToken', data.token); // 토큰을 로컬 스토리지에 저장
           window.location.href = data.url; // 카카오 로그인 페이지로 리다이렉트

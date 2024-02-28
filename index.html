@@ -15,14 +15,20 @@
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
 
-        // 로그아웃 함수
-        async function logout() {
-            try {
-
-                const response = await fetch('http://localhost:8282/api/v1/user/logout', {
-                    method: 'POST', // POST 메소드 사용
-                    credentials: 'include'
-                });
+    // 로그아웃 함수
+    async function logout() {
+      try {
+   
+        const response = await fetch(
+            // 개발
+            //'http://localhost:8282/api/v1/user/logout', 
+            //배포
+            'https://www.keystart.co.kr/api/v1/user/logout', 
+            {
+                method: 'POST', // POST 메소드 사용
+                credentials: 'include'
+            }
+        );
 
                 if (response.ok) {
                     // 로그아웃 성공 처리, 예: 클라이언트 측에서 세션 또는 로컬 스토리지 클리어, 로그인 페이지로 리다이렉션 등
