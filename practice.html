@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/signStyle.css" />
+
+
+    <title>회원가입</title>
+    <style>
+        /* CSS는 여기에 추가됩니다 */
+    </style>
+</head>
+<div class="navigation-link">
+    <div class="arrow-left">
+        <div class="arrow">
+            <img src="./img/arrow/arrow-left.png" alt="">
+        </div>
+    </div>
+    <div class="text">홈으로</div>
+</div>
+
+<body>
+
+    <div>
+        <div class="mainSign">
+            <div class="logo">
+                <img src="./img/logo/logoBlack.png" alt="">
+            </div>
+            <div class="signText">회원가입</div>
+        </div>
+    </div>
+
+
+    <div class="binding">
+
+        <!-- 이름 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">이름</span>
+                <span class="required">*</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">최소 2자 이상 입력</div>
+            </div>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">이메일</span>
+                <span class="required">*</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">예시: keystart@keystart.co.kr</div>
+            </div>
+        </div>
+
+        <!-- 비밀번호 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">비밀번호</span>
+                <span class="required">*</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">영문 대소문자, 숫자, 특수문자 조합 5~20자 이내</div>
+            </div>
+        </div>
+
+        <!-- 비밀번호 확인 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">비밀번호 확인</span>
+                <span class="required">*</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">비밀번호 확인</div>
+            </div>
+        </div>
+
+        <!-- 휴대폰 번호 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">휴대폰 번호</span>
+                <span class="required">*</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">'-' 없이 번호만 입력</div>
+            </div>
+        </div>
+
+        <!-- 생년 월일 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">생년 월일</span><span class="required">*</span>
+            </div>
+            <div class="date-collection">
+                <div class="date-wrapper">
+                    <input type="text" class="calender-year" id="calenderYear" />
+                    <span class="date-label">년</span>
+                </div>
+                <div class="date-wrapper">
+                    <input type="text" class="calender-month" id="calenderMonth" />
+                    <span class="date-label">월</span>
+                </div>
+                <div class="date-wrapper">
+                    <input type="text" class="calender-day" id="calenderDay" />
+                    <span class="date-label">일</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 연령대 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">연령대</span>
+                <span class="required">*</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">연령대 입력</div>
+            </div>
+        </div>
+
+        <!-- 성별 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">성별</span>
+                <span class="required">*</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">성별 입력</div>
+            </div>
+        </div>
+
+        <!-- 창업 유무  -->
+        <div class="create-store">
+            <div class="label">
+                <span class="label-text">창업 유무</span>
+                <span class="required">*</span>
+            </div>
+            <div class="radio-layout">
+                <label class="radio-option">
+                    <input type="radio" name="startup" value="aspiring" checked>
+                    예비창업자
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="startup" value="existing">
+                    기존창업자
+                </label>
+            </div>
+        </div>
+
+        <!-- 관심 카테고리 -->
+        <div class="category">
+            <div>관심 카테고리 (중복선택가능)</div>
+            <div class="checkbox-group">
+                <label class="checkbox-option">
+                    <input type="checkbox" name="interest" value="cafe" class="custom-checkbox">
+                    카페
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="interest" value="restaurant" class="custom-checkbox">
+                    음식점
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="interest" value="pub" class="custom-checkbox">
+                    주점
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="interest" value="unmanned" class="custom-checkbox">
+                    무인 창업
+                </label>
+                <label class="checkbox-option">
+                    <input type="checkbox" name="interest" value="other" class="custom-checkbox">
+                    기타
+                </label>
+            </div>
+        </div>
+
+
+        <!-- 추천인 코드 -->
+        <div class="textfield">
+            <div class="label">
+                <span class="label-text">추천인 코드</span>
+            </div>
+            <div class="placeholder-field">
+                <div class="placeholder">추천인 코드 입력</div>
+            </div>
+        </div>
+
+        <!-- 이용약관 동의 -->
+        <div class="mmar m1">
+            <div class="agreement">
+                <label class="checkbox-option">
+                    <input type="checkbox" name="interest" value="other" class="custom-checkbox">
+                    이용약관 동의
+                    <span class="required">*</span>
+                </label>
+            </div>
+            <div>
+                <a href="#" class="agreement-link">내용 보기</a>
+            </div>
+        </div>
+
+        <!-- 개인정보 수집 및 이용 동의 -->
+        <div class="mmar">
+            <div class="agreement">
+                <label class="checkbox-option">
+                    <input type="checkbox" name="interest" value="other" class="custom-checkbox">
+                    개인정보 수집 및 이용 동의
+                    <span class="required">*</span>
+                </label>
+            </div>
+            <div>
+                <a href="#" class="agreement-link">내용 보기</a>
+            </div>
+        </div>
+
+        <div><button class="button-sign">가입완료</button></div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <script>
+
+
+
+    </script>
+</body>
+
+</html>
