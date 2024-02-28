@@ -26,7 +26,7 @@ img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  max-width: 100%;
 }
 
 /* 풋터는 여기까지 입니다 */
@@ -766,7 +766,7 @@ img {
 
 
 .wrap .rolling-list ul li .image-wrap > img { 
-	width: 100%;
+	max-width: 100%;
 }
 
 .wrap .rolling-list ul li .desc span { 
