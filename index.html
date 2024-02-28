@@ -10,6 +10,36 @@
     <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="jquery.bxslider/jquery.bxslider.js"></script>
+    <script>
+    function deleteCookie(name) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+
+    // 로그아웃 함수
+    async function logout() {
+      try {
+   
+        const response = await fetch('http://localhost:8282/api/v1/user/logout', {
+             method: 'POST', // POST 메소드 사용
+            credentials: 'include'
+         });
+
+        if (response.ok) {
+        // 로그아웃 성공 처리, 예: 클라이언트 측에서 세션 또는 로컬 스토리지 클리어, 로그인 페이지로 리다이렉션 등
+        console.log('로그아웃 성공');
+        deleteCookie('Authentication');
+        localStorage.removeItem('jwtToken');
+        window.location.href = 'http://127.0.0.1:5500/keystart.html';
+        } else {
+            // 로그아웃 실패 처리
+            console.error('로그아웃 실패');
+            }
+        } catch (error) {
+            console.error('로그아웃 중 오류 발생:', error);
+        }
+    }
+    </script>
+    
 </head>
 
 <body>
@@ -32,7 +62,7 @@
                     <a href="#"></a>
                 </ol>
                 <ol>
-                    <a href="#" class="Logout">로그아웃</a>
+                    <a href="#" class="Logout" onclick="logout()">로그아웃</a>
                 </ol>
                 <ol>
                     <a href="#" class='UserInfo'>회원정보</a>
@@ -361,8 +391,9 @@
         document.querySelector('#roller3').classList.add('clone');
         document.querySelector('#roller4').classList.add('clone');
         // ------------------ 자동 배너 코드 ---------------------------
-
+        
     </script>
+   
 </body>
 
 </html>

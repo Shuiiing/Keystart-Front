@@ -179,8 +179,9 @@
       async function login() {
         try {
           const response = await fetch(
-            "http://localhost:8282/api/v1/user/kakaologincode"
-          ); // 서버 주소는 환경에 맞게 변경하세요.
+            "http://localhost:8282/api/v1/user/kakaologincode",
+            { method: "GET", credentials: "include" }
+          );
           const data = await response.json();
           window.location.href = data.url; // 카카오 로그인 페이지로 리다이렉트
         } catch (error) {
