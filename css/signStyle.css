@@ -246,7 +246,7 @@ radio-layout {
 .mmar{
     display: flex;
     justify-content: space-between; /* 요소들을 양끝으로 정렬 */
-    width: 45%;
+    width: 40%;
     margin-bottom: 5px;
 }
 
@@ -271,3 +271,120 @@ radio-layout {
     font-size: 28px;
 }
 
+/* 풋터 영역 */
+.footer {
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    height: 255px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: var(--semantic-color-bg-inverse-bolder);
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #000000;
+    background-color: #1F2937;
+  }
+  
+  .footer .footer-left {
+    display: flex;
+    flex-direction: column;
+    height: 320px;
+    align-items: flex-start;
+    gap: var(--semantic-spacing-32);
+    padding: var(--semantic-spacing-40) var(--semantic-spacing-80) 0px var(--semantic-spacing-80);
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    margin-bottom: -65px;
+  }
+  
+  .footer .contents {
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: var(--semantic-spacing-8);
+    padding: var(--semantic-spacing-20) 0px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .footer .text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Gmarket Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--semantic-color-text-interactive-inverse);
+    font-size: 20px;
+    text-align: justify;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+    color: white;
+  }
+  
+  .footer .div {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Gmarket Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #c7c7c7;
+    font-size: 20px;
+    text-align: justify;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .footer .contents-2 {
+    flex-direction: column;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .footer .text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--semantic-spacing-8);
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  
+  .footer .view {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .footer .text-wrapper-2 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Gmarket Sans-Medium", Helvetica;
+    font-weight: 500;
+    color: #adc7fb;
+    font-size: 20px;
+    text-align: justify;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
