@@ -243,6 +243,14 @@
   <script>
     async function fetchUserInfo() {
       try {
+        // localStorage에서 토큰을 가져옵니다.
+        const token = localStorage.getItem('accessToken');
+        console.log(token)
+        if (!token) {
+          console.log('토큰이 없습니다. 로그인이 필요합니다.');
+          return;
+        }
+
         const response = await fetch(
           "http://localhost:8282/api/v1/user/info",
           //"https://www.keystart.co,kr/api/v1/user/info",
