@@ -37,7 +37,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background-color: black;
+  background-color: #2753AD;
 }
 
 .footer-left {
@@ -45,7 +45,7 @@ img {
   flex: 1;
   height: 100%;
   padding: 40px 64px;
-  background-color: black;
+  background-color: #2753AD;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -82,7 +82,7 @@ img {
 }
 
 .label {
-  color: #AFAFAF;
+  color: #AEC7FC;
 }
 
 .label.title {
@@ -349,7 +349,6 @@ img {
 
 .info-section {
   width: 100%;
-  max-width: 1920px;
   padding: 0 192px;
   display: flex;
   flex-direction: column;
@@ -879,6 +878,7 @@ img {
   .faq-item.active .faq-answer {
     display: block;
   }
+
 
   .more-info {
     margin: 10px auto; /* 상하 마진을 10px, 좌우 마진을 auto로 설정하여 가로축 중앙 정렬 */
