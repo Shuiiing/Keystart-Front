@@ -336,12 +336,11 @@
     </div>
 
     <script>
-      console.log("쿠키", document.cookie);
       async function fetchUserInfo() {
         try {
           const response = await fetch(
-            //"http://localhost:8282/api/v1/user/info",
-            "https://www.keystart.co,kr/api/v1/user/info",
+            "http://localhost:8282/api/v1/user/info",
+            //"https://www.keystart.co,kr/api/v1/user/info",
             {
               method: "GET",
               credentials: "include",
@@ -361,6 +360,7 @@
 
       // 웹 페이지 로드 완료 시 사용자 정보 요청
       window.onload = function () {
+        localStorage.getItem('jwtToken')
         fetchUserInfo();
       };
     </script>
