@@ -538,151 +538,75 @@ img {
 
 /* 기본적인 모바일 스타일 */
 @media (max-width: 768px) {
-
-  .container {
-    display: grid;
-    grid-template: "container" 1fr;
-    place-items: center;
-    place-content: center;
-    overflow: hidden;
-    max-height: clamp(50px, 50vh, 350px);
-  }
-  
-  .container > * {
-    grid-area: container;
-    max-width: 100%;
-  }
-
-  .TopNav, .footer {
-      padding: 0 10px; /* 좌우 패딩을 줄입니다. */
-  }
-
-
-
-  .logo-container img, .footer-left .logo-img {
-    
-      width: 100%; /* 로고 이미지의 너비를 화면에 맞춥니다. */
-      height: auto; /* 이미지의 높이를 자동으로 조정합니다. */
-  }
-  .logo-container img {
-    margin-left: 10px;
-  }
-
-  .footer-left, .footer-right {
-      margin-left: 0;
-      margin-right: 0;
-      padding: 20px; /* 좌우 패딩을 줄입니다. */
-      flex-direction: column; /* 푸터의 컨텐츠를 세로로 쌓습니다. */
-      align-items: center; /* 중앙 정렬합니다. */
-  }
-
-  .footer-content, .social-icons {
-      flex-direction: row; /* 아이콘과 텍스트를 가로로 나란히 배치합니다. */
-      justify-content: center; /* 중앙 정렬합니다. */
-  }
-
-  .footer-link, .footer-text {
-      font-size: 14px; /* 텍스트 크기를 줄입니다. */
-  }
-
-  .carousel-viewport .item {
-      width: 100vw; /* 슬라이드 아이템을 뷰포트 너비에 맞춥니다. */
-      height: auto; /* 높이를 자동으로 조정합니다. */
-  }
-
-  .carousel-control.prev, .carousel-control.next {
-      --size: 2rem; /* 화살표 크기를 줄입니다. */
-  }
-
-  .carousel-dots {
-      bottom: 10px; /* 점의 위치를 조정합니다. */
-  }
-
-  .footer-right {
-    margin-right: 22%;
-    background: black;
-    padding: 40px;
-  }
-  
-  .footer-content,
-  .social-icons {
+  .footer {
+    width: 100%;
+    height: 300px;
+    border-top: 1px solid #4b5563;
     display: flex;
-    flex-direction: column;
-    /* gap: 10px; */
+    justify-content: start;
+    align-items: start;
+    background-color: #2753AD;
   }
   
-  .footer-text {
-    color: white;
-    font-size: 16px;
-    font-family: Pretendard, sans-serif;
-    font-weight: 500;
-    line-height: 15px;
-    text-align: justify;
-    word-wrap: break-word;
-  }
-  
-  .social-icons {
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-  }
-
-  .footer-link {
-    color: black;
-    font-size: 12px;
-    font-family: Pretendard;
-    font-weight: 500;
-    line-height: 20px;
-  }
-
-
   .footer-left {
     flex: 1;
-    height: 100%;
-    padding: 20px 34px;
-    background-color: white;
+    /* height: 50%; */
+    /* padding: 36px 30px; */
+    background-color: #2753AD;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 15px;
-    line-height: 10px;
+    gap: 32px;
+  }
+  
+  .logo-img {
+    width: 160px;
+    height: 40.61px;
+  }
+  
+  .links {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .footer-link {
+    color: white;
+    font-size: 16px;
+    font-family: Pretendard;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  
+  .separator {
+    color: white;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .label {
+    color: #AEC7FC;
+    font-size: medium;
+  }
+  
+  .label.title {
+    font-weight: 700;
+  }
+  
+  .value {
+    color: white;
+    font-size: medium;
+  }
+  
+  .business-info-link {
+    color: white;
+    font-size: medium;
   }
 
-  .SocialIcon {
-    width: 30px; /* 모바일에서 아이콘 크기 줄임 */
-    height: 30px; /* 모바일에서 아이콘 크기 줄임 */
-  }
-
-  .social-icon {
-    width: 30px; /* 모바일에서 아이콘 크기 줄임 */
-    height: 30px; /* 모바일에서 아이콘 크기 줄임 */
-  }
-
-  .SocialIcon img {
-    height: 20px;
-    width: 20px;
-  }
-
-  .social-icon img{
-    width: 20px; /* 모바일에서 아이콘 크기 줄임 */
-    height: 20px; /* 모바일에서 아이콘 크기 줄임 */
-  } 
-
-  * {
-    margin: 0;
-    padding: 0;
-    font: normal 12px "noto sans korean";
-  }
 
 }
 
