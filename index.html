@@ -15,94 +15,80 @@
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
 
-    // 로그아웃 함수
-    async function logout() {
-      try {
-        const response = await fetch(
-            // 개발
-            'http://localhost:8282/api/v1/user/logout', 
-            //배포
-            //'https://www.keystart.co.kr/api/v1/user/logout', 
-            {
-                method: 'POST', // POST 메소드 사용
-                credentials: 'include'
+        // 로그아웃 함수
+        async function logout() {
+            try {
+                const response = await fetch(
+                    // 개발
+                    //'http://localhost:8282/api/v1/user/logout', 
+                    //배포
+                    'https://www.keystart.co.kr/api/v1/user/logout',
+                    {
+                        method: 'POST', // POST 메소드 사용
+                        credentials: 'include'
+                    }
+                );
+                if (response.ok) {
+                    // 로그아웃 성공 처리, 예: 클라이언트 측에서 세션 또는 로컬 스토리지 클리어, 로그인 페이지로 리다이렉션 등
+                    console.log('로그아웃 성공');
+                    deleteCookie('Authentication');
+                    localStorage.removeItem('jwtToken')
+                    // 개발
+                    //window.location.href = 'http://127.0.0.1:5500/keystart.html';
+                    // 배포
+                    window.location.href = 'https://www.keystart.co.kr/keystart.html';
+                } else {
+                    // 로그아웃 실패 처리
+                    console.error('로그아웃 실패');
+                }
+            } catch (error) {
+                console.error('로그아웃 중 오류 발생:', error);
             }
-        );
-            if (response.ok) {
-                // 로그아웃 성공 처리, 예: 클라이언트 측에서 세션 또는 로컬 스토리지 클리어, 로그인 페이지로 리다이렉션 등
-                console.log('로그아웃 성공');
-                deleteCookie('Authentication');
-                localStorage.removeItem('jwtToken')
-                // 개발
-                //window.location.href = 'http://127.0.0.1:5500/keystart.html';
-                // 배포
-                window.location.href = 'https://www.keystart.co.kr/keystart.html';
-            } else {
-                // 로그아웃 실패 처리
-                console.error('로그아웃 실패');
-            }
-        } catch (error) {
-            console.error('로그아웃 중 오류 발생:', error);
         }
-    }
     </script>
 </head>
 
 <body>
     <header>
         <div class="TopNav">
-            <div class="Social">
-                <div class="SocialIcon Instagram">
-                    <img src="./img/insta.png" alt="인스타그램">
-                </div>
-                <div class="SocialIcon Instagram">
-                    <img src="./img/kakao.png" alt="카카오톡">
-                </div>
-                <div class="SocialIcon Instagram">
-                    <img src="./img/blog.png" alt="블로그">
-                </div>
+
+            <!-- 네비바 로고영역 -->
+            <div class="logo-top">
+                <img src="./img/logo/top-white-logo.png" alt="">
             </div>
-            <div class="Buttons">
-                <!-- 공간이 안맞아서 껍데기  orderList넣었습니다. -->
-                <ol>
-                    <a href="#"></a>
-                </ol>
-                <ol>
-                    <a href="#" class="Logout" onclick="logout()">로그아웃</a>
-                </ol>
-                <ol>
-                    <a href="#" class='UserInfo'>회원정보</a>
-                </ol>
+
+            <!-- 네비바 중간영역 -->
+            <div class="main-nav">
+                <a href="#keystart" class="nav-link">키스타트란?</a>
+                <a href="#partners" class="nav-link">파트너사</a>
+                <a href="#stories" class="nav-link">창업 이야기</a>
+                <a href="#info" class="nav-link">창업 관련 정보</a>
+            </div>
+
+            <!-- 네비바 버튼영역 -->
+            <div class="info">
+                홍길동님
             </div>
         </div>
-        </div>
 
-        <div class="logo-container">
-            <img src="./img/mainLogo.png" alt="메인로고" />
-        </div>
 
-        <nav class="main-nav">
-            <a href="#keystart" class="nav-link">키스타트란?</a>
-            <a href="#partners" class="nav-link">파트너사</a>
-            <a href="#stories" class="nav-link">창업 이야기</a>
-            <a href="#info" class="nav-link">창업 관련 정보</a>
-        </nav>
+
     </header>
 
-    <label class="checkbox">
+    <label class="checkbox" hidden>
         <input type="checkbox" id="overflow" checked /> Hide image overflow
     </label>
     <div class="container">
         <div class="carousel-viewport">
             <ul class="items">
                 <li class="item">
-                    <img src='./img/mainAD.png' width="1200" height="675" alt=''>
+                    <img src='./img/banner/blue-main-banner.png' width="1920" height="900" alt=''>
                 </li>
                 <li class="item">
-                    <img src='./img/mainAD.png' width="1200" height="675" alt=''>
+                    <img src='./img/banner/white-main-banner.png' width="1920" height="900" alt=''>
                 </li>
                 <li class="item">
-                    <img src=' ./img/mainAD.png' width="1200" height="675" alt=''>
+                    <img src='./img/banner/shine-main-banner.png' width="1920" height="900" alt=''>
                 </li>
             </ul>
         </div>
@@ -211,7 +197,6 @@
 
 
     <footer>
-        <!-- footer.html -->
         <div class="footer">
             <div class="footer-left">
                 <div class="logo">
@@ -225,9 +210,8 @@
                 <div class="contact-info">
                     <div class="info-item">
                         <span class="label title">상호명</span>
-                        <span class="value">키스타트(KEY START)</span>
-                    </div>
-                    <div class="info-item">
+                        <span class="value">키스타트</span>
+                        <span class="label title"> | </span>
                         <span class="label title">주소</span>
                         <span class="value">울산광역시 중구 운곡8길 82-2, 201호(다운동)</span>
                     </div>
@@ -239,47 +223,53 @@
                     <div class="info-item">
                         <span class="label title">E-MAIL</span>
                         <span class="value">keystart.official@keystart.co.kr</span>
-                    </div>
-                    <!-- <div class="info-item">
+                        <span class="label title"> | </span>
                         <span class="label title">TEL</span>
-                        <span class="value">070-1234-5678</span>
-                    </div> -->
+                        <span class="value">010-9043-9908</span>
+                    </div>
                 </div>
             </div>
             <div class="footer-right">
-                <div class="footer-content">
-                    <div class="footer-top">
-                        <div class="footer-text">공지사항</div>
-                        <div class="footer-text">자주 묻는 질문</div>
-                        <div class="footer-text">회원정보</div>
+                <div class="community">커뮤니티</div>
+                <div class="notification">공지사항</div>
+                <div class="requestion">자주 묻는 질문</div>
+                <div class="social-item">
+                    <div class="social">
+                        <img class="insta" src="./img/social/insta.png" alt="">
                     </div>
-                    <div class="social-icons">
-                        <div class="social-icon instagram">
-                            <img src="./img/insta.png" alt="인스타그램" />
-                        </div>
-                        <div class="social-icon kakaotalk">
-                            <img src="./img/kakao.png" alt="카카오톡" />
-                        </div>
-                        <div class="social-icon blog">
-                            <img src="./img/blog.png" alt="블로그" />
-                        </div>
+                    <div class="social">
+                        <img class="kakao" src="./img/social/kakao.png" alt="">
+                    </div>
+                    <div class="social">
+                        <img class="blog" src="./img/social/blog.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </footer>
     <script>
-        window.addEventListener('scroll', function () {
-            var nav = document.querySelector('.main-nav');
-            if (window.scrollY > 165) { // 스크롤 위치가 52px보다 아래에 있으면
-                nav.classList.add('fixed-nav'); // 고정 클래스 추가
-                nav.style.position = 'fixed'; // 요소를 고정
-            } else {
-                nav.classList.remove('fixed-nav'); // 고정 클래스 제거
-                nav.style.position = 'static'; // 그렇지 않으면 요소를 기본     위치로 설정
-            }
-            1
 
+        // 스크롤을 내렸을때 글씨가 바뀌는 작업
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.TopNav');
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.TopNav');
+            var logoImg = document.querySelector('.logo-top img');
+
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+                logoImg.src = './img/logo/logoBlack.png'; // 스크롤 시 검정색 로고로 변경
+            } else {
+                navbar.classList.remove('scrolled');
+                logoImg.src = './img/logo/top-white-logo.png'; // 스크롤을 올릴 때는 흰색 로고로 변경
+            }
         });
 
 

@@ -8,11 +8,9 @@
   <title>keystart</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/mobilestyle.css" />
-  <script
-    src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js"
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js"
     integrity="sha384-6MFdIr0zOira1CHQkedUqJVql0YtcZA1P0nbPrQYJXVJZUkTk/oX4U9GhUIs3/z8"
-    crossorigin="anonymous"
-  ></script>
+    crossorigin="anonymous"></script>
   <script>
     // SDK를 초기화 합니다. 사용할 앱의 JavaScript 키를 설정해야 합니다.
     Kakao.init('013f85c8b0af765c637ee6e286ce0cb1');
@@ -182,9 +180,9 @@
         try {
           const response = await fetch(
             //개발
-            "http://localhost:8282/api/v1/user/kakaologincode",
+            //"http://localhost:8282/api/v1/user/kakaologincode",
             //배포
-            //"https://www.keystart.co.kr/api/v1/user/kakaologincode",
+            "https://www.keystart.co.kr/api/v1/user/kakaologincode",
             { method: "GET", credentials: "include" }
           );
 
@@ -192,7 +190,7 @@
           if (data.error) {
             alert('사용자를 찾을 수 없습니다.');
           }
-         
+
           window.location.href = data.url; // 카카오 로그인 페이지로 리다이렉트
         } catch (error) {
           console.error("카카오 로그인 URL을 가져오는 데 실패했습니다.", error);
@@ -201,7 +199,8 @@
 
       function kakaoLogin() {
         Kakao.Auth.authorize({
-          redirectUri: 'http://127.0.0.1:5500/keystart.html',
+          // redirectUri: 'http://127.0.0.1:5500/keystart.html',
+          redirectUri: 'https://www.keystart.co.kr/keystart.html',
         });
       }
 
@@ -211,20 +210,23 @@
 
         if (code) {
           // 서버에 인가 코드를 전송
-          fetch('http://localhost:8282/api/v1/user/kakao/callback', {
-            // YOUR_SERVER_ENDPOINT를 서버의 엔드포인트 주소로 변경해주세요.
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ code }),
-          })
+          fetch(
+            // 'http://localhost:8282/api/v1/user/kakao/callback',
+            'https://www.keystart.co.kr/api/v1/user/kakao/callback',
+            {
+              // YOUR_SERVER_ENDPOINT를 서버의 엔드포인트 주소로 변경해주세요.
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ code }),
+            })
             .then((response) => response.json())
             .then((data) => {
               console.log('Success:', data);
               localStorage.setItem('jwtToken', data.token)
               console.log(localStorage.getItem('jwtToken'));
-              location.href = data.redirectUrl; 
+              location.href = data.redirectUrl;
             })
             .catch((error) => {
               console.error('Error:', error);
