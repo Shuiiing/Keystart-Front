@@ -41,9 +41,7 @@
                 <span class="label-text">이름</span>
                 <span class="required">*</span>
             </div>
-            <div class="placeholder-field">
-                <div class="placeholder">최소 2자 이상 입력</div>
-            </div>
+            <input type="text" name="name" class="placeholder placeholder-field" placeholder="최소 2자 이상 입력" required>
         </div>
 
         <!-- 이메일 -->
@@ -52,9 +50,8 @@
                 <span class="label-text">이메일</span>
                 <span class="required">*</span>
             </div>
-            <div class="placeholder-field">
-                <div class="placeholder">예시: keystart@keystart.co.kr</div>
-            </div>
+            <input type="email" name="email" class="placeholder placeholder-field"
+                placeholder="예시: keystart@keystart.co.kr" required>
         </div>
 
         <!-- 비밀번호 -->
@@ -63,9 +60,8 @@
                 <span class="label-text">비밀번호</span>
                 <span class="required">*</span>
             </div>
-            <div class="placeholder-field">
-                <div class="placeholder">영문 대소문자, 숫자, 특수문자 조합 5~20자 이내</div>
-            </div>
+            <input type="password" name="password" id="password" class="placeholder placeholder-field"
+                placeholder="영문 대소문자, 숫자, 특수문자 조합 5~20자 이내" required>
         </div>
 
         <!-- 비밀번호 확인 -->
@@ -74,9 +70,9 @@
                 <span class="label-text">비밀번호 확인</span>
                 <span class="required">*</span>
             </div>
-            <div class="placeholder-field">
-                <div class="placeholder">비밀번호 확인</div>
-            </div>
+            <input type="password" name="password-check" id="password-check" class="placeholder placeholder-field"
+                placeholder="비밀번호 확인" required>
+            <div id="message" class="password-check"></div>
         </div>
 
         <!-- 휴대폰 번호 -->
@@ -85,9 +81,7 @@
                 <span class="label-text">휴대폰 번호</span>
                 <span class="required">*</span>
             </div>
-            <div class="placeholder-field">
-                <div class="placeholder">'-' 없이 번호만 입력</div>
-            </div>
+            <input type="text" name="tel" class="placeholder placeholder-field" placeholder="'-' 없이 번호만 입력" required>
         </div>
 
         <!-- 생년 월일 -->
@@ -97,15 +91,15 @@
             </div>
             <div class="date-collection">
                 <div class="date-wrapper">
-                    <input type="text" class="calender-year" id="calenderYear" />
+                    <input type="text" class="calender-year" id="calenderYear" placeholder="YYYY" />
                     <span class="date-label">년</span>
                 </div>
                 <div class="date-wrapper">
-                    <input type="text" class="calender-month" id="calenderMonth" />
+                    <input type="text" class="calender-month" id="calenderMonth" placeholder="MM" />
                     <span class="date-label">월</span>
                 </div>
                 <div class="date-wrapper">
-                    <input type="text" class="calender-day" id="calenderDay" />
+                    <input type="text" class="calender-day" id="calenderDay" placeholder="DD" />
                     <span class="date-label">일</span>
                 </div>
             </div>
@@ -118,9 +112,7 @@
                 <span class="label-text">연령대</span>
                 <span class="required">*</span>
             </div>
-            <div class="placeholder-field">
-                <div class="placeholder">연령대 입력</div>
-            </div>
+            <input type="text" name="age" class="placeholder placeholder-field" placeholder="연령대 입력" required>
         </div>
 
         <!-- 성별 -->
@@ -129,9 +121,7 @@
                 <span class="label-text">성별</span>
                 <span class="required">*</span>
             </div>
-            <div class="placeholder-field">
-                <div class="placeholder">성별 입력</div>
-            </div>
+            <input type="text" name="gender" class="placeholder placeholder-field" placeholder="성별 입력" required>
         </div>
 
         <!-- 창업 유무  -->
@@ -232,9 +222,21 @@
 
 
     <script>
+        var password = document.getElementById('password');
+        var confirmPassword = document.getElementById('password-check');
 
+        function validatePassword() {
+            if (password.value != confirmPassword.value) {
+                confirmPassword.setCustomValidity("비밀번호가 일치하지 않습니다.");
+                document.getElementById('message').textContent = '비밀번호가 일치하지 않습니다.';
+            } else {
+                confirmPassword.setCustomValidity('');
+                document.getElementById('message').textContent = '';
+            }
+        }
 
-
+        password.onchange = validatePassword;
+        confirmPassword.onkeyup = validatePassword;
     </script>
 </body>
 

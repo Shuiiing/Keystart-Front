@@ -254,6 +254,11 @@ radio-layout {
     margin-top:40px;
 }
 
+.password-check{
+    font-size: 12px;
+    color: #DC2626;
+}
+
 
 .button-sign {
     margin-top:40px ;
@@ -265,3 +270,4 @@ radio-layout {
     color: white;
     font-size: 28px;
 }
+
