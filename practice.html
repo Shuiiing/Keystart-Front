@@ -167,7 +167,7 @@
         </div>
         <div class="radio-layout">
           <label class="radio-option">
-            <input type="radio" name="startup" value="aspiring" checked />
+            <input type="radio" name="startup" value="preparatory" checked />
             예비창업자
           </label>
           <label class="radio-option">
@@ -236,7 +236,7 @@
         </div>
         <input
           type="text"
-          name="gender"
+          name="referralCode"
           class="placeholder placeholder-field"
           placeholder="추천인 코드 입력"
           required
@@ -249,8 +249,8 @@
           <label class="checkbox-option">
             <input
               type="checkbox"
-              name="interest"
-              value="other"
+              name="terms"
+              value="terms"
               class="custom-checkbox"
             />
             이용약관 동의
@@ -268,8 +268,8 @@
           <label class="checkbox-option">
             <input
               type="checkbox"
-              name="interest"
-              value="other"
+              name="personalinfor"
+              value="personalinfor"
               class="custom-checkbox"
             />
             개인정보 수집 및 이용 동의
@@ -281,7 +281,9 @@
         </div>
       </div>
 
-      <div><button class="button-sign">가입완료</button></div>
+      <div>
+        <button class="button-sign" id="submit-button">가입완료</button>
+      </div>
     </div>
 
     <div class="footer">
@@ -327,12 +329,15 @@
     </div>
 
     <script>
+      //데이터 가져오고 보이기
       function displayUserInfo(data) {
         document.querySelector('[name="name"]').value = data.name;
         document.querySelector('[name="email"]').value = data.email;
-        document.querySelector('[name="tel"]').value = data.hpNo;
+        const formattedHpNo = data.hpNo.replace("+82 ", "0");
+        document.querySelector('[name="tel"]').value = formattedHpNo;
         document.querySelector('[name="age"]').value = data.ageRange;
-        document.querySelector('[name="gender"]').value = data.gender;
+        document.querySelector('[name="gender"]').value =
+          data.gender === "male" ? "남자" : "여자";
         document.getElementById("calenderYear").value = data.birthyear;
         document.getElementById("calenderMonth").value =
           data.birthday.substring(0, 2);
@@ -342,6 +347,7 @@
         );
       }
 
+      // 데이터 정보가져오는 코드
       async function fetchUserInfo() {
         try {
           // localStorage에서 토큰을 가져옵니다.
@@ -353,11 +359,13 @@
           }
 
           const response = await fetch(
-            //"http://localhost:8282/api/v1/user/info",
-            "https://www.keystart.co.kr/api/v1/user/info",
+            "http://localhost:8282/api/v1/user/info",
+            //"https://www.keystart.co.kr/api/v1/user/info",
             {
               method: "GET",
-              credentials: "include",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
           );
 
@@ -372,6 +380,61 @@
           console.error("사용자 정보 요청 중 오류 발생:", error);
         }
       }
+
+      //데이터 보내기 저장 회원가입 완료
+      document
+        .getElementById("submit-button")
+        .addEventListener("click", async function (e) {
+          e.preventDefault(); // 폼 기본 제출 방지
+
+          // 창업 유무
+          const userType = document.querySelector(
+            'input[name="startup"]:checked'
+          ).value;
+
+          // 추천인 코드
+          const referralCode = document.querySelector(
+            'input[name="referralCode"]'
+          ).value;
+
+          // 관심 카테고리
+          const category = Array.from(
+            document.querySelectorAll('input[name="interest"]:checked')
+          ).map((el) => el.value);
+
+          // 데이터 객체 생성
+          const updateData = {
+            userType,
+            referralCode,
+            category,
+          };
+          const token = localStorage.getItem("accessToken");
+
+          // Fetch API를 사용하여 서버에 데이터 전송
+          try {
+            const response = await fetch(
+              "http://localhost:8282/api/v1/user/updateUser",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  // 필요한 경우 인증 토큰 추가
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(updateData),
+              }
+            );
+
+            if (!response.ok)
+              throw new Error("Failed to update user information");
+
+            const result = await response.json();
+            console.log("Update success:", result);
+            location.href = "https://www.keystart.co.kr/index.html";
+          } catch (error) {
+            console.error("Error updating user information:", error);
+          }
+        });
 
       // 웹 페이지 로드 완료 시 사용자 정보 요청
       window.onload = function () {
