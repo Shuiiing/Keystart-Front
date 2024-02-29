@@ -181,8 +181,7 @@
           if (data.error) {
             alert('사용자를 찾을 수 없습니다.');
           }
-          localStorage.setItem('jwtToken', data.jwtToken);
-          localStorage.setItem('accessToken', data.accessToken);
+         
           window.location.href = data.url; // 카카오 로그인 페이지로 리다이렉트
         } catch (error) {
           console.error("카카오 로그인 URL을 가져오는 데 실패했습니다.", error);
@@ -196,19 +195,14 @@
             "http://localhost:8282/api/v1/user/kakao",
             //배포
             //"https://www.keystart.co.kr/api/v1/user/kakao",
+            { method: "GET", credentials: "include" }
           );
-
-          if (!response.ok) {
-            throw new Error('서버 에러');
-            alert('이미 가입한 사용자 입니다.')
-          }
 
           const data = await response.json();
           if (data.error) {
             alert(data.error);
           } else {
-            localStorage.setItem('accessToken', data.accessToken);
-            window.location.href = data.url
+            window.location.href = 'https://www.keystart.co.kr/pratice.html'
           }
         } catch (error) {
 
