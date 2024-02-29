@@ -15,20 +15,22 @@
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
 
-    // 로그아웃 함수
-    async function logout() {
-      try {
+        // 로그아웃 함수
+        async function logout() {
 
-        const response = await fetch(
-            // 개발
-            'http://localhost:8282/api/v1/user/logout', 
-            //배포
-            //'https://www.keystart.co.kr/api/v1/user/logout', 
-            {
-                method: 'POST', // POST 메소드 사용
-                credentials: 'include'
-            }
-        );
+
+            try {
+
+                const response = await fetch(
+                    // 개발
+                    //'http://localhost:8282/api/v1/user/logout', 
+                    //배포
+                    'https://www.keystart.co.kr/api/v1/user/logout',
+                    {
+                        method: 'POST', // POST 메소드 사용
+                        credentials: 'include'
+                    }
+                );
 
                 if (response.ok) {
                     // 로그아웃 성공 처리, 예: 클라이언트 측에서 세션 또는 로컬 스토리지 클리어, 로그인 페이지로 리다이렉션 등
@@ -141,10 +143,38 @@
     <div class="spacer"></div>
 
 
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question">창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span></button>
+            <div class="faq-answer">질문에 대한 답변입니다1...</div>
+        </div>
+        <!-- 다른 질문 항목들을 여기에 추가 -->
+
+        <div class="faq-item">
+            <button class="faq-question">창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span></button>
+            <div class="faq-answer">질문에 대한 답변입니다2...</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span></button>
+            <div class="faq-answer">질문에 대한 답변입니다3...</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span></button>
+            <div class="faq-answer">질문에 대한 답변입니다4...</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span></button>
+            <div class="faq-answer">질문에 대한 답변입니다5...</div>
+        </div>
+    </div>
+
+
     <div class="together">
         키스타트와 함께하는 파트너사
     </div>
-
 
     <div class="wrap"> <!-- 배너표시영역 -->
         <div class="rolling-list"> <!-- 원본배너 -->
@@ -400,6 +430,23 @@
         document.querySelector('#roller3').classList.add('clone');
         document.querySelector('#roller4').classList.add('clone');
         // ------------------ 자동 배너 코드 ---------------------------
+        //  -------------------  토글관련 코드 -----------------------
+        // JavaScript는 여기에 추가됩니다
+        // JavaScript는 여기에 추가됩니다
+        document.addEventListener('DOMContentLoaded', function () {
+            var faqs = document.querySelectorAll('.faq-item');
+            faqs.forEach(function (faq) {
+                var questionButton = faq.querySelector('.faq-question');
+                questionButton.addEventListener('click', function () {
+                    faq.classList.toggle('active');
+                    // 배경색 변경
+                    questionButton.style.backgroundColor = faq.classList.contains('active') ? '#F6F9FF' : 'initial';
+                });
+            });
+        });
+
+
+        //  -------------------  토글관련 코드 -----------------------
 
     </script>
 

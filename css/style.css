@@ -748,7 +748,7 @@ img {
 
 }
 
-
+/* ---------------- 자동 배너 광고  ----------------  */
 
 .wrap { 
   display: flex; 
@@ -810,3 +810,61 @@ img {
   width: 100%;
   height: 150px;
 }
+
+/* ---------------- 자동 배너 광고  ----------------  */
+
+/* ----------------- 자주 묻는 질문 ----------------- */
+
+  /* CSS는 여기에 추가됩니다 */
+  .faq-container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .faq-item {
+    margin-bottom: 8px;
+  }
+  
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    background-color: white;
+    justify-content: space-between; 
+    align-items: center; 
+    font-family: "Gmarket Sans"
+  }
+  
+  .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-item.active .arrow {
+    transform: rotate(225deg);
+  }
+  
+  .faq-answer {
+    display: none;
+    padding: 10px;
+    background: #F6F9FF;
+  }
+  
+  .faq-item.active .faq-answer {
+    display: block;
+  }
+/* ----------------- 자주 묻는 질문 ----------------- */
