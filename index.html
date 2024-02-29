@@ -20,9 +20,9 @@
       try {
         const response = await fetch(
             // 개발
-            'http://localhost:8282/api/v1/user/logout', 
+            //'http://localhost:8282/api/v1/user/logout', 
             //배포
-            //'https://www.keystart.co.kr/api/v1/user/logout', 
+            'https://www.keystart.co.kr/api/v1/user/logout', 
             {
                 method: 'POST', // POST 메소드 사용
                 credentials: 'include'
@@ -33,10 +33,10 @@
                 console.log('로그아웃 성공');
                 deleteCookie('Authentication');
                 localStorage.removeItem('jwtToken')
-                // 배포
-                window.location.href = 'http://127.0.0.1:5500/keystart.html';
                 // 개발
-                //window.location.href = 'https://www.keystart.co.kr/keystart.html';
+                //window.location.href = 'http://127.0.0.1:5500/keystart.html';
+                // 배포
+                window.location.href = 'https://www.keystart.co.kr/keystart.html';
             } else {
                 // 로그아웃 실패 처리
                 console.error('로그아웃 실패');
