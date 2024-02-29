@@ -102,44 +102,132 @@
 
 
     /* ----------------------- 풋터 <모바일> ------------------------ */
-    .footer {
-      height: 300px;
-      border-top: 1px solid #4b5563;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      background-color: black;
-      margin-bottom: 70px;
-    }
+    
+.footer-right {
+  display: block;
+  
+  width: 200px;
+  background-color: #2753AD;
+}
+
+.logo-img {
+  width: 80px;
+  height: 15.61px;
+}
+
+.community{
+  width: 80px;
+  height: 42px;
+  font-size: 20px;
+  color: white;
+
+}
+
+.notification{
+  width: 162px;
+  height: 42px;
+  font-size: 20px;
+  color: white;
+}
+
+.requestion{
+  width: 162px;
+  height: 42px;
+  font-size: 20px;
+  color: white;
+
+}
+
+.social-item{
+  display: flex;
+  gap: 10px
+
+}
+
+.social {
+  border: white 1px solid;
+  border-radius: 9px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+.insta {
+  width: 22px;
+  height: 22px;
+}
+
+.kakao {
+  width: 22px;
+  height: 22px;
+}
+
+.blog {
+  width: 22px;
+  height: 22px;
+}
+
+.info {
+  width: 100px;
+}
 
 
-    .footer-left {
-      flex: 1;
-      height: 100%;
-      padding: 10px 20px;
-      background-color: black;
-      display: grid;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 32px;
-    }
+.footer {
+  width: 100%;
+  height: 350px;
+  border-top: 1px solid #4b5563;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+  background-color: #2753AD;
+}
 
-    .logo-img {
-      width: 100px; /* 원하는 너비로 조절 */
-      height: 100px; /* 원하는 높이로 조절 */
-    }
+.footer-left {
+  flex: 1;
+  height: 100%;
+  padding: 36px 30px;
+  background-color: #2753AD;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 32px;
+}
 
-    .footer-link {
-      color: white;
-      font-size: 16px;
-      font-family: Pretendard;
-      font-weight: 500;
-      line-height: 20px;
-    }
+.logo-img {
+  width: 160px;
+  height: 40.61px;
+}
 
-    .label {
-  color: #AFAFAF;
+.links {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-link {
+  color: white;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.separator {
+  color: white;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: #AEC7FC;
+  font-size: medium;
 }
 
 .label.title {
@@ -148,11 +236,18 @@
 
 .value {
   color: white;
+  font-size: medium;
 }
 
 .business-info-link {
-  color: #030712;
+  color: white;
+  font-size: medium;
 }
+/* 풋터는 여기까지 입니다 */
 
-    /* ----------------------- 풋터 <모바일> ------------------------ */
+.more-info {
+  margin: 10px auto; 
+  width: 110px;
+  height: 60px;
+}
 }
