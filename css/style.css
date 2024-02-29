@@ -879,4 +879,16 @@ img {
   .faq-item.active .faq-answer {
     display: block;
   }
+
+  .more-info {
+    margin: 10px auto; /* 상하 마진을 10px, 좌우 마진을 auto로 설정하여 가로축 중앙 정렬 */
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center; /* Flexbox 내부 요소들을 가로축 중앙 정렬 */
+    align-items: center; /* Flexbox 내부 요소들을 세로축 중앙 정렬 */
+    border: #E5E7EB solid 2px;
+    font-size: 20px;
+    text-align: center;
+  }
 /* ----------------- 자주 묻는 질문 ----------------- */
