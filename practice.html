@@ -1,189 +1,261 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/signStyle.css" />
     <link rel="stylesheet" href="css/mobileSignStyle.css" />
 
-
-
     <title>회원가입</title>
     <style>
-        /* CSS는 여기에 추가됩니다 */
+      /* CSS는 여기에 추가됩니다 */
     </style>
-</head>
-<div class="navigation-link">
+  </head>
+  <div class="navigation-link">
     <div class="arrow-left">
-        <a href="https://www.keystart.co.kr/">
-            <div class="arrow">
-                <img src="./img/arrow/arrow-left.png" alt="">
-            </div>
+        <div class="arrow">
+            <img src="./img/arrow/arrow-left.png" alt="">
+        </div>
     </div>
     </a>
     <div class="text">홈으로</div>
-</div>
+  </div>
 
-<body>
-
+  <body>
     <div>
-        <div class="mainSign">
-            <div class="logo">
-                <img src="./img/logo/logoBlack.png" alt="">
-            </div>
-            <div class="signText">회원가입</div>
+      <div class="mainSign">
+        <div class="logo">
+          <img src="./img/logo/logoBlack.png" alt="" />
         </div>
+        <div class="signText">회원가입</div>
+      </div>
     </div>
 
-
     <div class="binding">
-
-        <!-- 이름 -->
-        <div class="textfield">
-            <div class="label">
-                <span class="label-text">이름</span>
-                <span class="required">*</span>
-            </div>
-            <input type="text" name="name" class="placeholder placeholder-field" placeholder="최소 2자 이상 입력" required
-                readonly>
+      <!-- 이름 -->
+      <div class="textfield">
+        <div class="label">
+          <span class="label-text">이름</span>
+          <span class="required">*</span>
         </div>
+        <input
+          type="text"
+          name="name"
+          class="placeholder placeholder-field"
+          placeholder="최소 2자 이상 입력"
+          required
+          readonly
+        />
+      </div>
 
-        <!-- 이메일 -->
-        <div class="textfield">
-            <div class="label">
-                <span class="label-text">이메일</span>
-                <span class="required">*</span>
-            </div>
-            <input type="email" name="email" class="placeholder placeholder-field"
-                placeholder="예시: keystart@keystart.co.kr" required readonly>
+      <!-- 이메일 -->
+      <div class="textfield">
+        <div class="label">
+          <span class="label-text">이메일</span>
+          <span class="required">*</span>
         </div>
+        <input
+          type="email"
+          name="email"
+          class="placeholder placeholder-field"
+          placeholder="예시: keystart@keystart.co.kr"
+          required
+          readonly
+        />
+      </div>
 
-        <!-- 비밀번호 -->
-        <!-- <div class="textfield"> -->
-        <!-- <div class="label"> -->
-        <!-- <span class="label-text">비밀번호</span> -->
-        <!-- <span class="required">*</span> -->
-        <!-- </div> -->
-        <!-- <input type="password" name="password" id="password" class="placeholder placeholder-field" -->
-        <!-- placeholder="영문 대소문자, 숫자, 특수문자 조합 5~20자 이내" required> -->
-        <!-- </div> -->
+      <!-- 비밀번호 -->
+      <!-- <div class="textfield"> -->
+      <!-- <div class="label"> -->
+      <!-- <span class="label-text">비밀번호</span> -->
+      <!-- <span class="required">*</span> -->
+      <!-- </div> -->
+      <!-- <input type="password" name="password" id="password" class="placeholder placeholder-field" -->
+      <!-- placeholder="영문 대소문자, 숫자, 특수문자 조합 5~20자 이내" required> -->
+      <!-- </div> -->
 
-        <!-- 비밀번호 확인 -->
-        <!-- <div class="textfield"> -->
-        <!-- <div class="label"> -->
-        <!-- <span class="label-text">비밀번호 확인</span> -->
-        <!-- <span class="required">*</span> -->
-        <!-- </div> -->
-        <!-- <input type="password" name="password-check" id="password-check" class="placeholder placeholder-field" -->
-        <!-- placeholder="비밀번호 확인" required> -->
-        <!-- <div id="message" class="password-check"></div> -->
-        <!-- </div> -->
+      <!-- 비밀번호 확인 -->
+      <!-- <div class="textfield"> -->
+      <!-- <div class="label"> -->
+      <!-- <span class="label-text">비밀번호 확인</span> -->
+      <!-- <span class="required">*</span> -->
+      <!-- </div> -->
+      <!-- <input type="password" name="password-check" id="password-check" class="placeholder placeholder-field" -->
+      <!-- placeholder="비밀번호 확인" required> -->
+      <!-- <div id="message" class="password-check"></div> -->
+      <!-- </div> -->
 
-        <!-- 휴대폰 번호 -->
-        <div class="textfield">
-            <div class="label">
-                <span class="label-text">휴대폰 번호</span>
-                <span class="required">*</span>
-            </div>
-            <input type="text" name="tel" class="placeholder placeholder-field" placeholder="'-' 없이 번호만 입력" required
-                readonly>
+      <!-- 휴대폰 번호 -->
+      <div class="textfield">
+        <div class="label">
+          <span class="label-text">휴대폰 번호</span>
+          <span class="required">*</span>
         </div>
+        <input
+          type="text"
+          name="tel"
+          class="placeholder placeholder-field"
+          placeholder="'-' 없이 번호만 입력"
+          required
+          readonly
+        />
+      </div>
 
-        <!-- 생년 월일 -->
-        <div class="textfield">
-            <div class="label">
-                <span class="label-text">생년 월일</span><span class="required">*</span>
-            </div>
-            <div class="date-collection">
-                <div class="date-wrapper">
-                    <input type="text" class="calender-year" id="calenderYear" placeholder="YYYY" readonly />
-                    <span class="date-label">년</span>
-                </div>
-                <div class="date-wrapper">
-                    <input type="text" class="calender-month" id="calenderMonth" placeholder="MM" readonly />
-                    <span class="date-label">월</span>
-                </div>
-                <div class="date-wrapper">
-                    <input type="text" class="calender-day" id="calenderDay" placeholder="DD" readonly />
-                    <span class="date-label">일</span>
-                </div>
-            </div>
+      <!-- 생년 월일 -->
+      <div class="textfield">
+        <div class="label">
+          <span class="label-text">생년 월일</span
+          ><span class="required">*</span>
         </div>
-
-
-        <!-- 연령대 -->
-        <div class="textfield">
-            <div class="label">
-                <span class="label-text">연령대</span>
-                <span class="required">*</span>
-            </div>
-            <input type="text" name="age" class="placeholder placeholder-field" placeholder="연령대 입력" required readonly>
+        <div class="date-collection">
+          <div class="date-wrapper">
+            <input
+              type="text"
+              class="calender-year"
+              id="calenderYear"
+              placeholder="YYYY"
+              readonly
+            />
+            <span class="date-label">년</span>
+          </div>
+          <div class="date-wrapper">
+            <input
+              type="text"
+              class="calender-month"
+              id="calenderMonth"
+              placeholder="MM"
+              readonly
+            />
+            <span class="date-label">월</span>
+          </div>
+          <div class="date-wrapper">
+            <input
+              type="text"
+              class="calender-day"
+              id="calenderDay"
+              placeholder="DD"
+              readonly
+            />
+            <span class="date-label">일</span>
+          </div>
         </div>
+      </div>
 
-        <!-- 성별 -->
-        <div class="textfield">
-            <div class="label">
-                <span class="label-text">성별</span>
-                <span class="required">*</span>
-            </div>
-            <input type="text" name="gender" class="placeholder placeholder-field" placeholder="성별 입력" required
-                readonly>
+      <!-- 연령대 -->
+      <div class="textfield">
+        <div class="label">
+          <span class="label-text">연령대</span>
+          <span class="required">*</span>
         </div>
+        <input
+          type="text"
+          name="age"
+          class="placeholder placeholder-field"
+          placeholder="연령대 입력"
+          required
+          readonly
+        />
+      </div>
 
-        <!-- 창업 유무  -->
-        <div class="create-store">
-            <div class="label">
-                <span class="label-text">창업 유무</span>
-                <span class="required">*</span>
-            </div>
-            <div class="radio-layout">
-                <label class="radio-option">
-                    <input type="radio" name="startup" value="aspiring" checked>
-                    예비창업자
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="startup" value="existing">
-                    기존창업자
-                </label>
-            </div>
+      <!-- 성별 -->
+      <div class="textfield">
+        <div class="label">
+          <span class="label-text">성별</span>
+          <span class="required">*</span>
         </div>
+        <input
+          type="text"
+          name="gender"
+          class="placeholder placeholder-field"
+          placeholder="성별 입력"
+          required
+          readonly
+        />
+      </div>
 
-        <!-- 관심 카테고리 -->
-        <div class="category">
-            <div>관심 카테고리 (중복선택가능)</div>
-            <div class="checkbox-group">
-                <label class="checkbox-option">
-                    <input type="checkbox" name="interest" value="cafe" class="custom-checkbox">
-                    카페
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="interest" value="restaurant" class="custom-checkbox">
-                    음식점
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="interest" value="pub" class="custom-checkbox">
-                    주점
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="interest" value="unmanned" class="custom-checkbox">
-                    무인 창업
-                </label>
-                <label class="checkbox-option">
-                    <input type="checkbox" name="interest" value="other" class="custom-checkbox">
-                    기타
-                </label>
-            </div>
+      <!-- 창업 유무  -->
+      <div class="create-store">
+        <div class="label">
+          <span class="label-text">창업 유무</span>
+          <span class="required">*</span>
         </div>
-
-
-        <!-- 추천인 코드 -->
-        <div class="textfield">
-            <div class="label">
-                <span class="label-text">추천인 코드</span>
-            </div>
-            <input type="text" name="gender" class="placeholder placeholder-field" placeholder="추천인 코드 입력" required>
+        <div class="radio-layout">
+          <label class="radio-option">
+            <input type="radio" name="startup" value="aspiring" checked />
+            예비창업자
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="startup" value="existing" />
+            기존창업자
+          </label>
         </div>
+      </div>
+
+      <!-- 관심 카테고리 -->
+      <div class="category">
+        <div>관심 카테고리 (중복선택가능)</div>
+        <div class="checkbox-group">
+          <label class="checkbox-option">
+            <input
+              type="checkbox"
+              name="interest"
+              value="cafe"
+              class="custom-checkbox"
+            />
+            카페
+          </label>
+          <label class="checkbox-option">
+            <input
+              type="checkbox"
+              name="interest"
+              value="restaurant"
+              class="custom-checkbox"
+            />
+            음식점
+          </label>
+          <label class="checkbox-option">
+            <input
+              type="checkbox"
+              name="interest"
+              value="pub"
+              class="custom-checkbox"
+            />
+            주점
+          </label>
+          <label class="checkbox-option">
+            <input
+              type="checkbox"
+              name="interest"
+              value="unmanned"
+              class="custom-checkbox"
+            />
+            무인 창업
+          </label>
+          <label class="checkbox-option">
+            <input
+              type="checkbox"
+              name="interest"
+              value="other"
+              class="custom-checkbox"
+            />
+            기타
+          </label>
+        </div>
+      </div>
+
+      <!-- 추천인 코드 -->
+      <div class="textfield">
+        <div class="label">
+          <span class="label-text">추천인 코드</span>
+        </div>
+        <input
+          type="text"
+          name="gender"
+          class="placeholder placeholder-field"
+          placeholder="추천인 코드 입력"
+          required
+        />
+      </div>
 
         <!-- 이용약관 동의 -->
         <div class="mmar m1">
@@ -195,88 +267,101 @@
                 </label>
             </div>
             <div>
-                <a href="http://localhost:5500/terms.html" class="agreement-link">내용 보기</a>
-            </div>
-        </div>
-
-        <!-- 개인정보 수집 및 이용 동의 -->
-        <div class="mmar">
-            <div class="agreement">
-                <label class="checkbox-option">
-                    <input type="checkbox" name="interest" value="other" class="custom-checkbox">
-                    개인정보 수집 및 이용 동의
-                    <span class="required">*</span>
-                </label>
-            </div>
-            <div>
                 <a href="#" class="agreement-link">내용 보기</a>
             </div>
         </div>
 
-        <div><button class="button-sign">가입완료</button></div>
+      <!-- 개인정보 수집 및 이용 동의 -->
+      <div class="mmar">
+        <div class="agreement">
+          <label class="checkbox-option">
+            <input
+              type="checkbox"
+              name="interest"
+              value="other"
+              class="custom-checkbox"
+            />
+            개인정보 수집 및 이용 동의
+            <span class="required">*</span>
+          </label>
+        </div>
+        <div>
+          <a href="#" class="agreement-link">내용 보기</a>
+        </div>
+      </div>
+
+      <div><button class="button-sign">가입완료</button></div>
     </div>
 
     <div class="footer">
-        <div class="footer-left">
-            <div class="contents">
-                <div class="text-wrapper">이용약관</div>
-                <div class="div">ㅣ</div>
-                <div class="text-wrapper">개인정보 처리방침</div>
-            </div>
-            <div class="contents-2">
-                <div class="text">
-                    <div class="view">
-                        <div class="text-wrapper-2">상호명</div>
-                        <div class="text-wrapper">키스타트</div>
-                    </div>
-                    <div class="text-wrapper-2">ㅣ</div>
-                    <div class="view">
-                        <div class="text-wrapper-2">주소</div>
-                        <div class="text-wrapper">울산광역시 중구 운곡8길 82-2, 201호 (다운동)</div>
-                    </div>
-                </div>
-                <div class="text">
-                    <div class="view">
-                        <div class="text-wrapper-2">사업자등록번호</div>
-                        <div class="text-wrapper"> 607-79-00239 [사업자 정보 확인]</div>
-                    </div>
-                </div>
-                <div class="text">
-                    <div class="view">
-                        <div class="text-wrapper-2">E-MAIL</div>
-                        <div class="text-wrapper">keystart@keystart.co.kr</div>
-                    </div>
-                    <div class="text-wrapper-2">ㅣ</div>
-                    <div class="view">
-                        <div class="text-wrapper-2">TEL</div>
-                        <div class="text-wrapper">010-9043-9908</div>
-                    </div>
-                </div>
-            </div>
+      <div class="footer-left">
+        <div class="contents">
+          <div class="text-wrapper">이용약관</div>
+          <div class="div">ㅣ</div>
+          <div class="text-wrapper">개인정보 처리방침</div>
         </div>
+        <div class="contents-2">
+          <div class="text">
+            <div class="view">
+              <div class="text-wrapper-2">상호명</div>
+              <div class="text-wrapper">키스타트</div>
+            </div>
+            <div class="text-wrapper-2">ㅣ</div>
+            <div class="view">
+              <div class="text-wrapper-2">주소</div>
+              <div class="text-wrapper">
+                울산광역시 중구 운곡8길 82-2, 201호 (다운동)
+              </div>
+            </div>
+          </div>
+          <div class="text">
+            <div class="view">
+              <div class="text-wrapper-2">사업자등록번호</div>
+              <div class="text-wrapper">607-79-00239 [사업자 정보 확인]</div>
+            </div>
+          </div>
+          <div class="text">
+            <div class="view">
+              <div class="text-wrapper-2">E-MAIL</div>
+              <div class="text-wrapper">keystart@keystart.co.kr</div>
+            </div>
+            <div class="text-wrapper-2">ㅣ</div>
+            <div class="view">
+              <div class="text-wrapper-2">TEL</div>
+              <div class="text-wrapper">010-9043-9908</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-
-
-
-
     <script>
-        var password = document.getElementById('password');
-        var confirmPassword = document.getElementById('password-check');
-
-        function validatePassword() {
-            if (password.value != confirmPassword.value) {
-                confirmPassword.setCustomValidity("비밀번호가 일치하지 않습니다.");
-                document.getElementById('message').textContent = '비밀번호가 일치하지 않습니다.';
-            } else {
-                confirmPassword.setCustomValidity('');
-                document.getElementById('message').textContent = '';
+      console.log("쿠키", document.cookie);
+      async function fetchUserInfo() {
+        try {
+          const response = await fetch(
+            "http://localhost:8282/api/v1/user/info",
+            {
+              method: "GET",
+              credentials: "include",
             }
+          );
+
+          if (!response.ok) {
+            throw new Error("사용자 정보를 불러오는데 실패했습니다.");
+          }
+
+          const data = await response.json();
+          console.log("사용자 정보:", data); // 콘솔에 사용자 정보 출력
+        } catch (error) {
+          console.error("사용자 정보 요청 중 오류 발생:", error);
         }
+      }
 
-        password.onchange = validatePassword;
-        confirmPassword.onkeyup = validatePassword;
+      // 웹 페이지 로드 완료 시 사용자 정보 요청
+      window.onload = function () {
+        fetchUserInfo();
+      };
     </script>
-</body>
-
+  </body>
 </html>
