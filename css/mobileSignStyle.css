@@ -4,6 +4,12 @@
         padding: 0px;
     }
 
+    html,
+body{
+width:100%;
+overflow-x:hidden;
+}
+
     .navigation-link {
         width: 110px;
         height: 40px;
