@@ -290,11 +290,6 @@ img {
 
 
 
-/* 공통 스타일 */
-.footer-right {
-  padding: 40px;
-}
-
 .footer-content,
 .social-icons {
   display: flex;
