@@ -10,6 +10,22 @@ body{
   width:100%;
   overflow-x:hidden;
   }
+
+
+  .main-nav {
+    width: 100%;
+    height: 56px;
+    border-top: 1px solid #4b5563;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-link{
+    justify-content: center;
+    color: white;
+    font-size: 10px;
+  }
   
 
   .together{
