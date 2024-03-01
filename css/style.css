@@ -5,6 +5,11 @@
   font: normal 12px "noto sans korean";
 }
 
+body{
+  width:100%;
+  overflow-x:hidden;
+  }
+
 ul,
 ol {
   list-style: none;
@@ -111,6 +116,8 @@ img {
   font-size: medium;
 }
 
+
+
 .business-info-link {
   color: white;
   font-size: medium;
@@ -197,6 +204,25 @@ img {
 .Button:active {
   transform: translateY(2px); /* 버튼을 눌렀을 때 아래로 조금 이동 */
   opacity: 0.8;
+}
+
+.info-section {
+  width: 100%;
+  padding: 0 192px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.section-title {
+  color: #030712;
+  font-size: 48px;
+  font-family: Pretendard;
+  font-weight: 700;
+  line-height: 52px;
+  word-wrap: break-word;
+  text-align: center;
 }
 
 .TopNav {

@@ -223,15 +223,13 @@
             })
             .then((response) => response.json())
             .then((data) => {
-              if(data.error){
+              if (data.error) {
                 //location.href = 'http://127.0.0.1:5500/practice.html'
                 location.href = 'https://www.keystart.co.kr/practice.html'
-              }else if(data.existingUser)
-              {
-               alert(data.message);
-               location.href = data.redirectUrl
-              } else
-              {
+              } else if (data.existingUser) {
+                alert(data.message);
+                location.href = data.redirectUrl
+              } else {
                 console.log('Success:', data);
                 localStorage.setItem('accessToken', data.token.accessToken);
                 localStorage.setItem('refreshToken', data.token.refreshToken);
@@ -239,7 +237,7 @@
                 console.log('Refresh Token 저장됨:', localStorage.getItem('refreshToken'));
                 location.href = data.redirectUrl;
               }
-              
+
             })
             .catch((error) => {
               console.error('Error:', error);
