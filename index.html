@@ -74,7 +74,6 @@
         try {
           // localStorage에서 토큰을 가져옵니다.
           const token = localStorage.getItem("accessToken");
-          console.log(token);
           if (!token) {
             console.log("토큰이 없습니다. 로그인이 필요합니다.");
             return;
