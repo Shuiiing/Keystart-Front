@@ -1,16 +1,13 @@
 @media (max-width: 767px) {
-
   img {
     max-height: 100%;
     max-width: 100%;
   }
 
-
-body{
-  width:100%;
-  overflow-x:hidden;
+  body {
+    width: 100%;
+    overflow-x: hidden;
   }
-
 
   .main-nav {
     width: 100%;
@@ -21,15 +18,14 @@ body{
     align-items: center;
   }
 
-  .nav-link{
+  .nav-link {
     justify-content: center;
     color: white;
     font-size: 10px;
   }
-  
 
-  .together{
-    padding-top: 80px; 
+  .together {
+    padding-top: 80px;
     font: 1em sans-serif;
     font-size: 28px;
     font-weight: 600;
@@ -41,55 +37,65 @@ body{
     height: 150px;
   }
 
-/* -------------------------- 자동배너 <모바일> --------------------- */
-  .wrap { 
-    display: flex; 
+  /* -------------------------- 자동배너 <모바일> --------------------- */
+  .wrap {
+    display: flex;
     overflow: hidden;
     margin-bottom: 20px;
   }
-  .wrap .rolling-list ul { 
+  .wrap .rolling-list ul {
     display: flex;
   }
-  .wrap .rolling-list ul li { 
-    width: 150px; 
-    height: 150px; 
-      border-radius: 20px; 
-      margin: 0 16px; 
-      /* padding: 46px 31px;  */
-      display: flex; 
-      align-items: center; 
+  .wrap .rolling-list ul li {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    margin: 0 16px;
+    padding: 46px 31px;
+    display: flex;
+    align-items: center;
   }
-  
-  
-  .wrap .rolling-list ul li .image-wrap > img { 
+
+  .wrap .rolling-list ul li .image-wrap > img {
     max-width: 100%;
   }
-  
-  .wrap .rolling-list ul li .desc span { 
+
+  .wrap .rolling-list ul li .desc span {
     font-size: 18px;
-      line-height: 1.2;
+    line-height: 1.2;
   }
-  
+
   .rolling-list.original {
     animation: rollingleft1 33s linear infinite;
   }
   .rolling-list.clone {
     animation: rollingleft2 33s linear infinite;
   }
-  
+
   @keyframes rollingleft1 {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(-100%); }
-    50.01% { transform: translateX(100%); }
-    100% { transform: translateX(0); }
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-100%);
+    }
+    50.01% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
-  
+
   @keyframes rollingleft2 {
-    0% { transition: translateX(0); }
-    100% { transform: translateX(-200%); }
+    0% {
+      transition: translateX(0);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
   }
   /* -------------------------- 자동배너 <모바일> --------------------- */
-
 
   /* -------------------- 카카오 버튼에 대해서 <모바일> -------------------- */
   .fixed-button-container {
@@ -104,7 +110,7 @@ body{
     display: grid;
     justify-content: space-between;
   }
-  
+
   .Button {
     margin: 0.5%;
     width: 100vw;
@@ -120,185 +126,179 @@ body{
     font-weight: 600;
     line-height: 28px;
   }
-    /* -------------------- 카카오 버튼에 대해서 <모바일> -------------------- */
+  /* -------------------- 카카오 버튼에 대해서 <모바일> -------------------- */
 
+  /* ----------------------- 풋터 <모바일> ------------------------ */
 
-    /* ----------------------- 풋터 <모바일> ------------------------ */
-    
-.footer-right {
-  flex-direction: column;
-  align-items: end;
-  margin-top: 50px;
-  margin-left: 0px;
-  display: grid;
-  
-  width: 50%;
-  background-color: #2753AD;
-  
-}
+  .footer-right {
+    flex-direction: column;
+    align-items: end;
+    margin-top: 50px;
+    margin-left: 0px;
+    display: grid;
 
-.logo-img {
-  width: 80px;
-  height: 15.61px;
-}
+    width: 50%;
+    background-color: #2753ad;
+  }
 
-.community{
-  width: 80px;
-  height: 42px;
-  font-size: 20px;
-  color: white;
+  .logo-img {
+    width: 80px;
+    height: 15.61px;
+  }
 
-}
+  .community {
+    width: 80px;
+    height: 42px;
+    font-size: 20px;
+    color: white;
+  }
 
-.notification{
-  width: 162px;
-  height: 42px;
-  font-size: 20px;
-  color: white;
-}
+  .notification {
+    width: 162px;
+    height: 42px;
+    font-size: 20px;
+    color: white;
+  }
 
-.requestion{
-  width: 162px;
-  height: 42px;
-  font-size: 20px;
-  color: white;
+  .requestion {
+    width: 162px;
+    height: 42px;
+    font-size: 20px;
+    color: white;
+  }
 
-}
+  .social-item {
+    display: flex;
+    gap: 10px;
+  }
 
-.social-item{
-  display: flex;
-  gap: 10px
+  .social {
+    border: white 1px solid;
+    border-radius: 9px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+  }
 
-}
+  .insta {
+    width: 22px;
+    height: 22px;
+  }
 
-.social {
-  border: white 1px solid;
-  border-radius: 9px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background-color: white;
-}
+  .kakao {
+    width: 22px;
+    height: 22px;
+  }
 
-.insta {
-  width: 22px;
-  height: 22px;
-}
+  .blog {
+    width: 22px;
+    height: 22px;
+  }
 
-.kakao {
-  width: 22px;
-  height: 22px;
-}
+  .info {
+    width: 100px;
+  }
 
-.blog {
-  width: 22px;
-  height: 22px;
-}
+  .footer {
+    width: 100%;
+    height: 350px;
+    border-top: 1px solid #4b5563;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    background-color: #2753ad;
+  }
 
-.info {
-  width: 100px;
-}
+  .footer-left {
+    flex: 1;
+    width: 50%;
+    height: 100%;
+    padding: 36px 30px;
+    background-color: #2753ad;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 32px;
+  }
 
+  .logo-img {
+    width: 160px;
+    height: 40.61px;
+  }
 
-.footer {
-  width: 100%;
-  height: 350px;
-  border-top: 1px solid #4b5563;
-  display: flex;
-  justify-content: space-between;
-  align-items: space-between;
-  background-color: #2753AD;
-}
+  .links {
+    display: flex;
+    gap: 8px;
+  }
 
-.footer-left {
-  flex: 1;
-  width: 50%;
-  height: 100%;
-  padding: 36px 30px;
-  background-color: #2753AD;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 32px;
-}
+  .footer-link {
+    color: white;
+    font-size: 16px;
+    font-family: Pretendard;
+    font-weight: 500;
+    line-height: 20px;
+  }
 
-.logo-img {
-  width: 160px;
-  height: 40.61px;
-}
+  .separator {
+    color: white;
+  }
 
-.links {
-  display: flex;
-  gap: 8px;
-}
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-.footer-link {
-  color: white;
-  font-size: 16px;
-  font-family: Pretendard;
-  font-weight: 500;
-  line-height: 20px;
-}
+  .label {
+    color: #aec7fc;
+    font-size: medium;
+  }
 
-.separator {
-  color: white;
-}
+  .label.title {
+    font-weight: 700;
+  }
 
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+  .value {
+    color: white;
+    font-size: medium;
+  }
 
-.label {
-  color: #AEC7FC;
-  font-size: medium;
-}
+  .business-info-link {
+    color: white;
+    font-size: medium;
+  }
+  /* 풋터는 여기까지 입니다 */
 
-.label.title {
-  font-weight: 700;
-}
+  .more-info {
+    margin: 10px auto;
+    width: 110px;
+    height: 60px;
+  }
 
-.value {
-  color: white;
-  font-size: medium;
-}
+  .info-section {
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
 
-.business-info-link {
-  color: white;
-  font-size: medium;
-}
-/* 풋터는 여기까지 입니다 */
+  .section-title {
+    color: #030712;
+    font-size: 24px;
+    font-family: Pretendard;
+    font-weight: 700;
+    line-height: 52px;
+    word-wrap: break-word;
+    text-align: center;
+  }
 
-.more-info {
-  margin: 10px auto; 
-  width: 110px;
-  height: 60px;
-}
-
-.info-section {
-  width: 100%;
-  padding: 0px ;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 48px;
-}
-
-.section-title {
-  color: #030712;
-  font-size: 24px;
-  font-family: Pretendard;
-  font-weight: 700;
-  line-height: 52px;
-  word-wrap: break-word;
-  text-align: center;
-}
-
-.info-box {
-  margin-bottom: 20px;
-}
+  .info-box {
+    margin-bottom: 20px;
+  }
 }
