@@ -191,15 +191,15 @@
     <script>
       function login() {
         Kakao.Auth.authorize({
-          //redirectUri: 'http://127.0.0.1:5500/keystart.html',
-          redirectUri: 'https://www.keystart.co.kr/keystart.html',
+          redirectUri: 'http://127.0.0.1:5500/keystart.html',
+          //redirectUri: 'https://www.keystart.co.kr/keystart.html',
         });
       }
 
       function kakaoLogin() {
         Kakao.Auth.authorize({
-          //redirectUri: 'http://127.0.0.1:5500/keystart.html',
-          redirectUri: 'https://www.keystart.co.kr/keystart.html',
+          redirectUri: 'http://127.0.0.1:5500/keystart.html',
+          //redirectUri: 'https://www.keystart.co.kr/keystart.html',
         });
       }
 
@@ -210,8 +210,8 @@
         if (code) {
           // 서버에 인가 코드를 전송
           fetch(
-            //'http://localhost:8282/api/v1/user/kakao/callback',
-            'https://www.keystart.co.kr/api/v1/user/kakao/callback',
+            'http://localhost:8282/api/v1/user/kakao/callback',
+            //'https://www.keystart.co.kr/api/v1/user/kakao/callback',
             {
               // YOUR_SERVER_ENDPOINT를 서버의 엔드포인트 주소로 변경해주세요.
               method: 'POST',
@@ -224,8 +224,8 @@
             .then((data) => {
               if (data.error) {
                 alert('서버에 오류가 발생했습니다. 다시 시도해 주세요.')
-                //location.href = 'http://127.0.0.1:5500/keystart.html'
-                location.href = 'https://www.keystart.co.kr/keystart.html'
+                location.href = 'http://127.0.0.1:5500/keystart.html'
+                //location.href = 'https://www.keystart.co.kr/keystart.html'
               } else if (data.existingUser) {
                 alert('추가정보를 입력 하셔야합니다.')
                 localStorage.setItem('accessToken', data.token.accessToken);
