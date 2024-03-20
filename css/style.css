@@ -834,11 +834,15 @@ img {
 /* ------------------- 탭바관련   ------------------- */
 /* 1. tab 영역 css 설정 */
 .tab-area {
+  padding: 1%;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
+  background-color: #e5e7eb;
 }
 
 /* 2. tab 메뉴 부분 디자인 */
@@ -857,7 +861,12 @@ img {
 /* label에 마우스 올렸을 때 */
 .tab-area label:hover {
   cursor: pointer; /*마우스 모양 변경*/
-  color: #e5e7eb;
+  color: #2753ad;
+}
+
+.tab-area label:focus {
+  cursor: pointer; /*마우스 모양 변경*/
+  color: #2753ad;
 }
 
 /* tab-area 안에 존재하는 input 태그가 체크되었을 때, 
@@ -918,13 +927,88 @@ img {
 }
 
 .item img {
+  display: block;
   height: 600px;
   width: 540px;
   object-fit: cover;
 }
 
+.item {
+  position: relative;
+}
+
+.item:hover::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  width: 540px;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.7); /* 투명한 회색 */
+  z-index: 1; /* 배경 이미지 위에 위치하도록 설정 */
+  opacity: 0; /* 초기에는 투명하게 설정 */
+  transition: opacity 0.3s ease; /* 트랜지션 효과를 추가하여 부드럽게 변화하도록 설정 */
+}
+
+.item:hover::before {
+  opacity: 1; /* 호버됐을 때 투명도를 1로 설정하여 보이게 함 */
+}
+
 .menus {
-  padding: 10% 10%;
+  padding: 0% 10%;
+}
+
+.child-item1 {
+  position: relative;
+  z-index: 2; /* ::before 가상 요소보다 높은 값을 설정 */
+
+  color: white;
+  border: 2px solid white;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+.child-item2 {
+  position: relative;
+  z-index: 2; /* ::before 가상 요소보다 높은 값을 설정 */
+
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.child-item3 {
+  position: relative;
+  z-index: 2; /* ::before 가상 요소보다 높은 값을 설정 */
+
+  color: white;
+  font-size: 16px;
+}
+
+.child-item1,
+.child-item2,
+.child-item3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-text-container {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* ::before 가상 요소보다 높은 값을 설정 */
+  color: white;
+  text-align: center;
+}
+
+.item-text-container > div {
+  margin: 10px 0; /* 각 텍스트 사이의 간격 */
+}
+
+.item:hover .item-text-container {
+  visibility: visible;
 }
 
 /* ------------------- 그리드형식 이미지 처리  ------------------ */
