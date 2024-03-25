@@ -37,38 +37,8 @@
 
     <div class="content-total">
 
-        <div class="content-header">
-            <div class="content-category">
-                음식점
-            </div>
-            <div class="content-storename">
-                유남주
-            </div>
-            <div class="content-others">
-                <div class="story content-others-text">창업이야기</div>
-                <div class="content-others-text"> | </div>
-                <div class="content-others-text">2024.00.00</div>
-            </div>
-        </div>
-
-
-        <div class="content">
-            <img src="./img/tests/menu8.jpg" alt="해당 이미지" />
-        </div>
-
-        <div class="content-tag">
-            <div class="tags-title">관련 태그 :</div>
-            <div class="tags-title">#시공 / 인테리어</div>
-        </div>
-
-
         <div class="editor">
-            아래는 에디터의 값으로 들어오게 됩니다.
         </div>
-
-
-
-
 
     </div>
 
@@ -151,36 +121,39 @@
     });
     // ---------------- 탭 클릭 이벤트 핸들러 추가 ----------------
 
-    // ,---------------- 서머리노트 자바스크립트 ------------------
+
+    // ----------------- 통신(READ) -------------------
+
+    var storyId = '65fbfad28c4ec153c49ae2d5';
+
+    function updateContent(response) {
+        // 에디터의 값을 업데이트
+        $('.editor').html(response.content);
+        // 진짜 신기하다 바로 값이 수정이 가능하구나
+        // 자바스크립트는 배워두면 진짜 재밌겠다.
+        // 틑틈히 배우자 !
+        // $('.tags-title2').text(response.category);
+    }
+
+
+    // 페이지가 그려지는 순간 즉시 실행 함수로 바로 그려줌
     $(document).ready(function () {
-        $('#summernote').summernote({
-            height: 500,
-            width: 1000,
+        // 페이지가 로드되면 실행될 코드 작성
+        // 서버에서 데이터를 가져와서 에디터의 내용을 업데이트 하는 코드 등을 여기에 작성합니다.
+        $.ajax({
+            url: `http://localhost:8282/story/list/${storyId}`,
+            method: 'GET',
+            contentType: 'application/json',
+            processData: false,
+            success: function (response) {
+                updateContent(response);
+                console.log('서버 응답: ', response);
+            },
+            error: function (xhr, status, error) {
+                console.error('에러 발생', error);
+            }
         });
     });
-
-    // 통신하기
-    $document.ready(function () {
-        $('#submitBtn').click(function () {
-            var content = $('#summernote').summernote('code');
-            $.ajax({
-                url: '/submit',
-                method: 'POST',
-                data: { content: content },
-                success: function (repsonse) {
-                    console.log('서버 응답: ', response);
-                },
-                error: function (xhr, status, error) {
-                    console.error('에러 발생', error);
-                }
-            });
-        });
-    });
-
-
-
-    // ---------------- 서머리노트 자바스크립트 ------------------
-
 </script>
 
 </html>
