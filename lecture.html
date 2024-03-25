@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>창업자를 위한 무료강의</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/mobileSignStyle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="jquery.bxslider/jquery.bxslider.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="TopNav-sub">
+            <!-- 네비바 로고영역 -->
+            <div class="logo-top">
+                <img src="./img/logo/logoBlack.png" alt="" />
+            </div>
+
+            <!-- 네비바 중간영역 -->
+            <div class="main-nav-sub">
+                <a href="#keystart" class="nav-link-sub">키스타트란?</a>
+                <a href="#partners" class="nav-link-sub">파트너사</a>
+                <a href="#stories" class="nav-link-sub">창업 이야기</a>
+                <a href="#info" class="nav-link-sub">창업 관련 정보</a>
+            </div>
+
+            <!-- 네비바 버튼영역 -->
+            <div class="info-sub" onclick="logout()">
+                <img src="./img/user.png" alt="" />
+            </div>
+        </div>
+    </header>
+
+    <div class="banner-sub">
+        <div class="banner-in">창업관련정보</div>
+    </div>
+
+    <div class="other-story">
+        창업자를 위한 무료강의
+    </div>
+
+
+    <div class="lecture-top">
+        <div class="lecture-top-left"><img src="./img/tests/menu3.jpg" alt=""></div>
+
+        <div class="lecture-top-right">
+            <div class="h1-text">AI기술창업교육</div>
+            <div class="h1-text">정부지원사업발굴 노하우 강의</div>
+            <div class="h2-text">홍 길 동</div>
+            <div class="h3-text-container">
+                <div>
+                    <span class="h3-text">일시 -</span>
+                    <span class="h3-text">2024.08.16(금)</span>
+                </div>
+                <div>
+                    <span class="h3-text">시간 -</span>
+                    <span class="h3-text">19:00~22:00</span>
+                </div>
+                <div>
+                    <span class="h3-text">위치 -</span>
+                    <span class="h3-text">경남 양산시 물금읍 야리2길 29 2층 양산포럼</span>
+                </div>
+            </div>
+            <button class="h3-text h3-button"> 자세히 보기 →</button>
+        </div>
+    </div>
+    <div class="lecture-list" id="wrapper">
+        <div><a href="https://naver.com" class="lecture-list-item">정부지원사업에 선정되기 위한 필승전략</a></div>
+        <div><a href="https://naver.com" class="lecture-list-item">AI기술창업교육 정부지원사업발굴 노하우 강의</a></div>
+        <div><a href="https://naver.com" class="lecture-list-item">1억 정부지원 받고 창업하자 무조건 합격하는 정부지원 사업계획서</a></div>
+    </div>
+
+    <div class="lecture-mid">
+        <div class="lecture-mid-left">
+            <div class="h1-text lecture-main-text">창업 준비생을 위한 KEY가이드 🔑</div>
+            <div class="lecture-sub-items">
+                <div class="lecture-sub-blog ">Blog</div>
+                <div class="lecture-sub-text"><a href="">초기 창업자를 위한 10억 상당의 정부지원사업</a></div>
+                <div class="lecture-sub-text">→</div>
+            </div>
+            <div class="lecture-sub-items">
+                <div class="lecture-sub-blog ">Blog</div>
+                <div class="lecture-sub-text"><a href="">실제 정부사업에 선정된 사업계획서 분석자료</a></div>
+                <div class="lecture-sub-text">→</div>
+            </div>
+        </div>
+        <div class="lecture-mid-right">
+            <div class="kakao-text">
+                <div class="kakao-text-mini">오픈채팅방에서</div>
+                <div class="kakao-text-mini">질문하기</div>
+                <div class="kakao-button"><a href="https://naver.com">Click</a></div>
+            </div>
+            <div class="kakao-bacode">
+                <img src="./img/logo/kakao-channel-bacode.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="other-story">
+        주요 사업 정보
+    </div>
+
+
+
+
+    <div class="choice-list">
+        <div class="choice-list-item"><input type="radio" name="등록순" id="insert-order"> 등록순</div>
+        <div class="choice-list-item"><input type="radio" name="마감임박순" id="lastday-order"> 마감임박순</div>
+    </div>
+
+    <div class="tab-area">
+        <div class="tab-area-item">
+            <input type="radio" name="tabs" id="tab1" checked>
+            <label for="tab1">전체</label>
+        </div>
+        <div class="tab-area-item">
+            <input type="radio" name="tabs" id="tab2">
+            <label for="tab2">예비창업</label>
+        </div>
+        <div class="tab-area-item">
+            <input type="radio" name="tabs" id="tab3">
+            <label for="tab3">창업초기(3년 이내)</label>
+        </div>
+        <div class="tab-area-item">
+            <input type="radio" name="tabs" id="tab4">
+            <label for="tab4">창업도약기(4-7년 이내)</label>
+        </div>
+        <div class="tab-area-item">
+            <input type="radio" name="tabs" id="tab5">
+            <label for="tab5">신산업(10년 이내)</label>
+        </div>
+    </div>
+
+    <div id="content1" class="tab-content" checked>
+        <div class="wrapper grid menus">
+            <!-- 아이템이 동적으로 추가되는 부분 -->
+        </div>
+    </div>
+    <div id="content2" class="tab-content blue">
+        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    </div>
+    <div id="content3" class="tab-content yellow">
+        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    </div>
+    <div id="content4" class="tab-content green">
+        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    </div>
+    <div id="content5" class="tab-content green">
+        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    </div>
+    <div id="content6" class="tab-content green">
+        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    </div>
+    <div id="content7" class="tab-content green">
+        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    </div>
+
+
+    <footer>
+        <div class="footer">
+            <div class="footer-left">
+                <div class="logo">
+                    <img class="logo-img" src="./img/logoWhite.png" alt="로고" />
+                </div>
+                <div class="links">
+                    <div class="footer-link">이용약관</div>
+                    <div class="separator">ㅣ</div>
+                    <div class="footer-link">개인정보 처리방침</div>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span class="label title">상호명</span>
+                        <span class="value">키스타트</span>
+                        <span class="label title"> | </span>
+                        <span class="label title">주소</span>
+                        <span class="value">울산광역시 중구 운곡8길 82-2, 201호(다운동)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label title">사업자등록번호</span>
+                        <span class="value">607-79-00239
+                            <a href="#" class="business-info-link">[사업자 정보 확인]</a></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label title">E-MAIL</span>
+                        <span class="value">keystart.official@keystart.co.kr</span>
+                        <span class="label title"> | </span>
+                        <span class="label title">TEL</span>
+                        <span class="value">010-9043-9908</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="community">커뮤니티</div>
+                <div class="notification">공지사항</div>
+                <div class="requestion">자주 묻는 질문</div>
+                <div class="social-item">
+                    <div class="social">
+                        <img class="insta" src="./img/social/insta.png" alt="" />
+                    </div>
+                    <div class="social">
+                        <img class="kakao" src="./img/social/kakao.png" alt="" />
+                    </div>
+                    <div class="social">
+                        <img class="blog" src="./img/social/blog.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script>
+    // ------------  스크롤을 내렸을때 글씨가 바뀌h는 작업 ------------------
+    window.addEventListener("scroll", function () {
+        var navbar = document.querySelector(".TopNav");
+        if (window.scrollY > 0) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
+    });
+    // ------------  스크롤을 내렸을때 글씨가 바뀌는 작업 -------------------
+
+    // ------------ 탭 클릭 이벤트 핸들러 추가 --------------------------
+    document.querySelectorAll('.tab-area input[type="radio"]').forEach(function (tab) {
+        tab.addEventListener('change', function () {
+            var contentId = this.getAttribute('id').replace('tab', 'content');
+            document.querySelectorAll('.tab-content').forEach(function (content) {
+                content.style.display = 'none';
+            });
+            document.getElementById(contentId).style.display = 'block';
+        });
+    });
+    // ------------ 탭 클릭 이벤트 핸들러 추가 --------------------------
+    // ------------ 이미지가 동적으로 처리될수있도록 만드는 작업 --------------
+    const el = document.querySelector(".wrapper.grid.menus");
+    for (let i = 0; i < 12; i++) {
+
+        let newEl = document.createElement("div");
+        newEl.innerHTML = `
+        <div class="main-business-card"> 
+        <div class="business-card-header">
+            <div class="card-header-text">D-32</div>
+            <div class="card-header-text">마감일자 2024-00-00</div>
+        </div>
+        <div class="business-card-mid">
+            <div class="card-mid-text">2024 DATA-Stars (데이터 활용 사업화 지원) 사업 공모</div>
+            <div class="card-mid-text-mini">과학기술정보통신부 • 중앙부처</div>
+        </div>
+        <div class="business-card-bottom">
+            <div class="card-bottom-item">예비창업</div>
+            <div class="card-bottom-item">창업초기</div>
+            <div class="card-bottom-item">창업도약기</div>
+        </div>
+    </div>
+        `;
+        el.append(newEl);
+    }
+
+
+
+    // ------------ 이미지가 동적으로 처리될수있도록 만드는 작업 ---------
+
+</script>
+
+</html>
