@@ -4,36 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>창업이야기</title>
+    <title>커뮤니티</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/mobileSignStyle.css" />
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="jquery.bxslider/jquery.bxslider.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="TopNav-sub">
-            <!-- 네비바 로고영역 -->
-            <div class="logo-top">
-                <img src="./img/logo/logoBlack.png" alt="" />
-            </div>
+    <header id="header"></header>
 
-            <!-- 네비바 중간영역 -->
-            <div class="main-nav-sub">
-                <a href="#keystart" class="nav-link-sub">키스타트란?</a>
-                <a href="#partners" class="nav-link-sub">파트너사</a>
-                <a href="#stories" class="nav-link-sub">창업 이야기</a>
-                <a href="#info" class="nav-link-sub">창업 관련 정보</a>
-            </div>
-
-            <!-- 네비바 버튼영역 -->
-            <div class="info-sub" onclick="logout()">
-                <img src="./img/user.png" alt="" />
-            </div>
-        </div>
-    </header>
 
     <div class="banner-sub">
         <div class="banner-in">커뮤니티
@@ -150,218 +129,142 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer">
-            <div class="footer-left">
-                <div class="logo">
-                    <img class="logo-img" src="./img/logoWhite.png" alt="로고" />
-                </div>
-                <div class="links">
-                    <div class="footer-link">이용약관</div>
-                    <div class="separator">ㅣ</div>
-                    <div class="footer-link">개인정보 처리방침</div>
-                </div>
-                <div class="contact-info">
-                    <div class="info-item">
-                        <span class="label title">상호명</span>
-                        <span class="value">키스타트</span>
-                        <span class="label title"> | </span>
-                        <span class="label title">주소</span>
-                        <span class="value">울산광역시 중구 운곡8길 82-2, 201호(다운동)</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label title">사업자등록번호</span>
-                        <span class="value">607-79-00239
-                            <a href="#" class="business-info-link">[사업자 정보 확인]</a></span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label title">E-MAIL</span>
-                        <span class="value">keystart.official@keystart.co.kr</span>
-                        <span class="label title"> | </span>
-                        <span class="label title">TEL</span>
-                        <span class="value">010-9043-9908</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-right">
-                <div class="community">커뮤니티</div>
-                <div class="notification">공지사항</div>
-                <div class="requestion">자주 묻는 질문</div>
-                <div class="social-item">
-                    <div class="social">
-                        <img class="insta" src="./img/social/insta.png" alt="" />
-                    </div>
-                    <div class="social">
-                        <img class="kakao" src="./img/social/kakao.png" alt="" />
-                    </div>
-                    <div class="social">
-                        <img class="blog" src="./img/social/blog.png" alt="" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-</body>
-<script>
-    // ------------  스크롤을 내렸을때 글씨가 바뀌는 작업 ------------
-    window.addEventListener("scroll", function () {
-        var navbar = document.querySelector(".TopNav");
-        if (window.scrollY > 0) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
-    });
-    // ------------  스크롤을 내렸을때 글씨가 바뀌는 작업 ------------
-
-    //  -------------------  토글관련 코드 -----------------------
-    // JavaScript는 여기에 추가됩니다
-    document.addEventListener("DOMContentLoaded", function () {
-        var faqs = document.querySelectorAll(".faq-item");
-        faqs.forEach(function (faq) {
-            var questionButton = faq.querySelector(".faq-question");
-            var questionText = faq.querySelector(".faq-question");
-            var isActive = false;
-
-            questionButton.addEventListener("click", function () {
-                faq.classList.toggle("active");
-                // 배경색 변경
-                isActive = !isActive; // 상태 업데이트
-                questionButton.style.backgroundColor = faq.classList.contains("active")
-                    ? "#F6F9FF"
-                    : "initial";
-                questionText.style.color = isActive ? "#2753AD" : "initial";
-            });
-        });
-    });
-
-    // 상태값이 돌아오지 않는 로직 - 읽은 상태를 그대로 두는 로직
-    // document.addEventListener("DOMContentLoaded", function () {
-    //     var faqs = document.querySelectorAll(".faq-item");
-    //     faqs.forEach(function (faq) {
-    //         var questionButton = faq.querySelector(".faq-question");
-    //         var questionText = faq.querySelector(".faq-question"); // 수정된 부분: .faq-question 선택
-    //         questionButton.addEventListener("click", function () {
-    //             faq.classList.toggle("active");
-    //             // 배경색 변경
-    //             questionButton.style.backgroundColor = faq.classList.contains("active")
-    //                 ? "#F6F9FF"
-    //                 : "initial";
-    //             // 질문 텍스트 색상 변경
-    //             questionText.style.color = faq.classList.contains("active")
-    //                 ? "blue"
-    //                 : "initial";
-    //         });
-    //     });
-    // });
 
 
-    // ------------------- 탭바에 관한 자바스크립트 / 자주묻는 질문 / 공지사항 -------------------
-    // DOMContentLoaded -> html 로드를 완전히 진행 한 후에 자바스크립트 로직을 실행을 하겠다.
-    document.addEventListener("DOMContentLoaded", function () {
-        // mini-tabbar-item이라는 클래스를 가지고 있는 요소들을 tabItems에 모아둔다.
-        const tabItems = document.querySelectorAll('.mini-tabbar-item');
-        // .faq-container 이라는 클래스를 가지고 있는 요소들을 tabContents에 모아둔다.
-        const tabContents = document.querySelectorAll('.faq-container');
-
-        function handleTabClick(index) {
-            // 모든 탭 아이템의 배경색과 글자색을 초기화
-            tabItems.forEach(item => {
-                item.style.backgroundColor = '#FFFFFF';
-                item.style.color = '#000'; // 글자색을 검은색으로 초기화
-            });
-
-            // 모든 faq-container에 display를 멕여서 보이지 않게 만든다. 
-            tabContents.forEach(content => content.style.display = 'none');
-
-            // 클릭된 탭 아이템에 배경색과 글자색을 적용
-            tabItems[index].style.backgroundColor = '#2563EB'; // 파란색 배경
-            tabItems[index].style.color = '#fff'; // 흰색 글자
-
-            // 클릭된 탭 아이템에 active 클래스를 추가
-            tabItems[index].classList.add('active');
-
-            // 클릭된 탭 컨텐츠를 표시
-            tabContents[index].style.display = 'block';
-        }
 
 
-        // 각 탭 아이템에 클릭 이벤트 리스너를 등록하는 부분
-        tabItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                handleTabClick(index);
+    <footer id="footer"></footer>
+
+    <!-- 헤더 및 풋터 스크립트 -->
+    <script src="./layout/header.js"></script>
+    <script src="./layout/footer.js"></script>
+    <script>
+        //  -------------------  토글관련 코드 -----------------------
+        // JavaScript는 여기에 추가됩니다
+        document.addEventListener("DOMContentLoaded", function () {
+            var faqs = document.querySelectorAll(".faq-item");
+            faqs.forEach(function (faq) {
+                var questionButton = faq.querySelector(".faq-question");
+                var questionText = faq.querySelector(".faq-question");
+                var isActive = false;
+
+                questionButton.addEventListener("click", function () {
+                    faq.classList.toggle("active");
+                    // 배경색 변경
+                    isActive = !isActive; // 상태 업데이트
+                    questionButton.style.backgroundColor = faq.classList.contains("active")
+                        ? "#F6F9FF"
+                        : "initial";
+                    questionText.style.color = isActive ? "#2753AD" : "initial";
+                });
             });
         });
 
-        handleTabClick(0);
-    });
-    // ------------------- 탭바에 관한 자바스크립트 / 자주묻는 질문 / 공지사항 -------------------
-    // ------------------- bottom-slider-image 추가하는 스크립트 로직 ----------------------
-    window.onload = function () {
-        render();
-        // applyAnimations();
-    }
+        // ------------------- 탭바에 관한 자바스크립트 / 자주묻는 질문 / 공지사항 -------------------
+        // DOMContentLoaded -> html 로드를 완전히 진행 한 후에 자바스크립트 로직을 실행을 하겠다.
+        document.addEventListener("DOMContentLoaded", function () {
+            // mini-tabbar-item이라는 클래스를 가지고 있는 요소들을 tabItems에 모아둔다.
+            const tabItems = document.querySelectorAll('.mini-tabbar-item');
+            // .faq-container 이라는 클래스를 가지고 있는 요소들을 tabContents에 모아둔다.
+            const tabContents = document.querySelectorAll('.faq-container');
 
-    window.onload = function () {
-        // 슬라이드 이미지 개수
-        const numSlides = 9;
-        // 이미지 슬라이드 영역 요소
-        const sliderWrapper = document.querySelector("#outerBox");
+            function handleTabClick(index) {
+                // 모든 탭 아이템의 배경색과 글자색을 초기화
+                tabItems.forEach(item => {
+                    item.style.backgroundColor = '#FFFFFF';
+                    item.style.color = '#000'; // 글자색을 검은색으로 초기화
+                });
 
-        // 이미지 슬라이드를 초기화합니다.
-        initSlider();
+                // 모든 faq-container에 display를 멕여서 보이지 않게 만든다. 
+                tabContents.forEach(content => content.style.display = 'none');
 
-        function initSlider() {
-            // 이미지 슬라이드를 생성합니다.
-            for (let i = 0; i < numSlides; i++) {
-                const slideImg = makeKeyImg(i);
-                sliderWrapper.appendChild(slideImg);
+                // 클릭된 탭 아이템에 배경색과 글자색을 적용
+                tabItems[index].style.backgroundColor = '#2563EB'; // 파란색 배경
+                tabItems[index].style.color = '#fff'; // 흰색 글자
+
+                // 클릭된 탭 아이템에 active 클래스를 추가
+                tabItems[index].classList.add('active');
+
+                // 클릭된 탭 컨텐츠를 표시
+                tabContents[index].style.display = 'block';
             }
 
-            // 이미지 슬라이드를 자동으로 이동시킵니다.
-            setInterval(moveSlide, 2000);
+
+            // 각 탭 아이템에 클릭 이벤트 리스너를 등록하는 부분
+            tabItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    handleTabClick(index);
+                });
+            });
+
+            handleTabClick(0);
+        });
+        // ------------------- 탭바에 관한 자바스크립트 / 자주묻는 질문 / 공지사항 -------------------
+        // ------------------- bottom-slider-image 추가하는 스크립트 로직 ----------------------
+        window.onload = function () {
+            render();
+            // applyAnimations();
         }
 
-        function moveSlide() {
-            const firstSlide = sliderWrapper.children[0];
-            // 첫 번째 슬라이드 이미지의 너비를 가져옵니다.
-            const slideWidth = firstSlide.offsetWidth;
+        window.onload = function () {
+            // 슬라이드 이미지 개수
+            const numSlides = 9;
+            // 이미지 슬라이드 영역 요소
+            const sliderWrapper = document.querySelector("#outerBox");
 
-            // 첫 번째 슬라이드 이미지를 왼쪽으로 이동시킵니다.
-            sliderWrapper.style.transition = "none";
-            sliderWrapper.style.transform = `translateX(${slideWidth}px)`;
+            // 이미지 슬라이드를 초기화합니다.
+            initSlider();
 
-            // 이동이 완료되면, 첫 번째 슬라이드 이미지를 마지막으로 이동시킵니다.
-            setTimeout(function () {
-                sliderWrapper.style.transition = "transform 0.5s ease-in-out";
-                sliderWrapper.style.transform = "translateX(0)";
-                sliderWrapper.appendChild(firstSlide);
-            }, 0);
+            function initSlider() {
+                // 이미지 슬라이드를 생성합니다.
+                for (let i = 0; i < numSlides; i++) {
+                    const slideImg = makeKeyImg(i);
+                    sliderWrapper.appendChild(slideImg);
+                }
+
+                // 이미지 슬라이드를 자동으로 이동시킵니다.
+                setInterval(moveSlide, 2000);
+            }
+
+            function moveSlide() {
+                const firstSlide = sliderWrapper.children[0];
+                // 첫 번째 슬라이드 이미지의 너비를 가져옵니다.
+                const slideWidth = firstSlide.offsetWidth;
+
+                // 첫 번째 슬라이드 이미지를 왼쪽으로 이동시킵니다.
+                sliderWrapper.style.transition = "none";
+                sliderWrapper.style.transform = `translateX(${slideWidth}px)`;
+
+                // 이동이 완료되면, 첫 번째 슬라이드 이미지를 마지막으로 이동시킵니다.
+                setTimeout(function () {
+                    sliderWrapper.style.transition = "transform 0.5s ease-in-out";
+                    sliderWrapper.style.transform = "translateX(0)";
+                    sliderWrapper.appendChild(firstSlide);
+                }, 0);
+            }
+        };
+
+
+        function makeKeyImg(id) {
+            let keyImgWrapper = document.createElement("div");
+            keyImgWrapper.setAttribute("class", "key-img");
+
+            let imageLink = document.createElement("a");
+            imageLink.setAttribute("href", "https://naver.com");
+
+            let imageElement = document.createElement("img");
+            imageElement.setAttribute("src", `./img/tests/menu${id}.jpg`);
+            imageElement.setAttribute("alt", "");
+
+            imageLink.appendChild(imageElement);
+            keyImgWrapper.appendChild(imageLink);
+
+            return keyImgWrapper;
         }
-    };
+        // ------------------- 자동 배너 로직 ---------------------------------------------
 
 
-    function makeKeyImg(id) {
-        let keyImgWrapper = document.createElement("div");
-        keyImgWrapper.setAttribute("class", "key-img");
-
-        let imageLink = document.createElement("a");
-        imageLink.setAttribute("href", "https://naver.com");
-
-        let imageElement = document.createElement("img");
-        imageElement.setAttribute("src", `./img/tests/menu${id}.jpg`);
-        imageElement.setAttribute("alt", "");
-
-        imageLink.appendChild(imageElement);
-        keyImgWrapper.appendChild(imageLink);
-
-        return keyImgWrapper;
-    }
-
-    // ------------------- 자동 배너 로직 ---------------------------------------------
-
-
-</script>
+    </script>
+</body>
 
 </html>

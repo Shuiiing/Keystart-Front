@@ -21,16 +21,16 @@
     <!-- 네비바 중간영역 -->
     <div class="main-nav">
         <div>
-            <a href="#keystart" class="nav-link">키스타트란?</a>
+            <a href="/introduce.html" class="nav-link">키스타트란?</a>
         </div>
         <div>
-            <a href="#partners" class="nav-link">파트너사</a>
+            <a href="/partner.html" class="nav-link">파트너사</a>
         </div>
         <div>
-            <a href="#stories" class="nav-link">창업 이야기</a>
+            <a href="/startup.html" class="nav-link">창업 이야기</a>
         </div>
         <div>
-            <a href="#info" class="nav-link">창업 관련 정보</a>
+            <a href="/lecture.html" class="nav-link">창업 관련 정보</a>
         </div>
     </div>
 </div>
@@ -307,8 +307,8 @@
                 }
 
                 const response = await fetch(
-                    "http://localhost:8282/api/v1/user/info",
-                    //"https://www.keystart.co.kr/api/v1/user/info",
+                    // "http://localhost:8282/api/v1/user/info",
+                    "https://www.keystart.co.kr/api/v1/user/info",
                     {
                         method: "GET",
                         headers: {
@@ -361,8 +361,8 @@
                 // Fetch API를 사용하여 서버에 데이터 전송
                 try {
                     const response = await fetch(
-                        "http://localhost:8282/api/v1/user/updateUser",
-                        //"https://www.keystart.co.kr/api/v1/user/updateUser",
+                        // "http://localhost:8282/api/v1/user/updateUser",
+                        "https://www.keystart.co.kr/api/v1/user/updateUser",
                         {
                             method: "POST",
                             headers: {
@@ -379,8 +379,8 @@
 
                     const result = await response.json();
                     console.log("Update success:", result);
-                    //location.href = "https://www.keystart.co.kr/index.html";
-                    location.href = "http://127.0.0.1:5500/index.html";
+                    location.href = "https://www.keystart.co.kr/index.html";
+                    // location.href = "http://127.0.0.1:5500/index.html";
                 } catch (error) {
                     console.error("Error updating user information:", error);
                 }
