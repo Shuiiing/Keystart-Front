@@ -114,32 +114,23 @@
         </div>
     </div>
 
-    <div id="content1" class="tab-content" checked>
-        <div class="wrapper grid menus">
-            <!-- 아이템이 동적으로 추가되는 부분 -->
-        </div>
+    <div id="content1" class="tab-content grid menus">
     </div>
     <div id="content2" class="tab-content blue">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
     </div>
     <div id="content3" class="tab-content yellow">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
     </div>
-    <div id="content4" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    <div id="content4" class="tab-content blue">
     </div>
     <div id="content5" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
     </div>
-    <div id="content6" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
-    </div>
-    <div id="content7" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
-    </div>
+
+
 
 
     <footer id="footer"></footer>
+
+    <!-- 헤더 및 풋터 스크립트 -->
     <script src="./layout/header.js"></script>
     <script src="./layout/footer.js"></script>
 
@@ -147,7 +138,7 @@
 <script>
     // ------------  스크롤을 내렸을때 글씨가 바뀌h는 작업 ------------------
     window.addEventListener("scroll", function () {
-        var navbar = document.querySelector(".TopNav");
+        var navbar = document.querySelector("#header .TopNav");
         if (window.scrollY > 0) {
             navbar.classList.add("scrolled");
         } else {
@@ -157,18 +148,40 @@
     // ------------  스크롤을 내렸을때 글씨가 바뀌는 작업 -------------------
 
     // ------------ 탭 클릭 이벤트 핸들러 추가 --------------------------
-    document.querySelectorAll('.tab-area input[type="radio"]').forEach(function (tab) {
-        tab.addEventListener('change', function () {
-            var contentId = this.getAttribute('id').replace('tab', 'content');
-            document.querySelectorAll('.tab-content').forEach(function (content) {
-                content.style.display = 'none';
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // content1만 보이도록 설정
+        document.getElementById('content1').style.display = "grid"
+
+        // 나머지 탭 콘텐츠는 모두 숨김
+        document.querySelectorAll('.tab-content:not(#content1)').forEach(function (content) {
+            content.style.display = "none";
+        });
+
+        // 탭 클릭 이벤트 핸들러 추가
+        document.querySelectorAll('.tab-area input[type="radio"]').forEach(function (tab) {
+
+            // 탭 클릭 이벤트 핸들러 추가
+
+            // change라는 이벤트 리스너 함수를 추가할꺼야 ! (이벤트 리스너 - 즉시 실행 함수)
+            tab.addEventListener('change', function () {
+                // this - > tab 을 의미 
+                var contentId = this.getAttribute("id").replace('tab', "content");
+
+                // 모든 탭 콘텐츠를 숨김
+                document.querySelectorAll('.tab-content').forEach(function (content) {
+                    content.style.display = 'none';
+                });
+
+                document.getElementById(contentId).style.display = "flex";
             });
-            document.getElementById(contentId).style.display = 'block';
         });
     });
+
+
     // ------------ 탭 클릭 이벤트 핸들러 추가 --------------------------
     // ------------ 이미지가 동적으로 처리될수있도록 만드는 작업 --------------
-    const el = document.querySelector(".wrapper.grid.menus");
+    const el = document.querySelector(".tab-content.grid.menus");
     for (let i = 0; i < 12; i++) {
 
         let newEl = document.createElement("div");
