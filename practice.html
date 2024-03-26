@@ -278,8 +278,8 @@
         }
 
         const response = await fetch(
-          "http://localhost:8282/api/v1/user/info",
-          //"https://www.keystart.co.kr/api/v1/user/info",
+          // "http://localhost:8282/api/v1/user/info",
+          "https://www.keystart.co.kr/api/v1/user/info",
           {
             method: "GET",
             headers: {
@@ -332,8 +332,8 @@
         // Fetch API를 사용하여 서버에 데이터 전송
         try {
           const response = await fetch(
-            "http://localhost:8282/api/v1/user/updateUser",
-            //"https://www.keystart.co.kr/api/v1/user/updateUser",
+            // "http://localhost:8282/api/v1/user/updateUser",
+            "https://www.keystart.co.kr/api/v1/user/updateUser",
             {
               method: "POST",
               headers: {
@@ -350,8 +350,8 @@
 
           const result = await response.json();
           console.log("Update success:", result);
-          //location.href = "https://www.keystart.co.kr/index.html";
-          location.href = "http://127.0.0.1:5500/index.html";
+          location.href = "https://www.keystart.co.kr/index.html";
+          // location.href = "http://127.0.0.1:5500/index.html";
         } catch (error) {
           console.error("Error updating user information:", error);
         }
