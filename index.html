@@ -1,548 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>keystart</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/mobilestyle.css" />
-    <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="jquery.bxslider/jquery.bxslider.js"></script>
-    <script>
-      async function logout() {
-        try {
-          const response = await fetch(
-            // 개발
-            "http://localhost:8282/api/v1/user/kakaologout",
-            //배포
-            //"https://www.keystart.co.kr/api/v1/user/kakaologout",
-            {
-              method: "GET", // POST 메소드 사용
-            }
-          );
-          localStorage.removeItem("accessToken");
-          const data = await response.json();
-          window.location.href = data.logoutUrl; // 카카오 로그아웃 페이지로 리다이렉션
-        } catch (error) {
-          console.error("로그아웃 중 오류 발생", error);
-        }
-      }
 
-      async function fetchUserInfo() {
-        try {
-          // localStorage에서 토큰을 가져옵니다.
-          const token = localStorage.getItem("accessToken");
-          if (!token) {
-            console.log("토큰이 없습니다. 로그인이 필요합니다.");
-            return;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>keystart</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/mobilestyle.css" />
+  <link href="jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="jquery.bxslider/jquery.bxslider.js"></script>
+  <script>
+    async function logout() {
+      try {
+        const response = await fetch(
+          // 개발
+          // "http://localhost:8282/api/v1/user/kakaologout",
+          //배포
+          "https://www.keystart.co.kr/api/v1/user/kakaologout",
+          {
+            method: "GET", // POST 메소드 사용
           }
-
-          const response = await fetch(
-            "http://localhost:8282/api/v1/user/info",
-            //"https://www.keystart.co.kr/api/v1/user/info",
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          if (!response.ok) {
-            throw new Error("사용자 정보를 불러오는데 실패했습니다.");
-          }
-
-          const data = await response.json();
-          console.log("사용자 정보:", data); // 콘솔에 사용자 정보 출력
-        } catch (error) {
-          console.error("사용자 정보 요청 중 오류 발생:", error);
-        }
+        );
+        localStorage.removeItem("accessToken");
+        const data = await response.json();
+        window.location.href = data.logoutUrl; // 카카오 로그아웃 페이지로 리다이렉션
+      } catch (error) {
+        console.error("로그아웃 중 오류 발생", error);
       }
-      window.onload = function () {
+    }
+
+    async function fetchUserInfo() {
+      try {
+        // localStorage에서 토큰을 가져옵니다.
         const token = localStorage.getItem("accessToken");
-
         if (!token) {
-          window.location.href = "/keystart.html";
-          alert("로그인을 해주세요.");
-        } else {
-          fetchUserInfo();
+          console.log("토큰이 없습니다. 로그인이 필요합니다.");
+          return;
         }
-      };
-    </script>
-  </head>
 
-  <body>
-    <header>
-      <div class="TopNav">
-        <!-- 네비바 로고영역 -->
-        <div class="logo-top">
-          <img src="./img/logo/top-white-logo.png" alt="" />
-        </div>
-
-        <!-- 네비바 중간영역 -->
-        <div class="main-nav">
-          <a href="#keystart" class="nav-link">키스타트란?</a>
-          <a href="#partners" class="nav-link">파트너사</a>
-          <a href="#stories" class="nav-link">창업 이야기</a>
-          <a href="#info" class="nav-link">창업 관련 정보</a>
-        </div>
-
-        <!-- 네비바 버튼영역 -->
-        <div class="info" onclick="logout()">
-          <img src="./img/user.png" alt="" />
-        </div>
-      </div>
-    </header>
-
-    <label class="checkbox" hidden>
-      <input type="checkbox" id="overflow" checked /> Hide image overflow
-    </label>
-    <div class="container">
-      <div class="carousel-viewport">
-        <ul class="items">
-          <li class="item">
-            <img
-              src="./img/banner/blue-main-banner.png"
-              width="1920"
-              height="900"
-              alt=""
-            />
-          </li>
-          <li class="item">
-            <img
-              src="./img/banner/white-main-banner.png"
-              width="1920"
-              height="900"
-              alt=""
-            />
-          </li>
-          <li class="item">
-            <img
-              src="./img/banner/shine-main-banner.png"
-              width="1920"
-              height="900"
-              alt=""
-            />
-          </li>
-        </ul>
-      </div>
-      <button class="carousel-control prev" title="Go to previous item">
-        <svg viewBox="0 0 256 512">
-          <path
-            d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-          />
-        </svg>
-      </button>
-      <button class="carousel-control next" title="Go to next item">
-        <svg viewBox="0 0 256 512">
-          <path
-            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-          />
-        </svg>
-      </button>
-      <ol class="carousel-dots">
-        <li class="dot active"></li>
-        <li class="dot"></li>
-        <li class="dot"></li>
-      </ol>
-    </div>
-
-    <div class="spacer"></div>
-    <img src="./img/mainPlaceHolder2.png" alt="키스타트 이미지" />
-    <div class="spacer"></div>
-    <img src="./img/mainPlaceHolder3.png" alt="키스타트 이미지" />
-    <div class="spacer"></div>
-    <img src="./img/main-change.png" alt="키스타트 이미지" />
-    <div class="spacer"></div>
-
-    <div class="faq-container">
-      <div class="requestion">자주 묻는 질문</div>
-      <div class="faq-item">
-        <button class="faq-question">
-          창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
-        </button>
-        <div class="faq-answer">질문에 대한 답변입니다...</div>
-      </div>
-      <!-- 다른 질문 항목들을 여기에 추가 -->
-
-      <div class="faq-item">
-        <button class="faq-question">
-          창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
-        </button>
-        <div class="faq-answer">질문에 대한 답변입니다...</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
-        </button>
-        <div class="faq-answer">질문에 대한 답변입니다...</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
-        </button>
-        <div class="faq-answer">질문에 대한 답변입니다...</div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">
-          창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
-        </button>
-        <div class="faq-answer">질문에 대한 답변입니다...</div>
-      </div>
-    </div>
-
-    <div class="more-info">
-      <img src="./img/button.png" alt="" />
-    </div>
-
-    <div class="together">키스타트와 함께하는 파트너사</div>
-
-    <div class="wrap">
-      <!-- 배너표시영역 -->
-      <div class="rolling-list">
-        <!-- 원본배너 -->
-        <ul>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/food_pang.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/back_ya.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/rental_on.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/shuiiing.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/star_transfer.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/daelim.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/space.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/mater_in.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/datos.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/golden-master.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/cook.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/sibsamwol.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/hadong.png" alt="" />
-            </div>
-          </li>
-          <li>
-            <div class="image-wrap">
-              <img src="./img/collabo/protect_asset.png" alt="" />
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <img src="./img/mainPlaceHolder6.png" alt="키스타트 이미지" />
-
-    <footer>
-      <div class="footer">
-        <div class="footer-left">
-          <div class="logo">
-            <img class="logo-img" src="./img/logoWhite.png" alt="로고" />
-          </div>
-          <div class="links">
-            <div class="footer-link">이용약관</div>
-            <div class="separator">ㅣ</div>
-            <div class="footer-link">개인정보 처리방침</div>
-          </div>
-          <div class="contact-info">
-            <div class="info-item">
-              <span class="label title">상호명</span>
-              <span class="value">키스타트</span>
-              <span class="label title"> | </span>
-              <span class="label title">주소</span>
-              <span class="value"
-                >울산광역시 중구 운곡8길 82-2, 201호(다운동)</span
-              >
-            </div>
-            <div class="info-item">
-              <span class="label title">사업자등록번호</span>
-              <span class="value"
-                >607-79-00239
-                <a href="#" class="business-info-link"
-                  >[사업자 정보 확인]</a
-                ></span
-              >
-            </div>
-            <div class="info-item">
-              <span class="label title">E-MAIL</span>
-              <span class="value">keystart.official@keystart.co.kr</span>
-              <span class="label title"> | </span>
-              <span class="label title">TEL</span>
-              <span class="value">010-9043-9908</span>
-            </div>
-          </div>
-        </div>
-        <div class="footer-right">
-          <div class="community">커뮤니티</div>
-          <div class="notification">공지사항</div>
-          <div class="requestion">자주 묻는 질문</div>
-          <div class="social-item">
-            <div class="social">
-              <img class="insta" src="./img/social/insta.png" alt="" />
-            </div>
-            <div class="social">
-              <img class="kakao" src="./img/social/kakao.png" alt="" />
-            </div>
-            <div class="social">
-              <img class="blog" src="./img/social/blog.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <script>
-      // 스크롤을 내렸을때 글씨가 바뀌는 작업
-      window.addEventListener("scroll", function () {
-        var navbar = document.querySelector(".TopNav");
-        if (window.scrollY > 0) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
-
-      window.addEventListener("scroll", function () {
-        var navbar = document.querySelector(".TopNav");
-        var logoImg = document.querySelector(".logo-top img");
-
-        if (window.scrollY > 0) {
-          navbar.classList.add("scrolled");
-          logoImg.src = "./img/logo/logoBlack.png"; // 스크롤 시 검정색 로고로 변경
-        } else {
-          navbar.classList.remove("scrolled");
-          logoImg.src = "./img/logo/top-white-logo.png"; // 스크롤을 올릴 때는 흰색 로고로 변경
-        }
-      });
-
-      var ht = null;
-      (function (id, scriptSrc, callback) {
-        var d = document,
-          tagName = "script",
-          $script = d.createElement(tagName),
-          $element = d.getElementsByTagName(tagName)[0];
-        $script.id = id;
-        $script.async = true;
-        $script.src = scriptSrc;
-        if (callback) {
-          $script.addEventListener(
-            "load",
-            function (e) {
-              callback(null, e);
+        const response = await fetch(
+          // "http://localhost:8282/api/v1/user/info",
+          "https://www.keystart.co.kr/api/v1/user/info",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
             },
-            false
-          );
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("사용자 정보를 불러오는데 실패했습니다.");
         }
-        $element.parentNode.insertBefore($script, $element);
-      })(
-        "happytalkSDK",
-        "https://chat-static.happytalkio.com/sdk/happytalk.chat.v2.min.js",
-        function () {
-          ht = new Happytalk({
-            siteId: "4000003356",
-            siteName: "키스타트",
-            categoryId: "177791",
-            divisionId: "177792",
-            kakaoId: "@keystart",
-          });
-        }
-      );
 
-      // ------------------ 슬라이더관련 스크립트코드 -------------------
-      /* Overflow toggle */
-      const hideOverflow = document.getElementById("overflow");
-
-      hideOverflow.addEventListener("click", () => {
-        document.querySelector(".container").style.overflow =
-          hideOverflow.checked ? "hidden" : "visible";
-      });
-
-      /* Carousel */
-      const items = document.querySelector(".items");
-      const dots = document.querySelectorAll(".dot");
-      const prev = document.querySelector(".prev");
-      const next = document.querySelector(".next");
-      const total = items.children.length - 1;
-      const active = "active";
-      let current = 0;
-      let interval; // 변수 추가: setInterval을 저장할 변수
-      let isAutoScrollEnabled = true; // 자동 슬라이딩 상태를 나타내는 변수
-
-      const setActiveDot = () => {
-        dots.forEach((button, i) => {
-          i === current
-            ? button.classList.add(active)
-            : button.classList.remove(active);
-        });
-      };
-
-      const scrollToCurrent = () => {
-        items.style.transform = `translateX(${current * -100}%)`;
-        setActiveDot();
-      };
-
-      const scrollPrev = () => {
-        if (current === 0) return;
-        current--;
-        scrollToCurrent();
-        stopAutoScroll(); // 이전 버튼 클릭 시 자동 슬라이딩 중지
-      };
-
-      const scrollNext = () => {
-        if (current === total) return;
-        current++;
-        scrollToCurrent();
-        stopAutoScroll(); // 다음 버튼 클릭 시 자동 슬라이딩 중지
-      };
-
-      const startAutoScroll = () => {
-        if (isAutoScrollEnabled) {
-          interval = setInterval(() => {
-            if (current === total) {
-              current = 0;
-            } else {
-              current++;
-            }
-            scrollToCurrent();
-          }, 3000); // 3초마다 슬라이더 넘김
-        }
-      };
-
-      const stopAutoScroll = () => {
-        clearInterval(interval); // setInterval 중지
-        isAutoScrollEnabled = false; // 자동 슬라이딩 중지 상태로 설정
-      };
-
-      prev.addEventListener("click", () => {
-        scrollPrev();
-        startAutoScroll(); // 버튼 클릭 시 자동 슬라이딩 다시 시작
-      });
-      next.addEventListener("click", () => {
-        scrollNext();
-        startAutoScroll(); // 버튼 클릭 시 자동 슬라이딩 다시 시작
-      });
-
-      startAutoScroll(); // 페이지 로드 시 자동 슬라이딩 시작
-
-      // ------------------ 슬라이더관련 스크립트코드 -------------------
-
-      //전체 슬라이드 컨테이너 넓이 설정
-      let currentSlide = 0;
-      const totalSlides = document.querySelectorAll(".slides li").length;
-
-      function moveSlide(slideNum) {
-        const slideWidth = document.querySelector("#slideShow").clientWidth;
-        const newLeft = slideNum * slideWidth;
-        document.querySelector(
-          ".slides"
-        ).style.transform = `translateX(-${newLeft}px)`;
-        currentSlide = slideNum;
+        const data = await response.json();
+        console.log("사용자 정보:", data); // 콘솔에 사용자 정보 출력
+      } catch (error) {
+        console.error("사용자 정보 요청 중 오류 발생:", error);
       }
+    }
+    window.onload = function () {
+      const token = localStorage.getItem("accessToken");
 
-      prev.addEventListener("click", function () {
-        if (currentSlide > 0) {
-          moveSlide(currentSlide - 1);
-        }
+      if (!token) {
+        window.location.href = "/keystart.html";
+        alert("로그인을 해주세요.");
+      } else {
+        fetchUserInfo();
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="TopNav">
+      <!-- 네비바 로고영역 -->
+      <div class="logo-top">
+        <img src="./img/logo/top-white-logo.png" alt="" />
+      </div>
+
+      <!-- 네비바 중간영역 -->
+      <div class="main-nav">
+        <a href="#keystart" class="nav-link">키스타트란?</a>
+        <a href="#partners" class="nav-link">파트너사</a>
+        <a href="#stories" class="nav-link">창업 이야기</a>
+        <a href="#info" class="nav-link">창업 관련 정보</a>
+      </div>
+
+      <!-- 네비바 버튼영역 -->
+      <div class="info" onclick="logout()">
+        <img src="./img/user.png" alt="" />
+      </div>
+    </div>
+  </header>
+
+  <label class="checkbox" hidden>
+    <input type="checkbox" id="overflow" checked /> Hide image overflow
+  </label>
+  <div class="container">
+    <div class="carousel-viewport">
+      <ul class="items">
+        <li class="item">
+          <img src="./img/banner/blue-main-banner.png" width="1920" height="900" alt="" />
+        </li>
+        <li class="item">
+          <img src="./img/banner/white-main-banner.png" width="1920" height="900" alt="" />
+        </li>
+        <li class="item">
+          <img src="./img/banner/shine-main-banner.png" width="1920" height="900" alt="" />
+        </li>
+      </ul>
+    </div>
+    <button class="carousel-control prev" title="Go to previous item">
+      <svg viewBox="0 0 256 512">
+        <path
+          d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z" />
+      </svg>
+    </button>
+    <button class="carousel-control next" title="Go to next item">
+      <svg viewBox="0 0 256 512">
+        <path
+          d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z" />
+      </svg>
+    </button>
+    <ol class="carousel-dots">
+      <li class="dot active"></li>
+      <li class="dot"></li>
+      <li class="dot"></li>
+    </ol>
+  </div>
+
+  <div class="spacer"></div>
+  <img src="./img/mainPlaceHolder2.png" alt="키스타트 이미지" />
+  <div class="spacer"></div>
+  <img src="./img/mainPlaceHolder3.png" alt="키스타트 이미지" />
+  <div class="spacer"></div>
+  <img src="./img/main-change.png" alt="키스타트 이미지" />
+  <div class="spacer"></div>
+
+  <div class="faq-container">
+    <div class="requestion">자주 묻는 질문</div>
+    <div class="faq-item">
+      <button class="faq-question">
+        창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
+      </button>
+      <div class="faq-answer">질문에 대한 답변입니다...</div>
+    </div>
+    <!-- 다른 질문 항목들을 여기에 추가 -->
+
+    <div class="faq-item">
+      <button class="faq-question">
+        창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
+      </button>
+      <div class="faq-answer">질문에 대한 답변입니다...</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
+      </button>
+      <div class="faq-answer">질문에 대한 답변입니다...</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
+      </button>
+      <div class="faq-answer">질문에 대한 답변입니다...</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        창업하기 위해서 어떤 걸 준비해야 하나요?<span class="arrow"></span>
+      </button>
+      <div class="faq-answer">질문에 대한 답변입니다...</div>
+    </div>
+  </div>
+
+  <div class="more-info">
+    <img src="./img/button.png" alt="" />
+  </div>
+
+  <div class="together">키스타트와 함께하는 파트너사</div>
+
+  <div class="wrap">
+    <!-- 배너표시영역 -->
+    <div class="rolling-list">
+      <!-- 원본배너 -->
+      <ul>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/food_pang.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/back_ya.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/rental_on.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/shuiiing.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/star_transfer.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/daelim.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/space.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/mater_in.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/datos.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/golden-master.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/cook.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/sibsamwol.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/hadong.png" alt="" />
+          </div>
+        </li>
+        <li>
+          <div class="image-wrap">
+            <img src="./img/collabo/protect_asset.png" alt="" />
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <img src="./img/mainPlaceHolder6.png" alt="키스타트 이미지" />
+
+  <footer>
+    <div class="footer">
+      <div class="footer-left">
+        <div class="logo">
+          <img class="logo-img" src="./img/logoWhite.png" alt="로고" />
+        </div>
+        <div class="links">
+          <div class="footer-link">이용약관</div>
+          <div class="separator">ㅣ</div>
+          <div class="footer-link">개인정보 처리방침</div>
+        </div>
+        <div class="contact-info">
+          <div class="info-item">
+            <span class="label title">상호명</span>
+            <span class="value">키스타트</span>
+            <span class="label title"> | </span>
+            <span class="label title">주소</span>
+            <span class="value">울산광역시 중구 운곡8길 82-2, 201호(다운동)</span>
+          </div>
+          <div class="info-item">
+            <span class="label title">사업자등록번호</span>
+            <span class="value">607-79-00239
+              <a href="#" class="business-info-link">[사업자 정보 확인]</a></span>
+          </div>
+          <div class="info-item">
+            <span class="label title">E-MAIL</span>
+            <span class="value">keystart.official@keystart.co.kr</span>
+            <span class="label title"> | </span>
+            <span class="label title">TEL</span>
+            <span class="value">010-9043-9908</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="community">커뮤니티</div>
+        <div class="notification">공지사항</div>
+        <div class="requestion">자주 묻는 질문</div>
+        <div class="social-item">
+          <div class="social">
+            <img class="insta" src="./img/social/insta.png" alt="" />
+          </div>
+          <div class="social">
+            <img class="kakao" src="./img/social/kakao.png" alt="" />
+          </div>
+          <div class="social">
+            <img class="blog" src="./img/social/blog.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // 스크롤을 내렸을때 글씨가 바뀌는 작업
+    window.addEventListener("scroll", function () {
+      var navbar = document.querySelector(".TopNav");
+      if (window.scrollY > 0) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    window.addEventListener("scroll", function () {
+      var navbar = document.querySelector(".TopNav");
+      var logoImg = document.querySelector(".logo-top img");
+
+      if (window.scrollY > 0) {
+        navbar.classList.add("scrolled");
+        logoImg.src = "./img/logo/logoBlack.png"; // 스크롤 시 검정색 로고로 변경
+      } else {
+        navbar.classList.remove("scrolled");
+        logoImg.src = "./img/logo/top-white-logo.png"; // 스크롤을 올릴 때는 흰색 로고로 변경
+      }
+    });
+
+    var ht = null;
+    (function (id, scriptSrc, callback) {
+      var d = document,
+        tagName = "script",
+        $script = d.createElement(tagName),
+        $element = d.getElementsByTagName(tagName)[0];
+      $script.id = id;
+      $script.async = true;
+      $script.src = scriptSrc;
+      if (callback) {
+        $script.addEventListener(
+          "load",
+          function (e) {
+            callback(null, e);
+          },
+          false
+        );
+      }
+      $element.parentNode.insertBefore($script, $element);
+    })(
+      "happytalkSDK",
+      "https://chat-static.happytalkio.com/sdk/happytalk.chat.v2.min.js",
+      function () {
+        ht = new Happytalk({
+          siteId: "4000003356",
+          siteName: "키스타트",
+          categoryId: "177791",
+          divisionId: "177792",
+          kakaoId: "@keystart",
+        });
+      }
+    );
+
+    // ------------------ 슬라이더관련 스크립트코드 -------------------
+    /* Overflow toggle */
+    const hideOverflow = document.getElementById("overflow");
+
+    hideOverflow.addEventListener("click", () => {
+      document.querySelector(".container").style.overflow =
+        hideOverflow.checked ? "hidden" : "visible";
+    });
+
+    /* Carousel */
+    const items = document.querySelector(".items");
+    const dots = document.querySelectorAll(".dot");
+    const prev = document.querySelector(".prev");
+    const next = document.querySelector(".next");
+    const total = items.children.length - 1;
+    const active = "active";
+    let current = 0;
+    let interval; // 변수 추가: setInterval을 저장할 변수
+    let isAutoScrollEnabled = true; // 자동 슬라이딩 상태를 나타내는 변수
+
+    const setActiveDot = () => {
+      dots.forEach((button, i) => {
+        i === current
+          ? button.classList.add(active)
+          : button.classList.remove(active);
       });
+    };
 
-      next.addEventListener("click", function () {
-        if (currentSlide < totalSlides - 1) {
-          moveSlide(currentSlide + 1);
-        }
-      });
-      // ------------------ 슬라이더관련 스크립트코드 -------------------
+    const scrollToCurrent = () => {
+      items.style.transform = `translateX(${current * -100}%)`;
+      setActiveDot();
+    };
 
-      // ------------------ 자동 배너 코드 ---------------------------
-      // 원본과 두 개의 복제본 생성
-      let roller1 = document.querySelector(".rolling-list");
-      roller1.id = "roller1"; // 아이디 부여
+    const scrollPrev = () => {
+      if (current === 0) return;
+      current--;
+      scrollToCurrent();
+      stopAutoScroll(); // 이전 버튼 클릭 시 자동 슬라이딩 중지
+    };
 
-      let clone1 = roller1.cloneNode(true);
-      clone1.id = "roller2";
-      document.querySelector(".wrap").appendChild(clone1);
+    const scrollNext = () => {
+      if (current === total) return;
+      current++;
+      scrollToCurrent();
+      stopAutoScroll(); // 다음 버튼 클릭 시 자동 슬라이딩 중지
+    };
 
-      let clone2 = roller1.cloneNode(true);
-      clone2.id = "roller3";
-      document.querySelector(".wrap").appendChild(clone2);
+    const startAutoScroll = () => {
+      if (isAutoScrollEnabled) {
+        interval = setInterval(() => {
+          if (current === total) {
+            current = 0;
+          } else {
+            current++;
+          }
+          scrollToCurrent();
+        }, 3000); // 3초마다 슬라이더 넘김
+      }
+    };
 
-      let clone3 = roller1.cloneNode(true);
-      clone3.id = "roller4";
-      document.querySelector(".wrap").appendChild(clone3);
+    const stopAutoScroll = () => {
+      clearInterval(interval); // setInterval 중지
+      isAutoScrollEnabled = false; // 자동 슬라이딩 중지 상태로 설정
+    };
 
-      // 모든 리스트에 대해 클래스 추가하여 애니메이션 시작
-      document.querySelector("#roller1").classList.add("original");
-      document.querySelector("#roller2").classList.add("clone");
-      document.querySelector("#roller3").classList.add("clone");
-      document.querySelector("#roller4").classList.add("clone");
-      // ------------------ 자동 배너 코드 ---------------------------
-      //  -------------------  토글관련 코드 -----------------------
-      // JavaScript는 여기에 추가됩니다
-      // JavaScript는 여기에 추가됩니다
-      document.addEventListener("DOMContentLoaded", function () {
-        var faqs = document.querySelectorAll(".faq-item");
-        faqs.forEach(function (faq) {
-          var questionButton = faq.querySelector(".faq-question");
-          questionButton.addEventListener("click", function () {
-            faq.classList.toggle("active");
-            // 배경색 변경
-            questionButton.style.backgroundColor = faq.classList.contains(
-              "active"
-            )
-              ? "#F6F9FF"
-              : "initial";
-          });
+    prev.addEventListener("click", () => {
+      scrollPrev();
+      startAutoScroll(); // 버튼 클릭 시 자동 슬라이딩 다시 시작
+    });
+    next.addEventListener("click", () => {
+      scrollNext();
+      startAutoScroll(); // 버튼 클릭 시 자동 슬라이딩 다시 시작
+    });
+
+    startAutoScroll(); // 페이지 로드 시 자동 슬라이딩 시작
+
+    // ------------------ 슬라이더관련 스크립트코드 -------------------
+
+    //전체 슬라이드 컨테이너 넓이 설정
+    let currentSlide = 0;
+    const totalSlides = document.querySelectorAll(".slides li").length;
+
+    function moveSlide(slideNum) {
+      const slideWidth = document.querySelector("#slideShow").clientWidth;
+      const newLeft = slideNum * slideWidth;
+      document.querySelector(
+        ".slides"
+      ).style.transform = `translateX(-${newLeft}px)`;
+      currentSlide = slideNum;
+    }
+
+    prev.addEventListener("click", function () {
+      if (currentSlide > 0) {
+        moveSlide(currentSlide - 1);
+      }
+    });
+
+    next.addEventListener("click", function () {
+      if (currentSlide < totalSlides - 1) {
+        moveSlide(currentSlide + 1);
+      }
+    });
+    // ------------------ 슬라이더관련 스크립트코드 -------------------
+
+    // ------------------ 자동 배너 코드 ---------------------------
+    // 원본과 두 개의 복제본 생성
+    let roller1 = document.querySelector(".rolling-list");
+    roller1.id = "roller1"; // 아이디 부여
+
+    let clone1 = roller1.cloneNode(true);
+    clone1.id = "roller2";
+    document.querySelector(".wrap").appendChild(clone1);
+
+    let clone2 = roller1.cloneNode(true);
+    clone2.id = "roller3";
+    document.querySelector(".wrap").appendChild(clone2);
+
+    let clone3 = roller1.cloneNode(true);
+    clone3.id = "roller4";
+    document.querySelector(".wrap").appendChild(clone3);
+
+    // 모든 리스트에 대해 클래스 추가하여 애니메이션 시작
+    document.querySelector("#roller1").classList.add("original");
+    document.querySelector("#roller2").classList.add("clone");
+    document.querySelector("#roller3").classList.add("clone");
+    document.querySelector("#roller4").classList.add("clone");
+    // ------------------ 자동 배너 코드 ---------------------------
+    //  -------------------  토글관련 코드 -----------------------
+    // JavaScript는 여기에 추가됩니다
+    // JavaScript는 여기에 추가됩니다
+    document.addEventListener("DOMContentLoaded", function () {
+      var faqs = document.querySelectorAll(".faq-item");
+      faqs.forEach(function (faq) {
+        var questionButton = faq.querySelector(".faq-question");
+        questionButton.addEventListener("click", function () {
+          faq.classList.toggle("active");
+          // 배경색 변경
+          questionButton.style.backgroundColor = faq.classList.contains(
+            "active"
+          )
+            ? "#F6F9FF"
+            : "initial";
         });
       });
+    });
 
-      //  -------------------  토글관련 코드 -----------------------
-    </script>
-  </body>
+    //  -------------------  토글관련 코드 -----------------------
+  </script>
+</body>
+
 </html>
