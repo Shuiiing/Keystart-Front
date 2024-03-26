@@ -54,28 +54,19 @@
         </div>
     </div>
 
-    <div id="content1" class="tab-content">
-        <div class="wrapper grid menus">
-            <!-- 아이템이 동적으로 추가되는 부분 -->
-        </div>
+    <div id="content1" class="tab-content grid menus">
     </div>
     <div id="content2" class="tab-content blue">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
     </div>
     <div id="content3" class="tab-content yellow">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
     </div>
     <div id="content4" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
     </div>
-    <div id="content5" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    <div id="content5" class="tab-content blue">
     </div>
-    <div id="content6" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
+    <div id="content6" class="tab-content yellow">
     </div>
     <div id="content7" class="tab-content green">
-        <!-- 이부분에 넣고 싶은 내용을 넣으면 된다 -->
     </div>
 
     <footer id="footer"></footer>
@@ -97,44 +88,67 @@
     });
     // ------------  스크롤을 내렸을때 글씨가 바뀌는 작업 ------------
 
+    // ---------------------  탭바 UI 처리 로직 -------------------------------
+    document.addEventListener("DOMContentLoaded", function () {
+        // content1만 보이도록 설정
+        document.getElementById('content1').style.display = 'grid';
 
-    // ---------------- 탭 클릭 이벤트 핸들러 추가 ----------------
-    document.querySelectorAll('.tab-area input[type="radio"]').forEach(function (tab) {
-        tab.addEventListener('change', function () {
-            var contentId = this.getAttribute('id').replace('tab', 'content');
-            document.querySelectorAll('.tab-content').forEach(function (content) {
-                content.style.display = 'none';
+        // 나머지 탭 콘텐츠는 모두 숨김
+        document.querySelectorAll('.tab-content:not(#content1)').forEach(function (content) {
+            content.style.display = 'none';
+        });
+
+        // 탭 클릭 이벤트 핸들러 추가
+        document.querySelectorAll('.tab-area input[type="radio"]').forEach(function (tab) {
+
+            // change라는 함수를 추가할건데 
+            tab.addEventListener('change', function () {
+                // this -> tab 을 의미한다. 
+                var contentId = this.getAttribute("id").replace('tab', "content");
+
+                // 모든 탭 콘텐츠를 숨김
+                document.querySelectorAll('.tab-content').forEach(function (content) {
+                    content.style.display = 'none';
+                });
+
+                document.getElementById(contentId).style.display = "flex";
             });
-            document.getElementById(contentId).style.display = 'block';
         });
     });
-    // ---------------- 탭 클릭 이벤트 핸들러 추가 ----------------
 
-    // ------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 ----------------
-    // 나중에 통신이 연결이 되면 이부분에 데이터를 가져와서 menuImages라는 곳에 리스트를 넣으면 되겠지? 
-    // 아이템 이미지 경로 배열
-    const menuImages = [
-        "./img/tests/menu1.jpg",
-        "./img/tests/menu2.jpg",
-        "./img/tests/menu3.jpg",
-        "./img/tests/menu4.jpg",
-        "./img/tests/menu5.jpg",
-        "./img/tests/menu6.jpg",
-        "./img/tests/menu7.jpg",
-        "./img/tests/menu8.jpg",
-        "./img/tests/menu9.jpg"
-    ];
 
-    // document.addEventListener("DomContentLoaded",  function () {});
-    // 이 로직은 html을 완전히 로드 한 이후 javascript코드를 실행 시키겠다는 의미이다.
-    // DOMContentLoaded 이거 자체가 이벤트 리스너임 -> 그래서 따로 호출 로직은 필요없음
+    // ---------------------  탭바 UI 처리 로직 -------------------------------
+
+    // --------------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 --------------------- 
     document.addEventListener("DOMContentLoaded", function () {
-        const menuWrapper = document.querySelector(".wrapper.grid.menus");
+        // 탭 클릭 이벤트 핸들러 추가
+        document.querySelectorAll('.tab-area input[type="radio"]').forEach(function (tab) {
+            tab.addEventListener('change', function () {
+                var contentId = this.getAttribute('id').replace('tab', 'content');
+                document.querySelectorAll('.tab-content').forEach(function (content) {
+                    content.style.display = 'none';
+                });
+                document.getElementById(contentId).style.display = 'grid';
+            });
+        });
 
-        // menuImages 배열의 각 이미지 경로에 대해 아이템을 동적으로 추가
+
+        const menuWrapper = document.querySelector(".tab-content.grid.menus");
+        const menuImages = [
+            "./img/tests/menu1.jpg",
+            "./img/tests/menu2.jpg",
+            "./img/tests/menu3.jpg",
+            "./img/tests/menu4.jpg",
+            "./img/tests/menu5.jpg",
+            "./img/tests/menu6.jpg",
+            "./img/tests/menu7.jpg",
+            "./img/tests/menu8.jpg",
+            "./img/tests/menu9.jpg"
+        ];
         menuImages.forEach(imageSrc => {
             const itemDiv = document.createElement("div");
             itemDiv.classList.add("item");
+            itemDiv.style.display = 'none';
 
             const imgElement = document.createElement("img");
             imgElement.src = imageSrc;
@@ -142,11 +156,9 @@
 
             itemDiv.appendChild(imgElement);
 
-            // 텍스트 컨테이너 div를 생성
             const textContainerDiv = document.createElement("div");
             textContainerDiv.classList.add("item-text-container");
 
-            // 정의된 텍스트 컨텐츠 배열을 순회하면서 텍스트 요소를 추가
             const textContents = ["음식점", "유남주", "# 시공 / 인테리어 #식자제"];
             textContents.forEach((content, index) => {
                 const textDiv = document.createElement("div");
@@ -155,19 +167,14 @@
                 textContainerDiv.appendChild(textDiv);
             });
 
-            // 완성된 텍스트 컨테이너를 itemDiv에 추가
             itemDiv.appendChild(textContainerDiv);
 
-            // itemDiv를 menuWrapper에 추가
             menuWrapper.appendChild(itemDiv);
+
+            itemDiv.style.display = 'grid';
         });
     });
-
-
-
-    // ------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 ----------------
-
-
+    // --------------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 --------------------- 
 
 </script>
 
