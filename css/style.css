@@ -921,18 +921,18 @@ img {
   margin-bottom: 50px;
 }
 
-.item img {
+.grid-item img {
   display: block;
   height: 600px;
   width: 540px;
   object-fit: cover;
 }
 
-.item {
+.grid-item {
   position: relative;
 }
 
-.item:hover::before {
+.grid-item:hover::before {
   content: "";
   position: absolute;
   left: 8%;
@@ -944,7 +944,7 @@ img {
   transition: opacity 0.3s ease; /* 트랜지션 효과를 추가하여 부드럽게 변화하도록 설정 */
 }
 
-.item:hover::before {
+.grid-item:hover::before {
   opacity: 1; /* 호버됐을 때 투명도를 1로 설정하여 보이게 함 */
 }
 
