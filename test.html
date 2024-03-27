@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- text-editor관련 링크 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet" />
+
+    <!-- text-editor관련 자바스크립트 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <title>test</title>
+</head>
+
+<body>
+    <h2>Create Class Form</h2>
+    <form id="createClassForm" enctype="multipart/form-data">
+        <label for="className">Class Name:</label>
+        <input type="text" id="className" name="className" required /><br />
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required /><br />
+
+        <label for="teacherName">Teacher Name:</label>
+        <input type="text" id="teacherName" name="teacherName" required /><br />
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required /><br />
+
+        <label for="classTime">Class Time:</label>
+        <input type="text" id="classTime" name="classTime" required /><br />
+
+        <label for="imgUrl">Image File:</label>
+        <input type="file" id="imgUrl" name="imgUrl" accept="image/*" required /><br />
+        <div class="summernote-container">
+            <div id="summernote">
+                <p class="summernote-default"></p>
+            </div>
+            <div>
+                <button type="submit" class="submit-button" id="submit-button">
+                    등록하기
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            $("#summernote").summernote({
+                height: 650,
+                width: 1200,
+                lang: "ko-KR",
+                callbacks: {
+                    onImageUpload: function (files) {
+                        sendFile(files[0], this);
+                    },
+                },
+            });
+        });
+
+        // DTO 객체 정의
+        var createClassDto = {
+            className: '',
+            address: '',
+            teacherName: '',
+            date: '',
+            classTime: '',
+            imgUrl: null,
+            content: '',
+            contentImgUrl: [],
+        };
+
+        function sendFile(file, editor) {
+            const formData = new FormData();
+            formData.append("file", file); // 'file' 필드명이 AWS 업로드를 위해 사용됨
+
+            fetch("http://localhost:8282/aws/class/editor", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    const imgURL = data.url; // AWS로부터 받은 이미지 URL
+                    $(editor).summernote("insertImage", imgURL);
+                    createClassDto.contentImgUrl.push(imgURL);
+                })
+                .catch((error) => console.log("Error:", error));
+        }
+
+        $("#submit-button").click(async function (event) {
+            event.preventDefault();
+
+            // 사용자 입력 값을 DTO 객체에 업데이트
+            createClassDto.className = $("#className").val();
+            createClassDto.address = $("#address").val();
+            createClassDto.teacherName = $("#teacherName").val();
+            createClassDto.date = $("#date").val();
+            createClassDto.classTime = $("#classTime").val();
+            createClassDto.imgUrl = $("#imgUrl").val();
+            createClassDto.content = $("#summernote").summernote("code");
+
+            // 이미지 파일 가져와서 DTO 객체에 업데이트
+            var imageFiles = $('#summernote img');
+            imageFiles.each(function (index, image) {
+                var imageUrl = $(image).attr('src');
+                createClassDto.contentImgUrl.push(imageUrl);
+            });
+
+            console.log("createClassDto:", createClassDto);
+
+            // JSON 형태로 변환하여 서버로 전송
+            fetch("http://localhost:8282/class/create", {
+                method: "POST",
+                body: JSON.stringify(createClassDto),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error("Network response was not ok.");
+                })
+                .then((data) => alert("클래스가 성공적으로 생성되었습니다!"))
+                .catch((error) => console.error("Error:", error));
+        });
+    </script>
+
+</body>
+
+</html>
