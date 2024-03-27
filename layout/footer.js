@@ -5,11 +5,51 @@ class Footer {
         this.element = document.createElement('footer');
         this.element.classList.add('footer');
         this.render();
+        // 화면 크기 변경 시 이벤트 추가
+        window.addEventListener("resize", this.render.bind(this));
     }
 
     render() {
-        // 풋터 내부 HTML 생성
-        this.element.innerHTML = `
+        // • 앱으로 구동될때 
+        if (window.innerWidth <= 768) {
+            this.element.innerHTML = `
+            <div class="footer-left">
+                <div class="logo">
+                    <img class="logo-img" src="./img/logoWhite.png" alt="로고" />
+                </div>
+                <div class="links">
+                    <div class="footer-link">이용약관</div>
+                    <div class="separator">ㅣ</div>
+                    <div class="footer-link">개인정보 처리방침</div>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span class="label title">상호명</span>
+                        <span class="value">키스타트</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label title">주소</span>
+                        <span class="value">울산광역시 중구 운곡8길 82-2,201 (다운동)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label title">사업자등록번호</span>
+                        <span class="value">607-79-00239
+                            <a href="#" class="business-info-link">[사업자 정보 확인]</a></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label title">E-MAIL</span>
+                        <span class="value">keystart.official@keystart.co.kr</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label title">TEL</span>
+                        <span class="value">010-9043-9908</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        } else {
+            // • 웹으로 구동될때 
+            this.element.innerHTML = `
             <div class="footer-left">
                 <div class="logo">
                     <img class="logo-img" src="./img/logoWhite.png" alt="로고" />
@@ -57,7 +97,8 @@ class Footer {
                     </div>
                 </div>
             </div>
-        `;
+            `;
+        }
     }
 
     getElement() {

@@ -190,46 +190,46 @@
   <script src="./layout/footer.js"></script>
   <script>
 
-    async function fetchUserInfo() {
-      try {
-        // localStorage에서 토큰을 가져옵니다.
-        const token = localStorage.getItem("accessToken");
-        if (!token) {
-          console.log("토큰이 없습니다. 로그인이 필요합니다.");
-          return;
-        }
+    // async function fetchUserInfo() {
+    //   try {
+    //     // localStorage에서 토큰을 가져옵니다.
+    //     const token = localStorage.getItem("accessToken");
+    //     if (!token) {
+    //       console.log("토큰이 없습니다. 로그인이 필요합니다.");
+    //       return;
+    //     }
 
-        const response = await fetch(
-          // "http://localhost:8282/api/v1/user/info",
-          "https://www.keystart.co.kr/api/v1/user/info",
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+    //     const response = await fetch(
+    //       // "http://localhost:8282/api/v1/user/info",
+    //       "https://www.keystart.co.kr/api/v1/user/info",
+    //       {
+    //         method: "GET",
+    //         headers: {
+    //           Authorization: `Bearer ${token}`,
+    //         },
+    //       }
+    //     );
 
-        if (!response.ok) {
-          throw new Error("사용자 정보를 불러오는데 실패했습니다.");
-        }
+    //     if (!response.ok) {
+    //       throw new Error("사용자 정보를 불러오는데 실패했습니다.");
+    //     }
 
-        const data = await response.json();
-        console.log("사용자 정보:", data); // 콘솔에 사용자 정보 출력
-      } catch (error) {
-        console.error("사용자 정보 요청 중 오류 발생:", error);
-      }
-    }
-    window.onload = function () {
-      const token = localStorage.getItem("accessToken");
+    //     const data = await response.json();
+    //     console.log("사용자 정보:", data); // 콘솔에 사용자 정보 출력
+    //   } catch (error) {
+    //     console.error("사용자 정보 요청 중 오류 발생:", error);
+    //   }
+    // }
+    // window.onload = function () {
+    //   const token = localStorage.getItem("accessToken");
 
-      if (!token) {
-        window.location.href = "/keystart.html";
-        alert("로그인을 해주세요.");
-      } else {
-        fetchUserInfo();
-      }
-    };
+    //   if (!token) {
+    //     window.location.href = "/keystart.html";
+    //     alert("로그인을 해주세요.");
+    //   } else {
+    //     fetchUserInfo();
+    //   }
+    // };
 
     window.addEventListener("scroll", function () {
       var navbar = document.querySelector(".TopNav");
