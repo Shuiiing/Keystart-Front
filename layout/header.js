@@ -1,17 +1,36 @@
 
-// ----------------------------  Header -----------------------------------
 class Header {
-
     constructor() {
         // 헤더 요소 초기화
         this.element = document.createElement('header');
         this.element.classList.add('TopNav-sub');
         this.render();
+        // 화면 크기 변경 시 이벤트 추가
+        window.addEventListener("resize", this.render.bind(this));
     }
 
     render() {
-        // 헤더 내부 HTML 생성
-        this.element.innerHTML = `
+        // 현재 뷰포트의 폭에 따라 HTML 렌더링
+        if (window.innerWidth <= 768) {
+            this.element.innerHTML = `
+            <div class="logo-top">   
+                <div>
+                    <img src="./img/logo/logoBlack.png"/>
+                </div>
+                <div class="info-sub" onclick="logout()">
+                    <img src="./img/user.png" alt="" />
+                </div>
+            </div>
+            <div class="main-nav-sub">
+                <a href="/introduce.html" class="nav-link-sub">키스타트란?</a>
+                <a href="/partner.html" class="nav-link-sub">파트너사</a>
+                <a href="/startup.html" class="nav-link-sub">창업 이야기</a>
+                <a href="/lecture.html" class="nav-link-sub">창업 관련 정보</a>
+                <a href="/community.html" class="nav-link-sub">커뮤니티</a>
+            </div>
+        `;
+        } else {
+            this.element.innerHTML = `
             <div class="logo-top">
                 <img src="./img/logo/logoBlack.png" alt="" />
             </div>
@@ -25,6 +44,7 @@ class Header {
                 <img src="./img/user.png" alt="" />
             </div>
         `;
+        }
     }
 
     getElement() {
@@ -32,7 +52,6 @@ class Header {
         return this.element;
     }
 }
-
 // 로그아웃 함수
 async function logout() {
     try {

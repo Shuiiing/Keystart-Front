@@ -9,6 +9,64 @@
     overflow-x: hidden;
   }
 
+  /* -------------------- 공통 헤더 영역 ------------------------------ */
+  .TopNav-sub {
+    width: 100%;
+    height: 60px;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+    background-color: white;
+  }
+
+  .logo-top {
+    width: 100%;
+    padding: 0.5% 1%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo-top img {
+    width: 80px;
+  }
+
+  /* 스크롤시 글자 색상 변경 */
+  .nav-link-sub {
+    color: black; /* 초기 글자색은 흰색으로 설정 */
+  }
+
+  .nav-link-sub {
+    margin: 2px;
+    width: 400px;
+    color: #000; /* 스크롤하면 글자색을 검정색으로 변경 */
+    font-size: 8px;
+    font-weight: 500;
+    padding: 1%;
+  }
+
+  .main-nav-sub {
+    width: 100%;
+    height: 20px;
+    display: inline-block;
+    align-items: center;
+    /* gap: 30px; */
+  }
+
+  .nav-link-sub:hover,
+  .nav-link-sub:focus {
+    color: #2753ad; /* 호버 또는 포커스 시 글자색을 검정색으로 변경 */
+    border-bottom: #2753ad solid 3px;
+  }
+
+  .info-sub img {
+    width: 20px;
+    height: 20px;
+  }
+
   .TopNav {
     height: 52px;
     padding: 8px 10px;
@@ -50,6 +108,7 @@
     height: 150px;
   }
 
+  /* -------------------- 공통 헤더 영역 ------------------------------ */
   /* -------------------------- 자동배너 <모바일> --------------------- */
   .wrap {
     display: flex;
