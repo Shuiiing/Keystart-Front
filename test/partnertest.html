@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- text-editor관련 링크 -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- text-editor관련 자바스크립트 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <title>test</title>
+  </head>
+  <body>
+    <h2>파트너사</h2>
+    <form id="createPartnerForm">
+      <label for="bizName">상호명:</label>
+      <input type="text" id="bizName" name="bizName" required /><br />
+
+      <label for="ownerName">대표자명:</label>
+      <input type="text" id="ownerName" name="ownerName" required /><br />
+
+      <label for="bizNumber">사업자등록번호:</label>
+      <input type="text" id="bizNumber" name="bizNumber" required /><br />
+
+      <label for="category">카테고리:</label>
+      <select id="category" name="category" required>
+        <option value="교육">교육</option>
+        <option value="통신/렌탈">통신/렌탈</option>
+        <option value="시공/인테리어">시공/인테리어</option>
+        <option value="광고/마케팅">광고/마케팅</option>
+        <option value="세무/상담/회계">세무/상담/회계</option>
+        <option value="커피머신/기타자판기">커피머신/기타자판기</option>
+        <option value="유통">유통</option>
+        <option value="개발">개발</option>
+        <option value="식자재/주류">식자재/주류</option>
+        <option value="무인화 시스템">무인화 시스템</option></select
+      ><br />
+
+      <label for="introduce">회사소개:</label>
+      <input type="text" id="introduce" name="introduce" /><br />
+
+      <label for="tag">관련태그:</label>
+      <input type="text" id="tag" name="tag" /><br />
+
+      <label for="bannerUrl">배너:</label>
+      <input
+        type="file"
+        id="bannerUrl"
+        name="bannerUrl"
+        accept="image/*"
+        required
+      /><br />
+
+      <label for="logoUrl">로고:</label>
+      <input
+        type="file"
+        id="logoUrl"
+        name="logoUrl"
+        accept="image/*"
+        required
+      /><br />
+    </form>
+    <!-- form태그는 서버에 데이터를 보낼때 x-www-urlencoded 라는 타입으로 디폴트값이 설정되있다. -->
+    <!-- 자바스크립트 - ajax통신을 하게되면 html의 form태그는 필요가 없다  -->
+    <!-- <form id="form" method="post" action="http://localhost:8282/story/create"> -->
+    <div class="summernote-container">
+      <div id="summernote">
+        <p class="summernote-default"></p>
+      </div>
+      <div>
+        <button type="submit" class="submit-button" id="submit-button">
+          등록하기
+        </button>
+      </div>
+    </div>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $("#summernote").summernote({
+        height: 650,
+        width: 1200,
+        lang: "ko-KR",
+        callbacks: {
+          onImageUpload: function (files) {
+            sendFile(files[0], this);
+          },
+        },
+      });
+    });
+
+    // 이미지 URL을 저장할 배열을 전역 스코프 또는 상위 스코프에 정의
+    let contentUrl = [];
+
+    function sendFile(file, editor) {
+      const formData = new FormData();
+      formData.append("file", file);
+      console.log("Sending file to server:", file);
+
+      fetch(
+        //"http://localhost:8282/aws/partner/editor",
+        "https://www.keystart.co.kr/aws/partner/editor",
+        {
+          method: "POST",
+          body: formData,
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Received response from server:", data);
+          const imgURL = data.url;
+          $(editor).summernote("insertImage", imgURL);
+          // 오류가 발생했던 부분을 수정하여, contentImgUrl이 정의된 스코프 내에서 사용
+          contentUrl.push(imgURL);
+          console.log("Current image URLs:", contentUrl);
+        })
+        .catch((error) => {
+          console.error("Error during file upload:", error);
+        });
+    }
+
+    let bannerUrl = "";
+
+    function banner() {
+      return new Promise((resolve, reject) => {
+        const bannerInput = document.getElementById("bannerUrl");
+        if (bannerInput.files.length > 0) {
+          const formData = new FormData();
+          formData.append("banner", bannerInput.files[0]);
+
+          fetch(
+            //"http://localhost:8282/aws/partner/banner",
+            "https://www.keystart.co.kr/aws/partner/banner",
+            {
+              method: "POST",
+              body: formData,
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              bannerUrl = data.bannerUrl; // 서버로부터 받은 배너 이미지 URL
+              console.log("Banner uploaded successfully:", bannerUrl);
+              resolve(bannerUrl);
+            })
+            .catch((error) => {
+              console.error("Error uploading banner image:", error);
+              reject(error);
+            });
+        } else {
+          resolve("");
+        }
+      });
+    }
+
+    let logoUrl = "";
+
+    function logo() {
+      return new Promise((resolve, reject) => {
+        const logoInput = document.getElementById("logoUrl");
+        if (logoInput.files.length > 0) {
+          const formData = new FormData();
+          formData.append("logo", logoInput.files[0]);
+
+          fetch(
+            //"http://localhost:8282/aws/partner/logo",
+            "https://www.keystart.co.kr/aws/partner/logo",
+            {
+              method: "POST",
+              body: formData,
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              logoUrl = data.logoUrl; // 서버로부터 받은 로고 이미지 URL
+              console.log("Logo uploaded successfully:", logoUrl);
+              resolve(logoUrl);
+            })
+            .catch((error) => {
+              console.error("Error uploading logo image:", error);
+              reject(error);
+            });
+        } else {
+          resolve("");
+        }
+      });
+    }
+
+    $("#submit-button").click(async function (event) {
+      event.preventDefault();
+      await Promise.all([banner(), logo()]);
+
+      const bizName = $("#bizName").val();
+      const ownerName = $("#ownerName").val();
+      const bizNumber = $("#bizNumber").val();
+      const category = $("#category").val();
+      const introduce = $("#introduce").val();
+      const tag = $("#tag").val();
+      const content = $("#summernote").summernote("code");
+      const contentImgUrl = JSON.stringify(contentUrl);
+
+      // 서버에 전송할 JSON 객체를 생성합니다.
+      const dataToSend = {
+        bizName,
+        ownerName,
+        bizNumber,
+        category,
+        introduce,
+        tag,
+        content,
+        contentImgUrl,
+        logoUrl, // 이전에 업로드한 로고 이미지의 URL
+        bannerUrl, // 이전에 업로드한 배너 이미지의 URL
+      };
+
+      fetch(
+        //"http://localhost:8282/partner/create",
+        "https://www.keystart.co.kr/partner/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", // 이 헤더를 추가하세요
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      )
+        .then((response) => {
+          console.log("Received response status:", response.status); // 응답 상태 로깅
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Class creation successful:", data); // 성공 응답 로깅
+          alert("파트너사가 성공적으로 생성되었습니다!");
+        })
+        .catch((error) => {
+          console.error("Error during class creation:", error); // 에러 로깅
+        });
+    });
+  </script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>test</title>
+  </head>
+  <body>
+    <h2>Create Business Info Form</h2>
+    <form id="createinfoForm">
+        <label for="businessName">Business Name:</label>
+        <input type="text" id="businessName" name="businessName" required /><br />
+
+        <label for="organization">Organization:</label>
+        <input type="text" id="organization" name="organization" required /><br />
+
+        <label for="link">Link:</label>
+        <input type="text" id="link" name="link" required /><br />
+
+        <label for="deadline">Deadline:</label>
+        <input type="date" id="deadline" name="deadline" required /><br />
+
+        <fieldset>
+            <legend>Category:</legend>
+            <input type="checkbox" id="PreStartup" name="category" value="예비창업">
+            <label for="PreStartup">예비창업</label><br />
+
+            <input type="checkbox" id="EarlyStageStartup" name="category" value="창업초기(3년이내)">
+            <label for="EarlyStageStartup">창업초기(3년이내)</label><br />
+
+            <input type="checkbox" id="GrowthStageStartup" name="category" value="창업도약기(4-7년)">
+            <label for="GrowthStageStartup">창업도약기(4-7년)</label><br />
+
+            <input type="checkbox" id="NewBusiness" name="category" value="신사업(10년 이내)">
+            <label for="NewBusiness">신사업(10년 이내)</label>
+        </fieldset>
+
+        <button type="submit" class="submit-button" id="submit-button">등록하기</button>
+    </form>
+
+    <script>
+        $("#submit-button").click(function (event) {
+            event.preventDefault();
+            const businessName = $("#businessName").val();
+            const organization = $("#organization").val();
+            const link = $("#link").val();
+            const deadline = $("#deadline").val();
+            const categories = $("input[name='category']:checked").map(function() {
+                return this.value;
+            }).get();
+
+            const data = {
+                businessName,
+                organization,
+                link,
+                deadline,
+                category: categories,
+            };
+
+            console.log("Sending creation request with data:", data);
+
+            fetch(
+                //"http://localhost:8282/businessinfo/create", 
+                "https://www.keystart.co.kr/businessinfo/create", 
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then((response) => {
+                console.log("Received response status:", response.status);
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Creation successful:", data);
+                alert("Business info created successfully!");
+            })
+            .catch((error) => {
+                console.error("Error during business info creation:", error);
+            });
+        });
+    </script>
+</html>
