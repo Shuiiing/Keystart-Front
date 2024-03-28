@@ -378,7 +378,7 @@
   }
 
   .other-story {
-    padding: 24%;
+    padding: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -386,4 +386,159 @@
     font-size: 20px;
     font-family: "Gmarket Sans";
   }
+  /* ----------------------- 풋터 <모바일> ------------------------ */
+
+  /* ---------------------- 창업이야기  --------------------------- */
+
+  .banner-sub {
+    margin-top: 3%;
+    width: 100%;
+    height: 200px;
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .banner-in {
+    margin-top: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 100%;
+    font-size: 80px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    font-family: "Gmarket Sans";
+  }
+
+  /* ------------------- 탭바관련   ------------------- */
+
+  /* 1. tab 영역 css 설정 */
+  .tab-area {
+    padding: 10px;
+    height: auto;
+    width: auto;
+    display: flex;
+    /* white-space: nowrap; */
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 2. tab 메뉴 부분 디자인 */
+  .tab-area input {
+    display: none;
+  }
+
+  .tab-area-item {
+    border: 1px black solid;
+    width: 100%;
+    height: 60px;
+    font-size: 24px;
+    text-align: center;
+    display: flex;
+  }
+
+  .tab-area label {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    font-family: "Gmarket Sans";
+    padding: 10px;
+  }
+
+  /* label에 마우스 올렸을 때 */
+  .tab-area label:hover {
+    cursor: pointer; /*마우스 모양 변경*/
+    color: #2753ad;
+  }
+
+  .tab-area label:focus {
+    cursor: pointer; /*마우스 모양 변경*/
+    color: #2753ad;
+  }
+
+  /* tab-area 안에 존재하는 input 태그가 체크되었을 때, 
+체크된 input 태그 다음에 등장하는 label의 css 값 */
+  .tab-area input:checked + label {
+    /* 해당 메뉴가 선택된 상태인지 아닌지를 사용자에게 알려줄 수 있음 */
+    font-weight: bold;
+  }
+
+  /* 3. tab 내용 부분 디자인 */
+  .tab-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: auto;
+    display: none;
+  }
+
+  /* input 태그가 체크 상태일떼, 이에 대응하는 content?를 display에 표시하도록 설정 */
+  #tab1:checked ~ #content1,
+  #tab2:checked ~ #content2,
+  #tab3:checked ~ #content3,
+  #tab4:checked ~ #content4,
+  #tab5:checked ~ #content5,
+  #tab6:checked ~ #content6,
+  #tab7:checked ~ #content7 {
+    display: flex;
+  }
+
+  .blue {
+    background: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    width: 90%;
+    margin: 0% 5%;
+  }
+
+  .yellow {
+    background: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    width: 90%;
+    margin: 0% 5%;
+  }
+
+  .green {
+    background: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    width: 90%;
+    margin: 0% 5%;
+  }
+
+  .scroll-left {
+    left: 3%;
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+    position: fixed;
+    position: absolute;
+  }
+
+  .scroll-right {
+    right: 5%;
+    width: 30px;
+    height: 30px;
+    background-color: aqua;
+    position: fixed;
+    position: relative;
+  }
+
+  /* ------------------- 탭바관련   ------------------- */
+
+  /* ---------------------- 창업이야기  --------------------------- */
 }

@@ -146,8 +146,6 @@
             "./img/tests/menu9.jpg"
         ];
 
-        // 오잉? 왜 서버에 반영이 안되지 !
-        // 서버에 반영되라 !
         menuImages.forEach(imageSrc => {
             const itemDiv = document.createElement("div");
             itemDiv.classList.add("grid-item");
@@ -178,7 +176,56 @@
         });
     });
     // --------------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 --------------------- 
+    // 버튼 생성 및 동작 기능 함수
+    function setupScrollButtons() {
+        const tabArea = document.querySelector('.tab-area');
+        const scrollLeftBtn = document.createElement('button');
+        const scrollRightBtn = document.createElement('button');
 
+        scrollLeftBtn.classList.add('scroll-left');
+        scrollLeftBtn.innerHTML = '&lt;';
+        scrollRightBtn.classList.add('scroll-right');
+        scrollRightBtn.innerHTML = '&gt;';
+
+        // 왼쪽으로 스크롤 버튼 클릭 시
+        scrollLeftBtn.addEventListener('click', function () {
+            tabArea.scrollLeft -= 100; // 100px만큼 왼쪽으로 스크롤
+        });
+
+        // 오른쪽으로 스크롤 버튼 클릭 시
+        scrollRightBtn.addEventListener('click', function () {
+            tabArea.scrollLeft += 100; // 100px만큼 오른쪽으로 스크롤
+        });
+
+        // 탭 영역에 버튼 추가
+        tabArea.insertBefore(scrollLeftBtn, tabArea.firstChild);
+        tabArea.appendChild(scrollRightBtn);
+    }
+
+    // 초기화 함수
+    function init() {
+        const otherStoryElement = document.querySelector(".other-story");
+        if (otherStoryElement) {
+            checkViewportWidthRemove(otherStoryElement);
+            window.addEventListener("resize", function () {
+                checkViewportWidthRemove(otherStoryElement);
+            });
+
+            if (window.innerWidth <= 768) {
+                setupScrollButtons();
+            }
+        }
+    }
+
+    // 화면 너비를 확인하고 조건에 따라 요소 제거
+    function checkViewportWidthRemove(element) {
+        if (window.innerWidth <= 768) {
+            element.remove();
+        }
+    }
+
+    // 페이지 로드 시 초기화 함수 호출
+    window.addEventListener("load", init);
 </script>
 
 </html>
