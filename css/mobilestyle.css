@@ -415,15 +415,35 @@
 
   /* ------------------- 탭바관련   ------------------- */
 
-  /* 1. tab 영역 css 설정 */
   .tab-area {
-    padding: 10px;
-    height: auto;
-    width: auto;
+    padding: 2px;
+    height: 65px;
+    width: 100%; /* 전체 가로폭에 맞춤 */
     display: flex;
-    /* white-space: nowrap; */
-    justify-content: center;
-    align-items: center;
+    overflow-x: auto; /* 가로 스크롤 추가 */
+    white-space: nowrap; /* 요소들이 한 줄로 나열되도록 설정 */
+    align-items: start;
+    margin: 0%;
+  }
+
+  .tab-area-item {
+    border: #e5e7eb 1px solid;
+    background-color: #f9fafb;
+    height: 35px;
+    font-size: 24px;
+    text-align: center;
+    display: flex;
+  }
+
+  /* 선택된 탭에 대한 스타일 */
+  .tab-area input:checked + .tab-area-item label {
+    font-weight: bold;
+    border-bottom: none; /* 선택된 탭의 하단 선 제거 */
+  }
+
+  /* 선택되지 않은 탭에 대한 스타일 */
+  .tab-area .tab-area-item label:not(:hover):not(:focus) {
+    border-bottom: none; /* 선택되지 않은 탭의 하단 선 추가 */
   }
 
   /* 2. tab 메뉴 부분 디자인 */
@@ -431,38 +451,32 @@
     display: none;
   }
 
-  .tab-area-item {
-    border: 1px black solid;
-    width: 100%;
-    height: 60px;
-    font-size: 24px;
-    text-align: center;
-    display: flex;
-  }
-
   .tab-area label {
     margin-left: auto;
     margin-right: auto;
     font-size: 20px;
+    text-align: center;
+    align-items: center;
     font-family: "Gmarket Sans";
-    padding: 10px;
+    padding: 5px;
   }
 
   /* label에 마우스 올렸을 때 */
   .tab-area label:hover {
     cursor: pointer; /*마우스 모양 변경*/
     color: #2753ad;
+    background-color: white;
+    border-bottom: white 0px solid;
   }
 
   .tab-area label:focus {
     cursor: pointer; /*마우스 모양 변경*/
     color: #2753ad;
+    background-color: white;
+    border-bottom: white 0px solid;
   }
 
-  /* tab-area 안에 존재하는 input 태그가 체크되었을 때, 
-체크된 input 태그 다음에 등장하는 label의 css 값 */
   .tab-area input:checked + label {
-    /* 해당 메뉴가 선택된 상태인지 아닌지를 사용자에게 알려줄 수 있음 */
     font-weight: bold;
   }
 
@@ -536,6 +550,10 @@
     background-color: aqua;
     position: fixed;
     position: relative;
+  }
+
+  .grid-item {
+    padding: 2%;
   }
 
   /* ------------------- 탭바관련   ------------------- */

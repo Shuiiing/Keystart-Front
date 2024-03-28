@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/mobilestyle.css" />
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="jquery.bxslider/jquery.bxslider.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -90,8 +90,23 @@
 
     // ---------------------  탭바 UI 처리 로직 -------------------------------
     document.addEventListener("DOMContentLoaded", function () {
-        // content1만 보이도록 설정
-        document.getElementById('content1').style.display = 'grid';
+
+
+        function adjustContentDisplay() {
+            if (window.innerWidth <= 768) {
+                document.getElementById("content1").style.display = "inline";
+            } else {
+                document.getElementById("content1").style.display = "grid";
+            }
+        }
+
+        adjustContentDisplay();
+
+        window.addEventListener("resize", function () {
+            adjustContentDisplay();
+        });
+
+
 
         // 나머지 탭 콘텐츠는 모두 숨김
         document.querySelectorAll('.tab-content:not(#content1)').forEach(function (content) {
@@ -115,8 +130,6 @@
             });
         });
     });
-
-
     // ---------------------  탭바 UI 처리 로직 -------------------------------
 
     // --------------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 --------------------- 
@@ -176,31 +189,6 @@
         });
     });
     // --------------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 --------------------- 
-    // 버튼 생성 및 동작 기능 함수
-    function setupScrollButtons() {
-        const tabArea = document.querySelector('.tab-area');
-        const scrollLeftBtn = document.createElement('button');
-        const scrollRightBtn = document.createElement('button');
-
-        scrollLeftBtn.classList.add('scroll-left');
-        scrollLeftBtn.innerHTML = '&lt;';
-        scrollRightBtn.classList.add('scroll-right');
-        scrollRightBtn.innerHTML = '&gt;';
-
-        // 왼쪽으로 스크롤 버튼 클릭 시
-        scrollLeftBtn.addEventListener('click', function () {
-            tabArea.scrollLeft -= 100; // 100px만큼 왼쪽으로 스크롤
-        });
-
-        // 오른쪽으로 스크롤 버튼 클릭 시
-        scrollRightBtn.addEventListener('click', function () {
-            tabArea.scrollLeft += 100; // 100px만큼 오른쪽으로 스크롤
-        });
-
-        // 탭 영역에 버튼 추가
-        tabArea.insertBefore(scrollLeftBtn, tabArea.firstChild);
-        tabArea.appendChild(scrollRightBtn);
-    }
 
     // 초기화 함수
     function init() {
@@ -210,10 +198,6 @@
             window.addEventListener("resize", function () {
                 checkViewportWidthRemove(otherStoryElement);
             });
-
-            if (window.innerWidth <= 768) {
-                setupScrollButtons();
-            }
         }
     }
 
@@ -223,6 +207,9 @@
             element.remove();
         }
     }
+
+
+
 
     // 페이지 로드 시 초기화 함수 호출
     window.addEventListener("load", init);
