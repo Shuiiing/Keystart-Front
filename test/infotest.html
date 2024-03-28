@@ -7,12 +7,12 @@
     <title>test</title>
   </head>
   <body>
-    <h2>Create Business Info Form</h2>
+    <h2>사업정보</h2>
     <form id="createinfoForm">
         <label for="businessName">Business Name:</label>
         <input type="text" id="businessName" name="businessName" required /><br />
 
-        <label for="organization">Organization:</label>
+        <label for="organization">수행기관:</label>
         <input type="text" id="organization" name="organization" required /><br />
 
         <label for="link">Link:</label>
@@ -61,8 +61,8 @@
             console.log("Sending creation request with data:", data);
 
             fetch(
-                //"http://localhost:8282/businessinfo/create", 
-                "https://www.keystart.co.kr/businessinfo/create", 
+                //"http://localhost:8282/api/v1/businessinfo/create", 
+                "https://www.keystart.co.kr/api/v1/businessinfo/create", 
             {
                 method: "POST",
                 headers: {

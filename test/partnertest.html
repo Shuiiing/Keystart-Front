@@ -106,8 +106,8 @@
       console.log("Sending file to server:", file);
 
       fetch(
-        //"http://localhost:8282/aws/partner/editor",
-        "https://www.keystart.co.kr/aws/partner/editor",
+        //"http://localhost:8282/api/v1/aws/partner/editor",
+        "https://www.keystart.co.kr/api/v1/aws/partner/editor",
         {
           method: "POST",
           body: formData,
@@ -137,8 +137,8 @@
           formData.append("banner", bannerInput.files[0]);
 
           fetch(
-            //"http://localhost:8282/aws/partner/banner",
-            "https://www.keystart.co.kr/aws/partner/banner",
+            //"http://localhost:8282/api/v1/aws/partner/banner",
+            "https://www.keystart.co.kr/api/v1/aws/partner/banner",
             {
               method: "POST",
               body: formData,
@@ -170,8 +170,8 @@
           formData.append("logo", logoInput.files[0]);
 
           fetch(
-            //"http://localhost:8282/aws/partner/logo",
-            "https://www.keystart.co.kr/aws/partner/logo",
+            //"http://localhost:8282/aws/api/v1/partner/logo",
+            "https://www.keystart.co.kr/api/v1/aws/partner/logo",
             {
               method: "POST",
               body: formData,
@@ -221,8 +221,8 @@
       };
 
       fetch(
-        //"http://localhost:8282/partner/create",
-        "https://www.keystart.co.kr/partner/create",
+        //"http://localhost:8282/api/v1/partner/create",
+        "https://www.keystart.co.kr/api/v1/partner/create",
         {
           method: "POST",
           headers: {

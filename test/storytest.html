@@ -20,7 +20,7 @@
     <title>test</title>
   </head>
   <body>
-    <h2>Create Class Form</h2>
+    <h2>창업이야기/h2>
     <form id="createStoryForm" enctype="multipart/form-data">
       <label for="category">Category:</label>
       <select id="category" name="category" required>
@@ -90,8 +90,8 @@
       console.log("Sending file to server:", file);
 
       fetch(
-        //"http://localhost:8282/aws/story",
-        "https://www.keystart.co.kr/aws/story",
+        //"http://localhost:8282/api/v1/aws/story",
+        "https://www.keystart.co.kr/api/v1/aws/story",
         {
           method: "POST",
           body: formData,
@@ -125,8 +125,8 @@
       ); // 요청 데이터 로깅
 
       fetch(
-        //"http://localhost:8282/story/create",
-        "https://www.keystart.co.kr/story/create",
+        //"http://localhost:8282/story/api/v1/create",
+        "https://www.keystart.co.kr/api/v1/story/create",
         {
           method: "POST",
           body: formData,
