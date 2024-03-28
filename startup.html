@@ -102,9 +102,9 @@
 
         adjustContentDisplay();
 
-        window.addEventListener("resize", function () {
-            adjustContentDisplay();
-        });
+        //     window.addEventListener("resize", function () {
+        //       adjustContentDisplay();
+        //    });
 
 
 
@@ -195,9 +195,6 @@
         const otherStoryElement = document.querySelector(".other-story");
         if (otherStoryElement) {
             checkViewportWidthRemove(otherStoryElement);
-            window.addEventListener("resize", function () {
-                checkViewportWidthRemove(otherStoryElement);
-            });
         }
     }
 
