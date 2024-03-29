@@ -92,7 +92,7 @@
         callbacks: {
           onImageUpload: function (files) {
             // 여기에서 파일 용량을 검사합니다.
-            const maxSize = 5 * 1024 * 1024; // 예: 5MB로 제한
+            const maxSize = 50 * 1024 * 1024; // 예: 5MB로 제한
             if (files[0].size > maxSize) {
               alert("파일 크기는 5MB를 초과할 수 없습니다.");
               return;
