@@ -1461,3 +1461,374 @@ img {
   background-color: red;
 }
 /* ---------------------- lecture - detail ------------------------------ */
+
+/* ------------------------- 파트너사 ---------------------- */
+
+.partner-contents {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 0% 5%;
+}
+
+aside {
+  height: auto;
+  width: 20%;
+}
+
+article {
+  height: auto;
+  width: 80%;
+}
+
+aside p {
+  padding: 12px 10px;
+  margin-bottom: 1rem;
+}
+
+.sub-menu {
+  margin-bottom: 60px;
+  list-style: none;
+}
+
+.sub-menu a {
+  color: #432;
+  font-size: 24px;
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+.sub-menu a:hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.connect-category {
+  width: 100%;
+  font-size: 30px;
+  color: #2563eb;
+  border-bottom: #e5e7eb solid 3px;
+}
+
+.content-item {
+  padding-top: 0.5%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 3%;
+}
+
+.content-item-header {
+  padding: 0% 5%;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  grid-template-rows: 1fr 3fr 1fr;
+  align-items: start;
+}
+
+.content-company-logo img {
+  width: 100px;
+  height: 100px;
+  border: #e5e7eb solid 1px;
+  border-radius: 100%;
+}
+
+.content-company-info {
+  padding: 0% 2%;
+  width: 100%;
+  height: 120px;
+}
+
+.company-info-name {
+  font-size: 20px;
+}
+
+.company-info-edu {
+  width: 60%;
+  padding: 4px;
+  font-size: 14px;
+  color: #4b5563;
+  text-align: start;
+}
+
+.company-text1 {
+  width: 100%;
+  display: flex;
+  padding: 1% 0;
+  justify-content: space-between;
+}
+
+.company-text2 {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-company-link {
+  padding-right: 17%;
+}
+
+.content-company-link a {
+  font-size: 15px;
+}
+
+.company-info-title {
+  font-size: 18px;
+  color: #374151;
+}
+
+.company-info-hashtags {
+  margin-top: 2px;
+  display: flex;
+  gap: 10px;
+}
+
+.hashtags-item {
+  /* margin-right: 1%; */
+  border-radius: 15px;
+  margin: 0.3% 0;
+  width: 80px;
+  text-align: center;
+  padding: 0.5%;
+  border: #e5e7eb solid 1px;
+  font-size: 14px;
+}
+
+.content-item-body {
+  padding: 0% 5%;
+  margin-top: 1%;
+  width: auto;
+  height: 200px;
+  display: flex;
+  gap: 5px;
+}
+
+.content-body-item {
+  background-color: lightpink;
+  width: 200px;
+  height: 200px;
+}
+
+/* ------------------------- 파트너사 ---------------------- */
+
+/* ------------------------ 키스타트란 ---------------------- */
+main {
+  height: auto;
+  margin: 6% 12%;
+}
+
+.ad-video {
+  width: 100%;
+  height: 40%;
+  background-color: blue;
+}
+
+.main-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-section1 {
+  margin-top: 160px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section1-text1 {
+  color: #2753ad;
+  font-size: 44px;
+  font-family: "Gmarket Sans";
+}
+
+.section1-text2 {
+  color: black;
+  font-size: 24px;
+  font-family: "Gmarket Sans";
+}
+
+.main-section2 {
+  margin-top: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section2-text1 {
+  color: black;
+  font-size: 24px;
+  font-family: "Gmarket Sans";
+}
+
+.section2-text-power1 {
+  width: 100%;
+  display: grid;
+  justify-content: start;
+  align-items: start;
+}
+
+.section2-text-power2 img,
+.section2-text-power1 img {
+  width: 100px;
+  height: 100px;
+  justify-content: start;
+  align-items: start;
+}
+
+.section2-text-power1 {
+  width: 100%;
+  display: grid;
+  justify-content: start;
+  align-items: start;
+}
+
+.section2-text-power1 img {
+  width: 100px;
+  height: 100px;
+  justify-content: start;
+  align-items: start;
+}
+
+.section2-text-power2 {
+  width: 100%;
+  display: grid;
+  justify-content: end;
+  align-items: end;
+}
+
+.main-section3 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 160px;
+  justify-content: center;
+  align-items: center;
+}
+
+.section3-text1-title {
+  font-size: 20px;
+  font-family: "Gmarket Sans";
+  text-align: center;
+  color: black;
+}
+
+.section3-text1 {
+  font-size: 20px;
+  font-family: "Gmarket Sans";
+  text-align: center;
+  color: #2753ad;
+}
+
+.section3-text1 {
+  font-size: 20px;
+  font-family: "Gmarket Sans";
+  text-align: center;
+  color: #2753ad;
+}
+
+.main-section-box {
+  padding: 2%;
+  background-color: #eff6ff;
+  width: 150%;
+  height: 100px;
+  margin: 1%;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-section4 {
+  margin-top: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section4-logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.section4-logo img {
+  padding: 10%;
+  width: 100%;
+}
+
+.section4-text {
+  color: black;
+  font-size: 24px;
+  font-family: "Gmarket Sans";
+  margin-bottom: 20px;
+}
+
+.text-blue {
+  color: #2753ad;
+}
+
+.main-section5 {
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-box-title {
+  color: black;
+  font-size: 24px;
+  font-family: "Gmarket Sans";
+  margin-bottom: 20px;
+}
+
+.color-box-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-box-list {
+  padding: 0% 5%;
+  width: 100%;
+  height: 40%;
+  gap: 10px;
+}
+
+.color-box1 {
+  height: 100%;
+  width: 100%;
+  background-color: #2753ad;
+  color: white;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.color-box2 {
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  color: #2753ad;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.color-box3 {
+  height: 100%;
+  width: 100%;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+/* ------------------------ 키스타트란 ---------------------- */

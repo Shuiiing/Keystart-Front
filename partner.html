@@ -13,18 +13,140 @@
 <body>
     <header id="header"></header>
 
-    <div class="sizedBox">
-        <div class="other-story ">
-            현재 이 페이지는 준비중에 있어요!
-            조금만 더 기다려주세요 :)
-        </div>
+
+    <div class="banner-sub">
+        <div class="banner-in">파트너사</div>
     </div>
 
-    <footer id="footer"></footer>
+    <div class="partner-contents wrapper">
+        <!-- 미니 탭바 사이드 영역 -->
+        <aside>
+            <ul class="sub-menu">
+                <li><a href="education">교육</a></li>
+                <li><a href="communication">통신/렌탈</a></li>
+                <li><a href="construction">시공/인테리어</a></li>
+                <li><a href="advertisement">광고/마케팅</a></li>
+                <li><a href="consultation">세무/상담/회계</a></li>
+                <li><a href="coffee">커피머신/기타자판기</a></li>
+                <li><a href="distribution">유통</a></li>
+                <li><a href="development">개발</a></li>
+                <li><a href="food">식자재/주류</a></li>
+                <li><a href="automation">무인화 시스템</a></li>
+            </ul>
+        </aside>
+        <!-- 미니 탭바 사이드 영역 -->
 
+
+
+
+
+        <!-- 메인 영역 -->
+        <article id="article"></article>
+
+    </div>
+    <footer id="footer"></footer>
     <!-- 헤더 및 풋터 스크립트 -->
     <script src="./layout/header.js"></script>
     <script src="./layout/footer.js"></script>
+    <script>
+
+        //  --------------------------------------- 데이터 영역 --------------------------------------------------------------
+
+        var categoryList = ["교육", "통신/렌탈", "시공/인테리어", "광고/마케팅", "세무/상담/회계", "커피머신/기타자판기", "유통", "개발", "식자재/주류", "무인화 시스템"];
+        var categoryListEN = ["education", "communication", "construction", "advertisement", "consultation", "coffee", "distribution", "development", "food", "automation"];
+        function changeCategory(category) {
+            for (let i = 0; i < categoryListEN.length; i++) {
+                if (category === categoryListEN[i]) {
+                    console.log(`이거이거 : ${categoryList[i]}`);
+                    return categoryList[i];
+                }
+            }
+            return categoryListEN[categoryListEN.length - 1]; // 만약 일치하는 항목이 없을 경우 마지막 항목을 반환합니다.
+        }
+
+
+
+        var data =
+        {
+            category: `${categoryList[0]}`,
+            companyLogo: "./img/logo/키스타트로고.png",
+            companyName: "회사명",
+            companyType: `${categoryList[0]}`,
+            companyLink: "https://naver.com",
+            companyTitle: "타이틀 텍스트가 들어갑니다.",
+            hashtags: ["#해시태그1", "#해시태그2", "#해시태그3", "#해시태그4"],
+            images: ["이미지1", "이미지2", "이미지3", "이미지4", "이미지5"]
+        };
+
+        //  --------------------------------------- 데이터 영역 --------------------------------------------------------------
+
+        // ------------------------------------ article 메인 영역 자바스크립트 로직으로 생성 -------------------------------------------
+        var article = document.getElementById("article");
+
+        // 데이터를 기반으로 반복하여 요소를 생성하고 삽입합니다.
+        categoryList.forEach(function (category) {
+            var contentItem = document.createElement("div");
+            contentItem.className = "content-item";
+
+            // content-item 요소 내의 HTML 템플릿을 생성합니다.
+            contentItem.innerHTML = `
+            <div class="connect-category" id="${changeCategory(category)}">${category}</div>
+                <div class="content-item-header">
+                    <div class="content-company-logo"><img src="${data.companyLogo}" alt=""></div>
+                    <div class="content-company-info">
+                        <div class="company-text1">
+                            <div class="company-text2">
+                                <div class="company-info-name">${data.companyName}</div>
+                                <div class="company-info-edu">${category}</div>
+                            </div>
+                            <div class="content-company-link"><a href="${data.companyLink}">자세히 보기 →</a></div>
+                        </div>
+                        <div class="company-info-title">${data.companyTitle}</div>
+                        <div class="company-info-hashtags">
+                            ${data.hashtags.map(tag => `<div class="hashtags-item">${tag}</div>`).join("")}
+                        </div>
+                    </div>
+                </div>
+                <div class="content-item-body">
+                    ${data.images.map(image => `<div class="content-body-item">${image}</div>`).join("")}
+                </div>
+            `;
+
+            // article 요소에 content-item을 추가합니다.
+            article.appendChild(contentItem);
+        });
+        // --------------- --------------------- article 메인 영역 자바스크립트 로직으로 생성 -------------------------------------------
+
+
+        // ------------------------------------anchor 에 등록된 viewport로 영역 이동 ----------------------------------------------
+        document.addEventListener("DOMContentLoaded", function () {
+            // 각 카테고리에 대한 anchor 태그를 가져옵니다.
+            var categoryAnchors = document.querySelectorAll(".sub-menu a");
+
+            // 각 카테고리 anchor 태그에 클릭 이벤트를 추가합니다.
+            for (let anchor of categoryAnchors) {
+                anchor.addEventListener("click", function (event) {
+                    event.preventDefault(); // 기본 동작 중단
+                    var targetId = anchor.getAttribute("href").substring(1); // href에서 #을 제외한 ID를 가져옴
+                    console.log("Target-en ID:", targetId);
+                    var targetElement = document.getElementById(targetId.trim());
+                    console.log(`이거는 이거 ${targetElement}`);
+
+                    if (targetElement) {
+                        // 해당 요소의 위치로 스크롤합니다.
+                        console.log("참조건 탔음!")
+                        targetElement.scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            }
+
+        });
+
+        // ------------------------------------anchor 에 등록된 viewport로 영역 이동 ----------------------------------------------
+
+
+
+    </script>
 </body>
 
 </html>
