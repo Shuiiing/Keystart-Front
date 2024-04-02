@@ -932,10 +932,14 @@ img {
   position: relative;
 }
 
+.grid-item:hover .item-text-container {
+  visibility: visible;
+}
+
 .grid-item:hover::before {
   content: "";
   position: absolute;
-  left: 8%;
+  left: 14%;
   width: 540px;
   height: 600px;
   background-color: rgba(0, 0, 0, 0.7); /* 투명한 회색 */
@@ -948,6 +952,12 @@ img {
   opacity: 1; /* 호버됐을 때 투명도를 1로 설정하여 보이게 함 */
 }
 
+.cafe,
+.restaurant,
+.unnamedStartUp,
+.bar,
+.rental,
+.other,
 .menus {
   padding: 0% 5%;
 }
@@ -991,7 +1001,7 @@ img {
   visibility: hidden;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 509%;
   transform: translate(-50%, -50%);
   z-index: 2; /* ::before 가상 요소보다 높은 값을 설정 */
   color: white;

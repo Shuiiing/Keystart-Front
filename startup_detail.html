@@ -67,10 +67,15 @@
 
     // 페이지가 그려지는 순간 즉시 실행 함수로 바로 그려줌
     $(document).ready(function () {
-        // 페이지가 로드되면 실행될 코드 작성
-        // 서버에서 데이터를 가져와서 에디터의 내용을 업데이트 하는 코드 등을 여기에 작성합니다.
+        // 페이지가 로드되면 URL에서 쿼리 매개변수를 추출하여 아이디를 가져옴
+
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var storyId = urlParams.get('id');
+
+        console.log(`storyId : ${storyId}`);
         $.ajax({
-            url: `http://localhost:8282/story/list/${storyId}`,
+            url: `http://localhost:8282/api/v1/story/list/${storyId}`,
             method: 'GET',
             contentType: 'application/json',
             processData: false,

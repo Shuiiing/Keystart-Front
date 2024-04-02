@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bxslider"></script>
 </head>
 
 <body>
@@ -56,17 +57,17 @@
 
     <div id="content1" class="tab-content grid menus">
     </div>
-    <div id="content2" class="tab-content blue">
+    <div id="content2" class="tab-content grid cafe">
     </div>
-    <div id="content3" class="tab-content yellow">
+    <div id="content3" class="tab-content grid restaurant">
     </div>
-    <div id="content4" class="tab-content green">
+    <div id="content4" class="tab-content grid unnamedStartUp">
     </div>
-    <div id="content5" class="tab-content blue">
+    <div id="content5" class="tab-content grid bar">
     </div>
-    <div id="content6" class="tab-content yellow">
+    <div id="content6" class="tab-content grid rental">
     </div>
-    <div id="content7" class="tab-content green">
+    <div id="content7" class="tab-content grid other">
     </div>
 
     <footer id="footer"></footer>
@@ -144,49 +145,6 @@
                 document.getElementById(contentId).style.display = 'grid';
             });
         });
-
-
-        const menuWrapper = document.querySelector(".tab-content.grid.menus");
-        const menuImages = [
-            "./img/tests/menu1.jpg",
-            "./img/tests/menu2.jpg",
-            "./img/tests/menu3.jpg",
-            "./img/tests/menu4.jpg",
-            "./img/tests/menu5.jpg",
-            "./img/tests/menu6.jpg",
-            "./img/tests/menu7.jpg",
-            "./img/tests/menu8.jpg",
-            "./img/tests/menu9.jpg"
-        ];
-
-        menuImages.forEach(imageSrc => {
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("grid-item");
-            itemDiv.style.display = 'none';
-
-            const imgElement = document.createElement("img");
-            imgElement.src = imageSrc;
-            imgElement.alt = "Menu Image";
-
-            itemDiv.appendChild(imgElement);
-
-            const textContainerDiv = document.createElement("div");
-            textContainerDiv.classList.add("item-text-container");
-
-            const textContents = ["음식점", "유남주", "# 시공 / 인테리어 #식자제"];
-            textContents.forEach((content, index) => {
-                const textDiv = document.createElement("div");
-                textDiv.classList.add(`child-item${index + 1}`);
-                textDiv.textContent = content;
-                textContainerDiv.appendChild(textDiv);
-            });
-
-            itemDiv.appendChild(textContainerDiv);
-
-            menuWrapper.appendChild(itemDiv);
-
-            itemDiv.style.display = 'grid';
-        });
     });
     // --------------------- 이미지가 동적으로 추가 될 수 있도록 로직 처리 --------------------- 
 
@@ -205,11 +163,175 @@
         }
     }
 
-
-
-
     // 페이지 로드 시 초기화 함수 호출
     window.addEventListener("load", init);
+
+    // ------------------------- GET 데이터 받아오기 ------------------------- 
+    var storyList = [];
+
+    // category ==> cafe
+    var cafeList = [];
+
+    // category ==> restaurant
+    var restaurantList = [];
+
+    // category ==> unnamedStartUp
+    var unnamedStartUpList = [];
+
+    // category ==> bar
+    var barList = [];
+
+    // category ==> rental
+    var rentalList = [];
+
+    // category ==> other
+    var otherList = [];
+
+
+    const apiUrl = "http://localhost:8282/api/v1/story/list";
+
+    const menuWrapper = document.querySelector(".tab-content.grid.menus");
+
+    const menuWrapperCafe = document.querySelector(".tab-content.grid.cafe");
+
+    const menuWrapperRestaurant = document.querySelector(".tab-content.grid.restaurant");
+
+    const menuWrapperUnnamedStartUp = document.querySelector(".tab-content.grid.unnamedStartUp");
+
+    const menuWrapperBar = document.querySelector(".tab-content.grid.bar");
+
+    const menuWrapperRental = document.querySelector(".tab-content.grid.rental");
+
+    const menuWrapperOther = document.querySelector(".tab-content.grid.other");
+
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // JSON 형식으로 응답 파싱
+        }).then(data => {
+            storyList = data;
+
+            storyList.forEach(parsedStory => {
+                if (parsedStory.category === "카페") {
+                    cafeList.push(parsedStory);
+                }
+                if (parsedStory.category === "음식점") {
+                    restaurantList.push(parsedStory);
+                }
+                if (parsedStory.category === "무인창업") {
+                    unnamedStartUpList.push(parsedStory);
+                }
+                if (parsedStory.category === "주점") {
+                    barList.push(parsedStory);
+                }
+                if (parsedStory.category === "공간대여") {
+                    rentalList.push(parsedStory);
+                }
+                if (parsedStory.category === "기타") {
+                    otherList.push(parsedStory);
+                }
+            });
+
+            data.forEach(story => {
+                handleItemClick(story, menuWrapper);
+            });
+
+            cafeList.forEach(story => {
+                handleItemClick(story, menuWrapperCafe);
+            });
+
+            restaurantList.forEach(story => {
+                handleItemClick(story, menuWrapperRestaurant);
+            });
+
+            unnamedStartUpList.forEach(story => {
+                handleItemClick(story, menuWrapperUnnamedStartUp);
+            });
+
+            barList.forEach(story => {
+                handleItemClick(story, menuWrapperBar);
+            });
+
+            rentalList.forEach(story => {
+                handleItemClick(story, menuWrapperRental);
+            });
+
+            otherList.forEach(story => {
+                handleItemClick(story, menuWrapperOther);
+            });
+
+
+        })
+        .catch(error => {
+            console.log('There was a problem with the fetch operation : ', error);
+        });
+    // ------------------------- GET 데이터 받아오기 ------------------------- 
+
+    // ------------------------- 상세 페이지로 이동하는 함수  --------------------
+    //  상세 페이지로 이동하는 함수 
+    function goToDetailPage(itemId) {
+
+        console.log(`itemId : ${itemId}`);
+
+        // itemId를 기반으로 상세 페이지 URL을 생성
+        var detailPageUrl = "/startup_detail.html" + "?id=" + itemId;
+
+        // 상세 페이지로 이동
+        window.location.href = detailPageUrl;
+
+    }
+    // ------------------------- 상세 페이지로 이동하는 함수  --------------------
+
+
+
+    // 클릭 이벤트 핸들러 메소드
+    function handleItemClick(story, menuWrapper) {
+        // -------- 여기까지가 기존에 이미지 그리드뷰형식  -------- 
+        if (story && story._id) {
+            console.log(story._id);
+            const itemDiv = document.createElement("div");
+            itemDiv.classList.add("grid-item");
+            itemDiv.setAttribute("data-id", story._id);
+            itemDiv.onclick = function () {
+                console.log(`아이디는 다음과 같습니다 : ${story._id}`)
+                goToDetailPage(story._id);
+            }
+            itemDiv.style.display = 'none';
+
+            const imgElement = document.createElement("img");
+            imgElement.src = story.imgUrl;
+            imgElement.alt = "Menu Image";
+
+            itemDiv.appendChild(imgElement);
+            // -------- 여기까지가 기존에 이미지 그리드뷰형식  -------- 
+
+            // ----------- 마우스 갖다 두었을때 호버 형식 -----------
+            const textContainerDiv = document.createElement("div");
+            textContainerDiv.classList.add("item-text-container");
+
+            const textContents = [story.category, "유남주", story.hashtag];
+            textContents.forEach((content, index) => {
+                const textDiv = document.createElement("div");
+                textDiv.classList.add(`child-item${index + 1}`);
+                textDiv.textContent = content;
+                textContainerDiv.appendChild(textDiv);
+            });
+
+            itemDiv.appendChild(textContainerDiv);
+
+            menuWrapper.appendChild(itemDiv);
+
+            itemDiv.style.display = 'grid';
+        } else {
+            console.log("story._id 값이 없습니다.");
+        }
+    }
+
+    // ----------- 마우스 갖다 두었을때 호버 형식 -----------
+
+
 </script>
 
 </html>
