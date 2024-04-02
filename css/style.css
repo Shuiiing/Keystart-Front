@@ -223,7 +223,7 @@ img {
 }
 
 .TopNav {
-  height: 52px;
+  height: 60px;
   padding: 8px 64px;
   display: flex;
   justify-content: space-between;
@@ -728,7 +728,7 @@ img {
 /* ------------------- nav 관련입니다 ------------------- */
 
 .TopNav-sub {
-  height: 52px;
+  height: 60px;
   padding: 8px 64px;
   display: flex;
   justify-content: space-between;
@@ -754,7 +754,6 @@ img {
 .main-nav-sub {
   width: 50%;
   height: 56px;
-  border-top: 1px solid #4b5563;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
