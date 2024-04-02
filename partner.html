@@ -20,24 +20,21 @@
 
     <div class="partner-contents wrapper">
         <!-- 미니 탭바 사이드 영역 -->
-        <aside>
+        <aside class="wrapper">
             <ul class="sub-menu">
-                <li><a href="education">교육</a></li>
-                <li><a href="communication">통신/렌탈</a></li>
-                <li><a href="construction">시공/인테리어</a></li>
-                <li><a href="advertisement">광고/마케팅</a></li>
-                <li><a href="consultation">세무/상담/회계</a></li>
-                <li><a href="coffee">커피머신/기타자판기</a></li>
-                <li><a href="distribution">유통</a></li>
-                <li><a href="development">개발</a></li>
-                <li><a href="food">식자재/주류</a></li>
-                <li><a href="automation">무인화 시스템</a></li>
+                <li><a href="#education">교육</a></li>
+                <li><a href="#communication">통신/렌탈</a></li>
+                <li><a href="#construction">시공/인테리어</a></li>
+                <li><a href="#advertisement">광고/마케팅</a></li>
+                <li><a href="#consultation">세무/상담/회계</a></li>
+                <li><a href="#coffee">커피머신/기타자판기</a></li>
+                <li><a href="#distribution">유통</a></li>
+                <li><a href="#development">개발</a></li>
+                <li><a href="#food">식자재/주류</a></li>
+                <li><a href="#automation">무인화 시스템</a></li>
             </ul>
         </aside>
-        <article id="article"></article>
-
-
-
+        <article id="article" class="" wrapper""></article>
     </div>
     <footer id="footer"></footer>
     <!-- 헤더 및 풋터 스크립트 -->
@@ -153,10 +150,11 @@
 
         // changeCategory 함수 정의
         function changeCategory(category) {
+            console.log(`category의 값은 다음과 같아 : ${category}`)
             for (let i = 0; i < categoryListEN.length; i++) {
-                if (category === categoryListEN[i]) {
+                if (category === categoryList[i]) {
                     console.log(`이거이거 : ${categoryList[i]}`);
-                    return categoryList[i];
+                    return categoryListEN[i];
                 }
             }
             return categoryListEN[categoryListEN.length - 1]; // 만약 일치하는 항목이 없을 경우 마지막 항목을 반환합니다.
@@ -172,9 +170,9 @@
 
             // 반복문 이전에 connect-category 요소를 생성합니다.
             const categoryElement = document.createElement("div");
-            console.log("나와나와!")
             categoryElement.className = "connect-category";
             categoryElement.id = changeCategory(partnerData[0].category);
+            console.log(`${categoryElement.id}`);
             categoryElement.innerText = partnerData[0].category;
 
             // article 요소에 connect-category를 추가합니다.
@@ -183,7 +181,6 @@
 
             // 파트너 데이터를 반복하여 content-item을 생성하고 article에 추가합니다.
             partnerData.forEach((partner, index) => {
-                // 첫 번째 아이템은 이미 connect-category가 생성되었으므로 건너뜁니다.
 
                 const contentItem = document.createElement("div");
                 contentItem.className = "content-item";
@@ -214,6 +211,37 @@
                 article.appendChild(contentItem);
             });
         }
+
+        // ------------------------ 앵커로 스크롤하기 ----------------------------------------------
+        // 각 링크 클릭 시 해당 앵커로 스크롤
+        document.querySelectorAll('.sub-menu a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // 기본 링크 이벤트 중지
+                const targetId = this.getAttribute('href').substring(1); // 앵커의 id 가져오기
+                console.log(targetId);
+                const targetElement = document.getElementById(targetId); // 해당 앵커 요소 가져오기
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' }); // 부드러운 스크롤로 해당 앵커로 이동
+                }
+            });
+        });
+        // ------------------------ 앵커로 스크롤하기 ----------------------------------------------
+
+        //  --------------------------- 왼쪽 네비바 --------------------------------
+        window.addEventListener('scroll', function () {
+            var aside = document.querySelector('aside');
+            var scrollPosition = window.scrollY;
+
+            if (scrollPosition > 380) {
+                aside.style.position = 'fixed';
+                article.style.marginLeft = '20%';
+                aside.style.top = '5%';
+            } else {
+                aside.style.position = 'static';
+                article.style.marginLeft = '0';
+            }
+        });
+        //  --------------------------- 왼쪽 네비바 --------------------------------
 
 
     </script>
