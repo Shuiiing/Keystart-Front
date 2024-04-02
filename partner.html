@@ -34,14 +34,9 @@
                 <li><a href="automation">무인화 시스템</a></li>
             </ul>
         </aside>
-        <!-- 미니 탭바 사이드 영역 -->
-
-
-
-
-
-        <!-- 메인 영역 -->
         <article id="article"></article>
+
+
 
     </div>
     <footer id="footer"></footer>
@@ -50,10 +45,113 @@
     <script src="./layout/footer.js"></script>
     <script>
 
-        //  --------------------------------------- 데이터 영역 --------------------------------------------------------------
-
         var categoryList = ["교육", "통신/렌탈", "시공/인테리어", "광고/마케팅", "세무/상담/회계", "커피머신/기타자판기", "유통", "개발", "식자재/주류", "무인화 시스템"];
         var categoryListEN = ["education", "communication", "construction", "advertisement", "consultation", "coffee", "distribution", "development", "food", "automation"];
+
+        var eduList = [];
+
+        var commuList = [];
+
+        var construcList = [];
+
+        var advertList = [];
+
+        var consulList = [];
+
+        var coffeeList = [];
+
+        var distriList = [];
+
+        var devList = [];
+
+        var foodList = [];
+
+        var autoList = [];
+        // API 엔드포인트 URL
+        const apiUrl = 'http://localhost:8282/api/v1/partner/list';
+
+        // GET 요청을 보내는 함수
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const responseData = await response.json();
+                return responseData;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return null;
+            }
+        }
+
+        // 데이터를 가져와서 처리하는 함수
+        async function handleData() {
+            const partnerData = await fetchData();
+            if (partnerData && partnerData.length >= 0) {
+                // 데이터를 성공적으로 가져왔을 때 처리할 작업을 여기에 추가
+                console.log('Partner data:', partnerData);
+
+                // article 요소 참조
+                const article = document.getElementById("article");
+
+
+                partnerData.forEach((partner) => {
+                    if (partner.category === "교육") {
+                        eduList.push(partner);
+                    }
+                    if (partner.category === "통신/렌탈") {
+                        commuList.push(partner);
+                    }
+                    if (partner.category === "시공/인테리어") {
+                        construcList.push(partner);
+                    }
+                    if (partner.category === "광고/마케팅") {
+                        advertList.push(partner);
+                    }
+                    if (partner.category === "세무/상담/회계") {
+                        consulList.push(partner);
+                    }
+                    if (partner.category === "커피머신/기타자판기") {
+                        coffeeList.push(partner);
+                    }
+                    if (partner.category === "유통") {
+                        distriList.push(partner);
+                    }
+                    if (partner.category === "개발") {
+                        devList.push(partner);
+                    }
+                    if (partner.category === "식자재/주류") {
+                        foodList.push(partner);
+                    }
+                    if (partner.category === "무인화 시스템") {
+                        autoList.push(partner);
+                    }
+                });
+
+                createPartnerList(eduList);
+                createPartnerList(commuList);
+                createPartnerList(construcList);
+                createPartnerList(advertList);
+                createPartnerList(consulList);
+                createPartnerList(coffeeList);
+                createPartnerList(distriList);
+                createPartnerList(devList);
+                createPartnerList(foodList);
+                createPartnerList(autoList);
+
+            } else {
+                // 데이터를 가져오지 못했거나 데이터가 비어 있을 때 처리할 작업을 여기에 추가
+                console.log('Failed to fetch partner data or empty data');
+            }
+        }
+
+
+        // 데이터 가져오기 실행
+        handleData();
+
+
+        // changeCategory 함수 정의
         function changeCategory(category) {
             for (let i = 0; i < categoryListEN.length; i++) {
                 if (category === categoryListEN[i]) {
@@ -66,87 +164,60 @@
 
 
 
-        var data =
-        {
-            category: `${categoryList[0]}`,
-            companyLogo: "./img/logo/키스타트로고.png",
-            companyName: "회사명",
-            companyType: `${categoryList[0]}`,
-            companyLink: "https://naver.com",
-            companyTitle: "타이틀 텍스트가 들어갑니다.",
-            hashtags: ["#해시태그1", "#해시태그2", "#해시태그3", "#해시태그4"],
-            images: ["이미지1", "이미지2", "이미지3", "이미지4", "이미지5"]
-        };
-
-        //  --------------------------------------- 데이터 영역 --------------------------------------------------------------
-
-        // ------------------------------------ article 메인 영역 자바스크립트 로직으로 생성 -------------------------------------------
-        var article = document.getElementById("article");
-
-        // 데이터를 기반으로 반복하여 요소를 생성하고 삽입합니다.
-        categoryList.forEach(function (category) {
-            var contentItem = document.createElement("div");
-            contentItem.className = "content-item";
-
-            // content-item 요소 내의 HTML 템플릿을 생성합니다.
-            contentItem.innerHTML = `
-            <div class="connect-category" id="${changeCategory(category)}">${category}</div>
-                <div class="content-item-header">
-                    <div class="content-company-logo"><img src="${data.companyLogo}" alt=""></div>
-                    <div class="content-company-info">
-                        <div class="company-text1">
-                            <div class="company-text2">
-                                <div class="company-info-name">${data.companyName}</div>
-                                <div class="company-info-edu">${category}</div>
-                            </div>
-                            <div class="content-company-link"><a href="${data.companyLink}">자세히 보기 →</a></div>
-                        </div>
-                        <div class="company-info-title">${data.companyTitle}</div>
-                        <div class="company-info-hashtags">
-                            ${data.hashtags.map(tag => `<div class="hashtags-item">${tag}</div>`).join("")}
-                        </div>
-                    </div>
-                </div>
-                <div class="content-item-body">
-                    ${data.images.map(image => `<div class="content-body-item">${image}</div>`).join("")}
-                </div>
-            `;
-
-            // article 요소에 content-item을 추가합니다.
-            article.appendChild(contentItem);
-        });
-        // --------------- --------------------- article 메인 영역 자바스크립트 로직으로 생성 -------------------------------------------
-
-
-        // ------------------------------------anchor 에 등록된 viewport로 영역 이동 ----------------------------------------------
-        document.addEventListener("DOMContentLoaded", function () {
-            // 각 카테고리에 대한 anchor 태그를 가져옵니다.
-            var categoryAnchors = document.querySelectorAll(".sub-menu a");
-
-            // 각 카테고리 anchor 태그에 클릭 이벤트를 추가합니다.
-            for (let anchor of categoryAnchors) {
-                anchor.addEventListener("click", function (event) {
-                    event.preventDefault(); // 기본 동작 중단
-                    var targetId = anchor.getAttribute("href").substring(1); // href에서 #을 제외한 ID를 가져옴
-                    console.log("Target-en ID:", targetId);
-                    var targetElement = document.getElementById(targetId.trim());
-                    console.log(`이거는 이거 ${targetElement}`);
-
-                    if (targetElement) {
-                        // 해당 요소의 위치로 스크롤합니다.
-                        console.log("참조건 탔음!")
-                        targetElement.scrollIntoView({ behavior: "smooth" });
-                    }
-                });
+        function createPartnerList(partnerData) {
+            // partnerData 배열이 비어있는 경우 함수를 종료합니다.
+            if (partnerData.length === 0) {
+                return;
             }
 
-        });
+            // 반복문 이전에 connect-category 요소를 생성합니다.
+            const categoryElement = document.createElement("div");
+            console.log("나와나와!")
+            categoryElement.className = "connect-category";
+            categoryElement.id = changeCategory(partnerData[0].category);
+            categoryElement.innerText = partnerData[0].category;
 
-        // ------------------------------------anchor 에 등록된 viewport로 영역 이동 ----------------------------------------------
+            // article 요소에 connect-category를 추가합니다.
+            const article = document.getElementById("article");
+            article.appendChild(categoryElement);
 
+            // 파트너 데이터를 반복하여 content-item을 생성하고 article에 추가합니다.
+            partnerData.forEach((partner, index) => {
+                // 첫 번째 아이템은 이미 connect-category가 생성되었으므로 건너뜁니다.
+
+                const contentItem = document.createElement("div");
+                contentItem.className = "content-item";
+
+                // content-item 요소 내의 HTML 템플릿을 생성합니다.
+                contentItem.innerHTML = `
+            <div class="content-item-header">
+                <div class="content-company-logo"><img src="${partner.logoUrl}" alt=""></div>
+                <div class="content-company-info">
+                    <div class="company-text1">
+                        <div class="company-text2">
+                            <div class="company-info-name">${partner.bizName}</div>
+                            <div class="company-info-edu">${partner.category}</div>
+                        </div>
+                        <div class="content-company-link"><a href="${partner.companyLink}">자세히 보기 →</a></div>
+                    </div>
+                    <div class="company-info-title">${partner.introduce}</div>
+                    <div class="company-info-hashtags">
+                        ${partner.tag ? partner.tag.split("#").filter(tag => tag !== "").map(tag => `<div class="hashtags-item">#${tag.trim()}</div>`).join("") : ""}
+                    </div>
+                </div>
+            </div>
+            <div class="content-item-body">
+                ${partner.contentImgUrl ? partner.contentImgUrl.map(image => ` <div class="content-body-item"><img src=${image} alt=""></div>`).join("") : ""}
+            </div>
+        `;
+                // article 요소에 content-item을 추가합니다.
+                article.appendChild(contentItem);
+            });
+        }
 
 
     </script>
+
 </body>
 
 </html>

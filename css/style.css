@@ -1536,6 +1536,7 @@ aside p {
   justify-content: space-between;
   grid-template-rows: 1fr 3fr 1fr;
   align-items: start;
+  margin-top: 1%;
 }
 
 .content-company-logo img {
@@ -1596,10 +1597,9 @@ aside p {
 }
 
 .hashtags-item {
-  /* margin-right: 1%; */
   border-radius: 15px;
   margin: 0.3% 0;
-  width: 80px;
+  width: 100px;
   text-align: center;
   padding: 0.5%;
   border: #e5e7eb solid 1px;
