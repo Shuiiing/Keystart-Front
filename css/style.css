@@ -1615,7 +1615,11 @@ aside p {
 }
 
 .content-body-item {
-  background-color: lightpink;
+  width: 200px;
+  height: 200px;
+}
+
+.content-body-item img {
   width: 200px;
   height: 200px;
 }

@@ -32,6 +32,7 @@
                 <li><a href="#development">개발</a></li>
                 <li><a href="#food">식자재/주류</a></li>
                 <li><a href="#automation">무인화 시스템</a></li>
+                <li><a href="#other">기타</a></li>
             </ul>
         </aside>
         <article id="article"></article>
@@ -42,8 +43,8 @@
     <script src="./layout/footer.js"></script>
     <script>
 
-        var categoryList = ["교육", "통신/렌탈", "시공/인테리어", "광고/마케팅", "세무/상담/회계", "커피머신/기타자판기", "유통", "개발", "식자재/주류", "무인화 시스템"];
-        var categoryListEN = ["education", "communication", "construction", "advertisement", "consultation", "coffee", "distribution", "development", "food", "automation"];
+        var categoryList = ["교육", "통신/렌탈", "시공/인테리어", "광고/마케팅", "세무/상담/회계", "커피머신/기타자판기", "유통", "개발", "식자재/주류", "무인화 시스템", "기타"];
+        var categoryListEN = ["education", "communication", "construction", "advertisement", "consultation", "coffee", "distribution", "development", "food", "automation", "other"];
 
         var eduList = [];
 
@@ -64,6 +65,8 @@
         var foodList = [];
 
         var autoList = [];
+
+        var otherList = [];
         // API 엔드포인트 URL
         const apiUrl = 'https://www.keystart.co.kr/api/v1/partner/list';
 
@@ -124,6 +127,9 @@
                     if (partner.category === "무인화 시스템") {
                         autoList.push(partner);
                     }
+                    if (partner.category === "기타") {
+                        otherList.push(partner);
+                    }
                 });
 
                 createPartnerList(eduList);
@@ -136,6 +142,7 @@
                 createPartnerList(devList);
                 createPartnerList(foodList);
                 createPartnerList(autoList);
+                createPartnerList(otherList);
 
             } else {
                 // 데이터를 가져오지 못했거나 데이터가 비어 있을 때 처리할 작업을 여기에 추가
@@ -219,8 +226,8 @@
                 <div class="content-company-info">
                     <div class="company-text1">
                         <div class="company-text2">
-                            <div class="company-info-name">${partner.bizName}</div>
-                            <div class="company-info-edu">${partner.category}</div>
+                            <span class="company-info-name">${partner.bizName}</span>
+                            <span class="company-info-edu">${partner.category}</span>
                         </div>
                         <div class="content-company-link"><a href="/partner_detail.html">자세히 보기 →</a></div>
                     </div>

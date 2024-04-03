@@ -659,14 +659,15 @@
 
   .company-info-name {
     font-size: 14px;
+    width: auto;
   }
 
   .company-info-edu {
-    width: 60%;
+    width: auto;
     padding: 4px;
     font-size: 10px;
     color: #4b5563;
-    text-align: start;
+    text-align: center;
   }
 
   .company-info-title {
@@ -683,7 +684,6 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     padding: 1% 0;
   }
 
