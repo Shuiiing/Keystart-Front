@@ -7,6 +7,17 @@ class Header {
         this.render();
         // 화면 크기 변경 시 이벤트 추가
         window.addEventListener("resize", this.render.bind(this));
+
+        // logo 이미지 요소 선택
+        const logoImg = this.element.querySelector('.logo-top img');
+
+        // logo 이미지 클릭 이벤트 핸들러 추가
+        logoImg.addEventListener('click', function () {
+            // 원하는 페이지의 URL을 여기에 입력
+            const desirePageUrl = '/index.html';
+            // 현재 창을 원하는 페이지로 리디렉션
+            window.location.href = desirePageUrl;
+        });
     }
 
     render() {
@@ -46,6 +57,7 @@ class Header {
         `;
         }
     }
+
 
     getElement() {
         // 생성된 헤더 요소 반환

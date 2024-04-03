@@ -8,6 +8,10 @@ body {
   overflow-x: hidden;
 }
 
+.logo-top img:hover {
+  cursor: pointer;
+}
+
 .navigation-link {
   width: 158px;
   height: 56px;

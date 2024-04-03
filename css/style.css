@@ -35,6 +35,10 @@ a {
   max-width: 100%;
 } */
 
+.logo-top img:hover {
+  cursor: pointer;
+}
+
 .info img {
   width: 40px;
   height: 40px;
@@ -969,6 +973,8 @@ img {
   border: 2px solid white;
   border-radius: 15px;
   font-size: 16px;
+  width: 100px;
+  height: 80px;
 }
 
 .child-item2 {
@@ -992,6 +998,7 @@ img {
 .child-item2,
 .child-item3 {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -1000,11 +1007,14 @@ img {
   visibility: hidden;
   position: absolute;
   top: 50%;
-  left: 509%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2; /* ::before 가상 요소보다 높은 값을 설정 */
   color: white;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .item-text-container > div {

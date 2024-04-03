@@ -293,7 +293,8 @@
     function handleItemClick(story, menuWrapper) {
         // -------- 여기까지가 기존에 이미지 그리드뷰형식  -------- 
         if (story && story._id) {
-            console.log(story._id);
+            // 4/3일 기준으로 발표를 위한 것은 지금 필요없어!
+            // console.log(story._id);
             const itemDiv = document.createElement("div");
             itemDiv.classList.add("grid-item");
             itemDiv.setAttribute("data-id", story._id);
@@ -314,7 +315,7 @@
             const textContainerDiv = document.createElement("div");
             textContainerDiv.classList.add("item-text-container");
 
-            const textContents = [story.category, "유남주", story.hashtag];
+            const textContents = [story.category, story.hashtag];
             textContents.forEach((content, index) => {
                 const textDiv = document.createElement("div");
                 textDiv.classList.add(`child-item${index + 1}`);
