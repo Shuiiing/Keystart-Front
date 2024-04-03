@@ -34,7 +34,7 @@
                 <li><a href="#automation">무인화 시스템</a></li>
             </ul>
         </aside>
-        <article id="article" class="" wrapper""></article>
+        <article id="article"></article>
     </div>
     <footer id="footer"></footer>
     <!-- 헤더 및 풋터 스크립트 -->
@@ -185,8 +185,13 @@
                 const contentItem = document.createElement("div");
                 contentItem.className = "content-item";
 
-                // content-item 요소 내의 HTML 템플릿을 생성합니다.
-                contentItem.innerHTML = `
+                // 현재 화면의 너비를 가져옴
+                var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+
+                if (windowWidth > 768) {
+                    // content-item 요소 내의 HTML 템플릿을 생성합니다.
+                    contentItem.innerHTML = `
             <div class="content-item-header">
                 <div class="content-company-logo"><img src="${partner.logoUrl}" alt=""></div>
                 <div class="content-company-info">
@@ -195,7 +200,7 @@
                             <div class="company-info-name">${partner.bizName}</div>
                             <div class="company-info-edu">${partner.category}</div>
                         </div>
-                        <div class="content-company-link"><a href="${partner.companyLink}">자세히 보기 →</a></div>
+                        <div class="content-company-link"><a href="/partner_detail.html">자세히 보기 →</a></div>
                     </div>
                     <div class="company-info-title">${partner.introduce}</div>
                     <div class="company-info-hashtags">
@@ -207,6 +212,27 @@
                 ${partner.contentImgUrl ? partner.contentImgUrl.map(image => ` <div class="content-body-item"><img src=${image} alt=""></div>`).join("") : ""}
             </div>
         `;
+                } else {
+                    contentItem.innerHTML = `
+            <div class="content-item-header">
+                <div class="content-company-logo"><img src="${partner.logoUrl}" alt=""></div>
+                <div class="content-company-info">
+                    <div class="company-text1">
+                        <div class="company-text2">
+                            <div class="company-info-name">${partner.bizName}</div>
+                            <div class="company-info-edu">${partner.category}</div>
+                        </div>
+                        <div class="content-company-link"><a href="/partner_detail.html">자세히 보기 →</a></div>
+                    </div>
+                    <div class="company-info-title">${partner.introduce}</div>
+                </div>
+            </div>
+            <div class="content-item-body">
+                ${partner.tag ? partner.tag.split("#").filter(tag => tag !== "").map(tag => `<div class="hashtags-item">#${tag.trim()}</div>`).join("") : ""}
+            </div>
+        `;
+                }
+
                 // article 요소에 content-item을 추가합니다.
                 article.appendChild(contentItem);
             });
@@ -228,18 +254,28 @@
         // ------------------------ 앵커로 스크롤하기 ----------------------------------------------
 
         //  --------------------------- 왼쪽 네비바 --------------------------------
-        window.addEventListener('scroll', function () {
-            var aside = document.querySelector('aside');
-            var scrollPosition = window.scrollY;
 
-            if (scrollPosition > 380) {
-                aside.style.position = 'fixed';
-                article.style.marginLeft = '20%';
-                aside.style.top = '5%';
-            } else {
-                aside.style.position = 'static';
-                article.style.marginLeft = '0';
+
+        window.addEventListener('scroll', function () {
+
+            // 현재 화면의 너비를 가져옴
+            var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+            // 화면 너비가 768px보다 큰 경우 (일반적인 모바일 기기의 가로 해상도 768px 미만임)
+            if (windowWidth > 768) {
+                var aside = document.querySelector('aside');
+                var scrollPosition = window.scrollY;
+
+                if (scrollPosition > 380) {
+                    aside.style.position = 'fixed';
+                    article.style.marginLeft = '20%';
+                    aside.style.top = '5%';
+                } else {
+                    aside.style.position = 'static';
+                    article.style.marginLeft = '0';
+                }
             }
+
         });
         //  --------------------------- 왼쪽 네비바 --------------------------------
 

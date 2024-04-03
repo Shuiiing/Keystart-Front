@@ -396,7 +396,6 @@
     height: 200px;
     background-color: #f2f2f2;
     display: flex;
-    align-items: center;
     justify-content: center;
   }
 
@@ -405,11 +404,11 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
+    align-items: end;
     width: 100%;
     font-size: 80px;
     color: white;
-    font-weight: 600;
-    text-align: center;
+    font-weight: 800;
     font-family: "Gmarket Sans";
   }
 
@@ -559,4 +558,186 @@
   /* ------------------- 탭바관련   ------------------- */
 
   /* ---------------------- 창업이야기  --------------------------- */
+
+  /* ------------------- 키스타트란 ------------------------------- */
+  .ad-video {
+    width: 100%;
+    height: 200px;
+    background-color: blue;
+  }
+
+  .main-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .main-section1 {
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .section1-text1 {
+    color: #2753ad;
+    font-size: 24px;
+    font-family: "Gmarket Sans";
+  }
+
+  .section1-text2 {
+    color: black;
+    font-size: 18px;
+    font-family: "Gmarket Sans";
+    text-align: center;
+  }
+
+  .main-section2 {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* 모바일 기기의 화면 너비가 768px 이하인 경우 */
+    .section2-text-power1,
+    .section2-text-power2 {
+      display: none; /* 해당 요소를 숨깁니다. */
+    }
+  }
+
+  /* ------------------- 키스타트란 ------------------------------- */
+
+  /* ------------------- 파트너사 -------------------------------- */
+  aside {
+    display: none;
+  }
+
+  .connect-category {
+    width: 100%;
+    font-size: 20px;
+    color: #4b5563;
+    border-bottom: #e5e7eb solid 3px;
+  }
+
+  article {
+    height: auto;
+    width: 100%;
+  }
+
+  .content-item {
+    padding-top: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
+    padding-bottom: 0%;
+  }
+
+  .content-item-header {
+    /* padding: 0% 5%; */
+    width: 100%;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 2%;
+  }
+
+  .content-company-logo img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: #e5e7eb solid 1px;
+    border-radius: 100%;
+  }
+
+  .content-company-link {
+    padding-right: 0%;
+  }
+
+  .company-info-edu {
+    width: 60%;
+    padding: 4px;
+    font-size: 14px;
+    color: #4b5563;
+    text-align: start;
+  }
+
+  .content-company-info {
+    padding: 0% 2%;
+    width: 100%;
+    height: 120px;
+  }
+
+  .company-text1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1% 0;
+  }
+
+  .company-text2 {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .content-company-link a {
+    font-size: 10px;
+  }
+
+  .company-info-hashtags {
+    margin-top: 2px;
+    display: flex;
+  }
+
+  .hashtags-item {
+    border-radius: 15px;
+    /* margin: 0.3% 0; */
+    width: auto;
+    text-align: center;
+    /* padding: 0.5%; */
+    border: #e5e7eb solid 1px;
+    font-size: 10px;
+  }
+
+  .content-item-body {
+    justify-content: start;
+    width: 100%;
+    padding: 0% 5%;
+    margin-top: 1%;
+    margin-left: 15%;
+    width: auto;
+    height: auto;
+    display: flex;
+    gap: 10px;
+  }
+
+  .content-item {
+    margin: 7% 0%;
+  }
+
+  /* ------------------- 파트너사 -------------------------------- */
+
+  /* ------------------- 파트너사 상세페이지 -------------------------------- */
+  .ready-section {
+    margin: 60% 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 1%;
+  }
+
+  .ready-text {
+    font-size: 24px;
+    color: black;
+  }
+
+  /* ------------------- 파트너사 상세페이지 -------------------------------- */
 }
