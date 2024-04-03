@@ -63,21 +63,24 @@
       <button class="faq-question">
         창업을 시작하려는데 어떤 서비스를 이용할 수 있나요?<span class="arrow"></span>
       </button>
-      <div class="faq-answer">"키스타트에서는 창업에 필요한 인테리어, 디자인, 시공, 보안, 통신, 자재, 마케팅 등의 서비스를 제공합니다. 고객님의 요구사항을 파악하여 필요한 서비스를 제안하고, 창업 과정을 전반적으로 지원합니다."</div>
+      <div class="faq-answer">"키스타트에서는 창업에 필요한 인테리어, 디자인, 시공, 보안, 통신, 자재, 마케팅 등의 서비스를 제공합니다. 고객님의 요구사항을 파악하여 필요한 서비스를
+        제안하고, 창업 과정을 전반적으로 지원합니다."</div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
         고정비용을 줄일 수 있는 방법이 있나요?<span class="arrow"></span>
       </button>
-      <div class="faq-answer">"저희는 고객의 업종과 규모에 맞게 고정비 항목을 분석하여 낭비되는 부분을 찾아냅니다. 그리고 이를 줄일 수 있는 맞춤형 절감 방안을 제공하여 고정비용을 효율적으로 관리할 수 있도록 도와드립니다."</div>
+      <div class="faq-answer">"저희는 고객의 업종과 규모에 맞게 고정비 항목을 분석하여 낭비되는 부분을 찾아냅니다. 그리고 이를 줄일 수 있는 맞춤형 절감 방안을 제공하여 고정비용을
+        효율적으로 관리할 수 있도록 도와드립니다."</div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
         자재와 부자재 비용을 어떻게 줄일 수 있나요?<span class="arrow"></span>
       </button>
-      <div class="faq-answer">"키스타트는 경쟁력 있는 가격의 자재와 부자재를 공급할 수 있는 네트워크를 활용하여 비용을 절감합니다. 또한, 고객의 사업에 적합한 자재 구매 계획을 세워 비용 절약과 효율적인 자재 관리를 지원합니다."</div>
+      <div class="faq-answer">"키스타트는 경쟁력 있는 가격의 자재와 부자재를 공급할 수 있는 네트워크를 활용하여 비용을 절감합니다. 또한, 고객의 사업에 적합한 자재 구매 계획을 세워 비용
+        절약과 효율적인 자재 관리를 지원합니다."</div>
     </div>
 
     <div class="faq-item">
@@ -91,7 +94,8 @@
       <button class="faq-question">
         제가 직접 처리할 수 있는 부분이 있어요. 그 외의 서비스만 받을 수 있나요?<span class="arrow"></span>
       </button>
-      <div class="faq-answer">"물론입니다. 고객님이 직접 처리하기로 한 부분을 제외하고, 나머지 필요한 서비스에 대해서만 지원을 받을 수 있습니다. 키스타트는 고객님의 창업을 원활하게 만들어드리기 위해 유연하게 서비스를 조정합니다."</div>
+      <div class="faq-answer">"물론입니다. 고객님이 직접 처리하기로 한 부분을 제외하고, 나머지 필요한 서비스에 대해서만 지원을 받을 수 있습니다. 키스타트는 고객님의 창업을 원활하게
+        만들어드리기 위해 유연하게 서비스를 조정합니다."</div>
     </div>
   </div>
 
@@ -189,46 +193,46 @@
   <script src="./layout/footer.js"></script>
   <script>
 
-    // async function fetchUserInfo() {
-    //   try {
-    //     // localStorage에서 토큰을 가져옵니다.
-    //     const token = localStorage.getItem("accessToken");
-    //     if (!token) {
-    //       console.log("토큰이 없습니다. 로그인이 필요합니다.");
-    //       return;
-    //     }
+    async function fetchUserInfo() {
+      try {
+        // localStorage에서 토큰을 가져옵니다.
+        const token = localStorage.getItem("accessToken");
+        if (!token) {
+          console.log("토큰이 없습니다. 로그인이 필요합니다.");
+          return;
+        }
 
-    //     const response = await fetch(
-    //       // "http://localhost:8282/api/v1/user/info",
-    //       "https://www.keystart.co.kr/api/v1/user/info",
-    //       {
-    //         method: "GET",
-    //         headers: {
-    //           Authorization: `Bearer ${token}`,
-    //         },
-    //       }
-    //     );
+        const response = await fetch(
+          // "http://localhost:8282/api/v1/user/info",
+          "https://www.keystart.co.kr/api/v1/user/info",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-    //     if (!response.ok) {
-    //       throw new Error("사용자 정보를 불러오는데 실패했습니다.");
-    //     }
+        if (!response.ok) {
+          throw new Error("사용자 정보를 불러오는데 실패했습니다.");
+        }
 
-    //     const data = await response.json();
-    //     console.log("사용자 정보:", data); // 콘솔에 사용자 정보 출력
-    //   } catch (error) {
-    //     console.error("사용자 정보 요청 중 오류 발생:", error);
-    //   }
-    // }
-    // window.onload = function () {
-    //   const token = localStorage.getItem("accessToken");
+        const data = await response.json();
+        console.log("사용자 정보:", data); // 콘솔에 사용자 정보 출력
+      } catch (error) {
+        console.error("사용자 정보 요청 중 오류 발생:", error);
+      }
+    }
+    window.onload = function () {
+      const token = localStorage.getItem("accessToken");
 
-    //   if (!token) {
-    //     window.location.href = "/keystart.html";
-    //     alert("로그인을 해주세요.");
-    //   } else {
-    //     fetchUserInfo();
-    //   }
-    // };
+      if (!token) {
+        window.location.href = "/keystart.html";
+        alert("로그인을 해주세요.");
+      } else {
+        fetchUserInfo();
+      }
+    };
 
     window.addEventListener("scroll", function () {
       var navbar = document.querySelector(".TopNav");
