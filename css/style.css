@@ -1486,7 +1486,7 @@ aside {
 }
 
 article {
-  height: 2000px;
+  height: auto;
   width: 80%;
 }
 
