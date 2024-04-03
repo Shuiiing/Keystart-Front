@@ -657,12 +657,20 @@
     padding-right: 0%;
   }
 
+  .company-info-name {
+    font-size: 14px;
+  }
+
   .company-info-edu {
     width: 60%;
     padding: 4px;
-    font-size: 14px;
+    font-size: 10px;
     color: #4b5563;
     text-align: start;
+  }
+
+  .company-info-title {
+    font-size: 12px;
   }
 
   .content-company-info {
