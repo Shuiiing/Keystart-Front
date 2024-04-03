@@ -633,10 +633,10 @@
   }
 
   .content-item {
-    padding-top: 0%;
+    padding-top: 3%;
     padding-left: 0%;
     padding-right: 0%;
-    padding-bottom: 0%;
+    padding-bottom: 3%;
   }
 
   .content-item-header {
@@ -647,6 +647,10 @@
     justify-content: space-between;
     align-items: start;
     margin-top: 2%;
+  }
+
+  .content-company-logo {
+    margin-right: 2.5%;
   }
 
   .content-company-logo img {
@@ -662,7 +666,8 @@
   }
 
   .company-info-name {
-    font-size: 14px;
+    font-size: 11.5px;
+    font-weight: 800;
     width: auto;
   }
 
@@ -675,6 +680,7 @@
   }
 
   .company-info-title {
+    padding: 2% 0%;
     font-size: 12px;
   }
 
@@ -713,15 +719,14 @@
     text-align: center;
     /* padding: 0.5%; */
     border: #e5e7eb solid 1px;
-    font-size: 7px;
+    font-size: 5.5px;
   }
 
   .content-item-body {
     justify-content: start;
+    margin-top: 3%;
+    margin-left: 18%;
     width: 100%;
-    padding: 0% 5%;
-    margin-top: 1%;
-    margin-left: 15%;
     width: auto;
     height: auto;
     display: flex;
