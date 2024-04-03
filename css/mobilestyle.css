@@ -715,17 +715,16 @@
   .hashtags-item {
     border-radius: 15px;
     /* margin: 0.3% 0; */
-    width: auto;
+    width: 300px;
     text-align: center;
     /* padding: 0.5%; */
     border: #e5e7eb solid 1px;
-    font-size: 5.5px;
+    font-size: 6px;
   }
 
   .content-item-body {
     justify-content: start;
     margin-top: 3%;
-    margin-left: 18%;
     width: 100%;
     width: auto;
     height: auto;
