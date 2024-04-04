@@ -1644,7 +1644,7 @@ aside p {
 /* ------------------------ 키스타트란 ---------------------- */
 main {
   height: auto;
-  margin: 6% 12%;
+  margin: 12%;
 }
 
 .ad-video {
@@ -1745,6 +1745,7 @@ main {
   font-family: "Gmarket Sans";
   text-align: center;
   color: black;
+  margin-bottom: 32px;
 }
 
 .section3-text1 {
@@ -1762,7 +1763,7 @@ main {
 }
 
 .main-section-box {
-  padding: 2%;
+  padding: 3%;
   background-color: #eff6ff;
   width: 150%;
   height: 100px;
@@ -1772,6 +1773,7 @@ main {
 }
 
 .main-section4 {
+  width: 100%;
   margin-top: 160px;
   display: flex;
   flex-direction: column;
@@ -1782,11 +1784,14 @@ main {
 .section4-logo {
   display: flex;
   flex-direction: row;
+  gap: 5px;
 }
 
 .section4-logo img {
-  padding: 10%;
+  padding: 10% 0%;
   width: 100%;
+  height: 90%;
+  object-fit: contain;
 }
 
 .section4-text {
@@ -1801,6 +1806,8 @@ main {
 }
 
 .main-section5 {
+  background-color: red;
+  width: 100%;
   height: 1000px;
   display: flex;
   flex-direction: column;
@@ -1828,7 +1835,7 @@ main {
 }
 
 .color-box1 {
-  height: 100%;
+  height: 200%;
   width: 100%;
   background-color: #2753ad;
   color: white;
@@ -1839,7 +1846,7 @@ main {
   font-size: 24px;
 }
 .color-box2 {
-  height: 100%;
+  height: 200%;
   width: 100%;
   background-color: #ffffff;
   border: 1px solid black;
@@ -1851,7 +1858,7 @@ main {
   font-size: 24px;
 }
 .color-box3 {
-  height: 100%;
+  height: 200%;
   width: 100%;
   background-color: #000000;
   color: white;
